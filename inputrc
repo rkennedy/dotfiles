@@ -1,0 +1,5 @@
+set completion-ignore-case off
+set mark-directories on
+set show-all-if-ambiguous off
+set show-all-if-unmodified off
+set visible-stats on
