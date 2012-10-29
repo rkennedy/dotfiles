@@ -70,7 +70,7 @@ evcd() {
 	etrack='([eE][tT])?([[:digit:]]{7})';
 	sfdc='[[:digit:]]{8}'
 	if [[ $2 =~ $sfdc ]]; then
-		dir=$evidence/${sfdc:6:8}/$sfdc
+		dir=$evidence/${2:6:8}/$2
 		echo cd $dir
 		cd $dir
 	elif [[ $2 =~ $titan ]]; then
