@@ -81,10 +81,7 @@ evcd() {
 		echo $etrack;
 		caseno=$(extrefs ${BASH_REMATCH[2]} | head -1);
 		if [[ $? ]]; then
-			echo $caseno;
-			dir=$evidence/${caseno:6:8}/$caseno;
-			echo cd $dir;
-			cd $dir;
+			evcd $1 $caseno $3
 		fi
 	fi
 }
