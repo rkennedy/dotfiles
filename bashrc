@@ -68,16 +68,21 @@ evcd() {
     fi
 	titan='([[:digit:]]{3})-?([[:digit:]]{3})-?([[:digit:]]([[:digit:]]{2}))';
 	etrack='([eE][tT])?([[:digit:]]{7})';
-	if [[ $2 =~ $titan ]]; then
+	sfdc='[[:digit:]]{8}'
+	if [[ $2 =~ $sfdc ]]; then
+		dir=$evidence/${sfdc:6:8}/$sfdc
+		echo cd $dir
+		cd $dir
+	elif [[ $2 =~ $titan ]]; then
 		dir=$evidence/${BASH_REMATCH[4]}/${BASH_REMATCH[1]}-${BASH_REMATCH[2]}-${BASH_REMATCH[3]};
 		echo cd $dir;
 		cd $dir;
 	elif [[ $2 =~ $etrack ]]; then
 		echo $etrack;
-		caseno=$(titan.pl -1 ${BASH_REMATCH[2]});
+		caseno=$(extrefs ${BASH_REMATCH[2]} | head -1);
 		if [[ $? ]]; then
 			echo $caseno;
-			dir=$evidence/${caseno:9:11}/$caseno;
+			dir=$evidence/${caseno:6:8}/$caseno;
 			echo cd $dir;
 			cd $dir;
 		fi
