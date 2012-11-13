@@ -1,10 +1,10 @@
 # Set environment variables in .cshrc
 
-#if [ -x $PLATFORM_BIN/ls ]; then
+if ls --color=auto 2>/dev/null >/dev/null; then
 	alias ls='ls -obF --color'
-#else
-#	alias ls='ls -obF'
-#fi
+else
+	alias ls='ls -obF'
+fi
 alias la='ls -a'
 alias rm='rm -i' cp='cp -i' mv='mv -i'
 alias which='type -p'
