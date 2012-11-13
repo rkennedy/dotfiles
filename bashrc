@@ -135,3 +135,8 @@ export GREP_OPTIONS=--color=auto
 rehash() {
 	hash -r
 }
+
+pretty() {
+	pygmentize -g -f terminal256 -O bg=dark "$@" \
+	| $PAGER -RF
+}
