@@ -64,7 +64,7 @@ evcd() {
     if [[ x$3 == x ]]; then
         evidence=/net/${1}spt/evidence/$1
     else
-        evidence=/net/$3/vol/exports/evidence/$1
+        evidence=/net/$3/evidence/$1
     fi
 	titan='([[:digit:]]{3})-?([[:digit:]]{3})-?([[:digit:]]([[:digit:]]{2}))';
 	etrack='([eE][tT])?([[:digit:]]{7})';
@@ -85,11 +85,11 @@ evcd() {
 		fi
 	fi
 }
-rosspt() { evcd ros $1 ross550; }
+rosspt() { evcd ros $1 ross550/vol/exports; }
 sprspt() { evcd spr $1; }
 sydspt() { evcd syd $1; }
 rdgspt() { evcd rdg $1; }
-hrospt() { evcd hro $1; }
+hrospt() { evcd hro $1 hro-evidence.spr.spt.symantec.com/c; }
 punspt() { evcd pun $1; }
 
 nmakeall() {
