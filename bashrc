@@ -1,3 +1,4 @@
+# ~/.bashrc: executed by bash(1) for non-login shells.
 # Set environment variables in .cshrc
 
 if ls --color=auto 2>/dev/null >/dev/null; then
