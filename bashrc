@@ -37,6 +37,18 @@ shopt -s autocd extglob force_fignore no_empty_cmd_completion nocaseglob
 shopt -u sourcepath
 shopt -s checkwinsize
 
+export LC_COLATE=C
+export CVSREAD=Yes
+export PAGER=less
+export LESS='-MqSX -x2'
+export EDITOR=vim
+export CSCOPE_EDITOR=view
+export VISUAL=gvim
+export CVSEDITOR=vim
+export CVS_REVIEW_MODE='Graph diff'
+export REVIEW_VIEWER=vim
+export DIFF='diff -up'
+
 BASH_COMPLETION=$HOME/etc/bash_completion
 [ -r $BASH_COMPLETION ] && source $BASH_COMPLETION
 
