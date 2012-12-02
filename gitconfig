@@ -1,0 +1,27 @@
+[user]
+name = Rob Kennedy
+# email set in .gitconfig.local
+
+[core]
+editor = vim
+pager = less -R
+
+[color]
+ui = auto
+
+[alias]
+stat = status
+info = show --stat
+tree = log --graph --pretty=pretty --parents HEAD
+root = rev-parse --show-toplevel
+co = checkout
+
+[http]
+# See http://stackoverflow.com/a/8467406/33732
+sslCAinfo = ~/certs/cacert.pem
+
+[pretty]
+pretty = %C(yellow)%h%Creset -%Cred%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset
+
+[include]
+path = ~/.gitconfig.local
