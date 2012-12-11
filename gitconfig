@@ -25,3 +25,6 @@ pretty = %C(yellow)%h%Creset -%Cred%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%
 
 [include]
 path = ~/.gitconfig.local
+
+[push]
+default = simple
