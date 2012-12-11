@@ -1,6 +1,8 @@
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # Set environment variables in .cshrc
 
+eval `~/.local/bin/setpaths.pl --sh`
+
 if ls --color=auto 2>/dev/null >/dev/null; then
 	alias ls='ls -obF --color'
 else

@@ -1,0 +1,11 @@
+10 $HOME/.local/bin
+20 /usr/local/bin
+30 $HOME/bin
+50 /usr/xpg4/bin
+60 /usr/ccs/bin
+70 /usr/bin
+80 /bin
+90 /usr/sbin
+100 /usr/dt/bin
+110 /usr/ucb
+include .PATHrc.local
