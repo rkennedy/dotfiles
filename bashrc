@@ -59,8 +59,6 @@ esac
 export PERLBREW_ROOT=/usr/local
 [ -r $PERLBREW_ROOT/etc/bashrc ] && source $PERLBREW_ROOT/etc/bashrc
 
-eval $(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib)
-
 # Ctrl+Up and Ctrl+Down search history based on current command prefix
 bind '"\eOA":history-search-backward'
 bind '"\eOB":history-search-forward'
