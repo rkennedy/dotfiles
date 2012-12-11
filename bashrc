@@ -54,10 +54,7 @@ export DIFF='diff -up'
 BASH_COMPLETION=$HOME/etc/bash_completion
 [ -r $BASH_COMPLETION ] && source $BASH_COMPLETION
 
-case $(hostname) in
-	mageddon | stanton )
-		export PERLBREW_HOME=~/.perlbrew/$(hostname)
-esac
+export PERLBREW_HOME=~/.perlbrew/$(hostname)
 export PERLBREW_ROOT=/usr/local
 [ -r $PERLBREW_ROOT/etc/bashrc ] && source $PERLBREW_ROOT/etc/bashrc
 
