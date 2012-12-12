@@ -54,9 +54,7 @@ export DIFF='diff -up'
 BASH_COMPLETION=$HOME/etc/bash_completion
 [ -r $BASH_COMPLETION ] && source $BASH_COMPLETION
 
-export PERLBREW_HOME=~/.perlbrew/$(hostname)
-export PERLBREW_ROOT=/usr/local
-[ -r $PERLBREW_ROOT/etc/bashrc ] && source $PERLBREW_ROOT/etc/bashrc
+source ~/perl5/perlbrew/etc/bashrc
 
 # Ctrl+Up and Ctrl+Down search history based on current command prefix
 bind '"\eOA":history-search-backward'
