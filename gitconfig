@@ -28,3 +28,6 @@ path = ~/.gitconfig.local
 
 [push]
 default = simple
+
+[pager]
+status = true
