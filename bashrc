@@ -56,18 +56,6 @@ BASH_COMPLETION=$HOME/etc/bash_completion
 
 source ~/perl5/perlbrew/etc/bashrc
 
-# Ctrl+Up and Ctrl+Down search history based on current command prefix
-bind '"\eOA":history-search-backward'
-bind '"\eOB":history-search-forward'
-# Home and End
-bind '"\e[1~":beginning-of-line'
-bind '"\e[4~":end-of-line'
-# Delete
-bind '"\e[3~":delete-char'
-# Ctrl+Left and Ctrl+Right navigate forward and backward words
-bind '"\eOD":backward-word'
-bind '"\eOC":forward-word'
-
 evcd() {
     if [[ x$3 == x ]]; then
         evidence=/net/${1}spt/evidence/$1
