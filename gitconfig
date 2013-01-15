@@ -4,7 +4,7 @@ name = Rob Kennedy
 
 [core]
 editor = vim
-pager = less -R
+pager = less -RF
 
 [color]
 ui = auto
