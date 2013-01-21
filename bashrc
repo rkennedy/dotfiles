@@ -2,6 +2,7 @@
 # Set environment variables in .cshrc
 
 eval `~/.local/bin/setpaths.pl --sh`
+export LD_LIBRARY_PATH=$HOME/.local/lib:$LD_LIBRARY_PATH
 
 if ls --color=auto 2>/dev/null >/dev/null; then
 	alias ls='ls -obF --color'
