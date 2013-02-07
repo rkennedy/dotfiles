@@ -2,6 +2,7 @@
 # Set environment variables in .cshrc
 
 eval `~/.local/bin/setpaths.pl --sh`
+export LD_LIBRARY_PATH=$HOME/.local/lib:$LD_LIBRARY_PATH
 
 if ls --color=auto 2>/dev/null >/dev/null; then
 	alias ls='ls -obF --color'
@@ -55,17 +56,5 @@ BASH_COMPLETION=$HOME/etc/bash_completion
 [ -r $BASH_COMPLETION ] && source $BASH_COMPLETION
 
 source ~/perl5/perlbrew/etc/bashrc
-
-# Ctrl+Up and Ctrl+Down search history based on current command prefix
-bind '"\eOA":history-search-backward'
-bind '"\eOB":history-search-forward'
-# Home and End
-bind '"\e[1~":beginning-of-line'
-bind '"\e[4~":end-of-line'
-# Delete
-bind '"\e[3~":delete-char'
-# Ctrl+Left and Ctrl+Right navigate forward and backward words
-bind '"\eOD":backward-word'
-bind '"\eOC":forward-word'
 
 source ~/dotfiles/functions.sh
