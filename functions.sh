@@ -24,7 +24,7 @@ evcd() {
 	fi
 }
 rosspt() { evcd ros $1 ross550/vol/exports; }
-sprspt() { evcd spr $1; }
+sprspt() { evcd spr $1 spr-evidence.spr.spt.symantec.com/c; }
 sydspt() { evcd syd $1; }
 rdgspt() { evcd rdg $1; }
 hrospt() { evcd hro $1 hro-evidence.spr.spt.symantec.com/c; }
