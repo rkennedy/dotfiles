@@ -58,7 +58,7 @@ cvs_up() {
 		| grep -v -E '^\?'
 }
 cvs_diff() {
-	cvs diff -up "$@" \
+	cvs diff -uNp "$@" \
 		| grep -v -E '^\?' \
 		| colordiff \
 		| less -RF
