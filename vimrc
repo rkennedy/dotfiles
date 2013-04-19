@@ -1,3 +1,5 @@
+execute pathogen#infect()
+
 set nocompatible " not vi-compatible
 set guifont=Lucida\ Sans\ Typewriter
 syntax on
