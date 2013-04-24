@@ -1,3 +1,6 @@
 [submodule "vim/vim-pathogen"]
 	path = vim/vim-pathogen
 	url = http://github.com/tpope/vim-pathogen
+[submodule "vim/bundle/vim-abolish"]
+	path = vim/bundle/vim-abolish
+	url = http://github.com/tpope/vim-abolish
