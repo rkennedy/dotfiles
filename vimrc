@@ -11,7 +11,6 @@ set hlsearch " highlight all search results
 set expandtab " insert spaces instead of tabs
 set tabstop=4 " tab characters take up four columns
 set shiftwidth=4 " '<' and '>' shift code four spaces
-set cindent
 
 " Don't try to connect to X server for clipboard support; it's unlikely
 " the X server on my systems will be active.
