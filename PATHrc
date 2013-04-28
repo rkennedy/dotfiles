@@ -1,4 +1,5 @@
 10 $HOME/.local/bin
+15 $HOME/.gems/bin
 20 /usr/local/bin
 30 $HOME/bin
 50 /usr/xpg4/bin
