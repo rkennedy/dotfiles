@@ -17,6 +17,10 @@ set shiftwidth=4 " '<' and '>' shift code four spaces
 set clipboard=exclude:.*
 
 set formatoptions+=r " automatically insert comment-continuation char
+set cinoptions+=l1 " align code under case label, not brace
+set cinoptions+=t0 " don't indent function return type
+set cinoptions+=(0 " align with unclosed parenthesis ...
+set cinoptions+=W4 " ... unless it's at the end of a line
 
 filetype plugin indent on
 
