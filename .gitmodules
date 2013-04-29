@@ -22,3 +22,6 @@
 [submodule "vim/bundle/vim-tbone"]
 	path = vim/bundle/vim-tbone
 	url = http://github.com/tpope/vim-tbone
+[submodule "vim/bundle/vim-tmux"]
+	path = vim/bundle/vim-tmux
+	url = http://github.com/peterhoeg/vim-tmux
