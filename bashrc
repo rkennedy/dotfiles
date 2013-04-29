@@ -58,3 +58,7 @@ BASH_COMPLETION=$HOME/etc/bash_completion
 source ~/perl5/perlbrew/etc/bashrc
 
 source ~/dotfiles/functions.sh
+
+if [ -r $HOME/.bashrc.local ]; then
+	source $HOME/.bashrc.local
+fi
