@@ -36,4 +36,4 @@ function RK_settabs()
 endfunction
 autocmd BufReadPost * call RK_settabs()
 
-colorscheme desert
+colorscheme elflord
