@@ -51,6 +51,7 @@ export CVSEDITOR=vim
 export CVS_REVIEW_MODE='Graph diff'
 export REVIEW_VIEWER=vim
 export DIFF='diff -up'
+export LESSOPEN='| bash ~/dotfiles/Lesspipe/lesspipe.sh %s'
 
 BASH_COMPLETION=$HOME/etc/bash_completion
 [ -r $BASH_COMPLETION ] && source $BASH_COMPLETION

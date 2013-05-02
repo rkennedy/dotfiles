@@ -31,3 +31,6 @@
 [submodule "vim/bundle/vim-colors-solarized"]
 	path = vim/bundle/vim-colors-solarized
 	url = http://github.com/altercation/vim-colors-solarized
+[submodule "Lesspipe"]
+	path = Lesspipe
+	url = http://github.com/Rafiot/Lesspipe
