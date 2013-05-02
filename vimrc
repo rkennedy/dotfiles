@@ -36,7 +36,7 @@ function RK_settabs()
 endfunction
 autocmd BufReadPost * call RK_settabs()
 
-colorscheme elflord
+colorscheme solarized
 
 if !empty($POWERLINE_HOME)
 	set runtimepath+=$POWERLINE_HOME/bindings/vim
