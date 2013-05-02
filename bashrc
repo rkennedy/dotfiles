@@ -17,9 +17,9 @@ alias ps='ps -o "pid tty user time args"'
 
 alias cr='PAGER=cat /net/code/ovsrc/int/tools/bin/cvs_review'
 
-if [ -x $PLATFORM_BIN/dircolors ]; then
-	eval `$PLATFORM_BIN/dircolors -b ~/.dir_colors`
-fi
+type dircolors >/dev/null 2>&1 && {
+	eval `dircolors -b ~/dotfiles/dir_colors`
+}
 
 HISTSIZE=100
 HISTCONTROL=erasedups
