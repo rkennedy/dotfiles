@@ -29,7 +29,7 @@ unset MAILCHECK IGNOREEOF CDPATH HISTFILE
 # Put screen session name and window number in prompt
 [ -n "$STY" ] && screen="$(echo $STY | sed 's/^[0-9]\{1,\}\.//; s/\..*$//'):$WINDOW "
 # current directory in green. On next line, hostname and history number
-PS1='[\[$screen\e[0;32m\]\w\[\e[0m\]]\n\h [\!]\$ '
+PS1='[$screen\[\e[0;32m\]\w\[\e[0m\]]\n\h [\!]\$ '
 
 # Use logical directory paths for cd instead of physical.
 set +o physical
@@ -48,8 +48,6 @@ export EDITOR=vim
 export CSCOPE_EDITOR=view
 export VISUAL=gvim
 export CVSEDITOR=vim
-export CVS_REVIEW_MODE='Graph diff'
-export REVIEW_VIEWER=vim
 export DIFF='diff -up'
 export LESSOPEN='| bash ~/dotfiles/Lesspipe/lesspipe.sh %s'
 
