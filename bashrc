@@ -4,6 +4,10 @@
 eval `~/.local/bin/setpaths.pl --sh`
 export LD_LIBRARY_PATH=$HOME/.local/lib:$LD_LIBRARY_PATH
 
+export C_INCLUDE_PATH=$HOME/.local/include
+export CPLUS_INCLUDE_PATH=$HOME/.local/include
+export LIBRARY_PATH=$HOME/.local/lib
+
 if ls --color=auto 2>/dev/null >/dev/null; then
 	alias ls='ls -obF --color'
 else
