@@ -1,0 +1,6 @@
+# See etc/colordiffrc for other defaults
+plain=off
+newtext=darkgreen
+oldtext=darkred
+diffstuff=darkblue
+cvsstuff=darkyellow
