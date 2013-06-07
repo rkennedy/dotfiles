@@ -8,6 +8,9 @@ export C_INCLUDE_PATH=$HOME/.local/include
 export CPLUS_INCLUDE_PATH=$HOME/.local/include
 export LIBRARY_PATH=$HOME/.local/lib
 
+# We don't want the system versions. Let RVM manage it instead.
+unset GEM_HOME GEM_PATH
+
 if ls --color=auto 2>/dev/null >/dev/null; then
 	alias ls='ls -obF --color'
 else
@@ -61,6 +64,9 @@ BASH_COMPLETION=$HOME/etc/bash_completion
 source ~/perl5/perlbrew/etc/bashrc
 
 source ~/dotfiles/functions.sh
+
+# Load RVM into a shell session as a function
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
 if [ -r $HOME/.bashrc.local ]; then
 	source $HOME/.bashrc.local
