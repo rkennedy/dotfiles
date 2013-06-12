@@ -5,6 +5,7 @@ name = Rob Kennedy
 [core]
 editor = vim
 pager = less -RF
+excludesfile = ~/dotfiles/gitexcludes
 
 [color]
 ui = auto
