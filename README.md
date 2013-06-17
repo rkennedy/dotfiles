@@ -18,7 +18,6 @@ After cloning the repository, do the following:
     ```
 
 2. Link the following files in the home directory:
-
     * ackrc
     * bash_profile
     * bashrc
