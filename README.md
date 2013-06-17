@@ -31,7 +31,7 @@ After cloning the repository, do the following:
 
 3. Create *~/.config* and create a link to *dotfiles/powerline*.
 
-4. Create *~/.vim* and create links to *dotfiles/vim/autoload* and *dotfiles/vim/bndle*.
+4. Create *~/.vim* and create links to *dotfiles/vim/autoload* and *dotfiles/vim/bundle*.
 
 5. Create *~/.bashrc.local* and set `POWERLINE_HOME` and `COLORFGBF`.
 
