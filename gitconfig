@@ -5,6 +5,7 @@ name = Rob Kennedy
 [core]
 editor = vim
 pager = less -RF
+excludesfile = ~/dotfiles/gitexcludes
 
 [color]
 ui = auto
@@ -31,3 +32,6 @@ default = simple
 
 [pager]
 status = true
+
+[help]
+autocorrect = 10
