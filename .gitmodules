@@ -31,3 +31,6 @@
 [submodule "Lesspipe"]
 	path = Lesspipe
 	url = http://github.com/Rafiot/Lesspipe
+[submodule "python-shell-enhancement"]
+	path = python-shell-enhancement
+	url = http://github.com/jbisbee/python-shell-enhancement.git

@@ -58,6 +58,8 @@ export CVSEDITOR=vim
 export DIFF='diff -up'
 export LESSOPEN='| bash ~/dotfiles/Lesspipe/lesspipe.sh %s'
 
+export PYTHONSTARTUP=$HOME/dotfiles/python-shell-enhancement/pythonstartup.py
+
 BASH_COMPLETION=$HOME/etc/bash_completion
 [ -r $BASH_COMPLETION ] && source $BASH_COMPLETION
 
