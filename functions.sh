@@ -78,3 +78,7 @@ pretty() {
 	pygmentize -g -f terminal256 -O bg=dark "$@" \
 	| $PAGER -RF
 }
+
+dark() {
+	export COLORFGBG='15;1'
+}
