@@ -18,8 +18,7 @@ root = rev-parse --show-toplevel
 co = checkout
 
 [http]
-# See http://stackoverflow.com/a/8467406/33732
-sslCAinfo = ~/certs/cacert.pem
+# See http://stackoverflow.com/a/8467406/33732 for sslCAinfo
 
 [pretty]
 pretty = %C(yellow)%h%Creset -%Cred%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset
