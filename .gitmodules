@@ -1,36 +1,36 @@
 [submodule "vim/vim-pathogen"]
 	path = vim/vim-pathogen
-	url = http://github.com/tpope/vim-pathogen
+	url = https://github.com/tpope/vim-pathogen
 [submodule "vim/bundle/vim-abolish"]
 	path = vim/bundle/vim-abolish
-	url = http://github.com/tpope/vim-abolish
+	url = https://github.com/tpope/vim-abolish
 [submodule "vim/bundle/vim-git"]
 	path = vim/bundle/vim-git
-	url = http://github.com/tpope/vim-git
+	url = https://github.com/tpope/vim-git
 [submodule "vim/bundle/vim-markdown"]
 	path = vim/bundle/vim-markdown
-	url = http://github.com/tpope/vim-markdown
+	url = https://github.com/tpope/vim-markdown
 [submodule "vim/bundle/vim-repeat"]
 	path = vim/bundle/vim-repeat
-	url = http://github.com/tpope/vim-repeat
+	url = https://github.com/tpope/vim-repeat
 [submodule "vim/bundle/vim-sensible"]
 	path = vim/bundle/vim-sensible
-	url = http://github.com/tpope/vim-sensible
+	url = https://github.com/tpope/vim-sensible
 [submodule "vim/bundle/vim-tbone"]
 	path = vim/bundle/vim-tbone
-	url = http://github.com/tpope/vim-tbone
+	url = https://github.com/tpope/vim-tbone
 [submodule "vim/bundle/vim-tmux"]
 	path = vim/bundle/vim-tmux
-	url = http://github.com/peterhoeg/vim-tmux
+	url = https://github.com/peterhoeg/vim-tmux
 [submodule "dircolors-solarized"]
 	path = dircolors-solarized
-	url = http://github.com/seebi/dircolors-solarized
+	url = https://github.com/seebi/dircolors-solarized
 [submodule "vim/bundle/vim-colors-solarized"]
 	path = vim/bundle/vim-colors-solarized
-	url = http://github.com/altercation/vim-colors-solarized
+	url = https://github.com/altercation/vim-colors-solarized
 [submodule "Lesspipe"]
 	path = Lesspipe
-	url = http://github.com/Rafiot/Lesspipe
+	url = https://github.com/Rafiot/Lesspipe
 [submodule "python-shell-enhancement"]
 	path = python-shell-enhancement
-	url = http://github.com/jbisbee/python-shell-enhancement.git
+	url = https://github.com/jbisbee/python-shell-enhancement.git
