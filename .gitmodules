@@ -34,3 +34,6 @@
 [submodule "python-shell-enhancement"]
 	path = python-shell-enhancement
 	url = https://github.com/jbisbee/python-shell-enhancement.git
+[submodule "vim/bundle/vim-gitgutter"]
+	path = vim/bundle/vim-gitgutter
+	url = http://github.com/airblade/vim-gitgutter.git
