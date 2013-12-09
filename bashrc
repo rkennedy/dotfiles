@@ -63,6 +63,9 @@ export PYTHONSTARTUP=$HOME/dotfiles/python-shell-enhancement/pythonstartup.py
 BASH_COMPLETION=$HOME/etc/bash_completion
 [ -r $BASH_COMPLETION ] && source $BASH_COMPLETION
 
+PERLBREWRC=$HOME/perl5/perlbrew/etc/bashrc
+[ -r $PERLBREWRC ] && source $PERLBREWRC
+
 source ~/dotfiles/functions.sh
 
 # Load RVM into a shell session as a function
