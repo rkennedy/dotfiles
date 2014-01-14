@@ -66,8 +66,6 @@ BASH_COMPLETION=$HOME/etc/bash_completion
 source ~/dotfiles/functions.sh
 
 # Load RVM into a shell session as a function
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+[ -r $HOME/.rvm/scripts/rvm ] && source $HOME/.rvm/scripts/rvm
 
-if [ -r $HOME/.bashrc.local ]; then
-	source $HOME/.bashrc.local
-fi
+[ -r $HOME/.bashrc.local ] && source $HOME/.bashrc.local
