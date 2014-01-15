@@ -1,12 +1,8 @@
-# ~/.bashrc: executed by bash(1) for non-login shells.
-# Set environment variables in .cshrc
+# ~/.bashrc: executed by bash(1) for non-login shells, and by .bash_profile
+# for login shells.
+# Set environment variables in .bash_profile and .cshrc.
 
 eval `~/.local/bin/setpaths.pl --sh`
-export LD_LIBRARY_PATH=$HOME/.local/lib:$LD_LIBRARY_PATH
-
-export C_INCLUDE_PATH=$HOME/.local/include
-export CPLUS_INCLUDE_PATH=$HOME/.local/include
-export LIBRARY_PATH=$HOME/.local/lib
 
 # We don't want the system versions. Let RVM manage it instead.
 unset GEM_HOME GEM_PATH
@@ -47,23 +43,8 @@ shopt -s autocd extglob force_fignore no_empty_cmd_completion nocaseglob
 shopt -u sourcepath
 shopt -s checkwinsize
 
-export LC_COLATE=C
-export CVSREAD=Yes
-export PAGER=less
-export LESS='-MqSX -x2'
-export EDITOR=vim
-export CSCOPE_EDITOR=view
-export VISUAL=gvim
-export CVSEDITOR=vim
-export DIFF='diff -up'
-export LESSOPEN='| bash ~/dotfiles/Lesspipe/lesspipe.sh %s'
-
-export PYTHONSTARTUP=$HOME/dotfiles/python-shell-enhancement/pythonstartup.py
-
-BASH_COMPLETION=$HOME/etc/bash_completion
 [ -r $BASH_COMPLETION ] && source $BASH_COMPLETION
 
-PERLBREWRC=$HOME/perl5/perlbrew/etc/bashrc
 [ -r $PERLBREWRC ] && source $PERLBREWRC
 
 source ~/dotfiles/functions.sh
