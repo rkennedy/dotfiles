@@ -9,4 +9,4 @@ case $(hostname) in
 esac
 
 # Source the file that's executed for interactive non-login shells.
-if [ -f ~/.bashrc ]; then source ~/.bashrc; fi
+[ -r $HOME/.bashrc ] && source $HOME/.bashrc
