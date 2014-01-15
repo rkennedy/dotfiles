@@ -71,6 +71,8 @@ do
 	rk_path_prepend $item PATH =
 done < <(source $HOME/.PATHrc | sort -rn | cut '-d ' -s -f 2-)
 
+[ -r $HOME/.bash_profile.local ] && source $HOME/.bash_profile.local
+
 case $(hostname) in
 	coachwood )
 		umask 002
