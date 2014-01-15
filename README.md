@@ -3,7 +3,7 @@ These are my configuration settings.
 # Recommended setup
 
 1. A 256-color-capable terminal
-2. [Powerline][powerline]. Set `POWERLINE_HOME` in *.bashrc.local*.
+2. [Powerline][powerline]. Set `POWERLINE_HOME` in *.bash_profile.local*.
 3. Git 1.7.10 or later to support `include.path` configuration.
 
 # Installation instructions
@@ -33,7 +33,7 @@ After cloning the repository, do the following:
 
 4. Create *~/.vim* and create links to *dotfiles/vim/autoload* and *dotfiles/vim/bundle*.
 
-5. Create *~/.bashrc.local* and set `POWERLINE_HOME` and `COLORFGBF`.
+5. Create *~/.bash_profile.local* and set `POWERLINE_HOME` and `COLORFGBF`.
 
 6. Create */.gitconfig.local* and `user.email`.
 
