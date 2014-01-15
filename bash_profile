@@ -83,3 +83,5 @@ esac
 
 # Source the file that's executed for interactive non-login shells.
 [ -r $HOME/.bashrc ] && source $HOME/.bashrc
+
+# vim: set ft=sh:
