@@ -2,8 +2,6 @@
 # for login shells.
 # Set environment variables in .bash_profile and .cshrc.
 
-eval `~/.local/bin/setpaths.pl --sh`
-
 # We don't want the system versions. Let RVM manage it instead.
 unset GEM_HOME GEM_PATH
 

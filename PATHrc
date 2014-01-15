@@ -1,12 +1,12 @@
-10 $HOME/.local/bin
-15 $HOME/.rvm/bin
-20 /usr/local/bin
-30 $HOME/bin
-50 /usr/xpg4/bin
-60 /usr/ccs/bin
-70 /usr/bin
-80 /bin
-90 /usr/sbin
-100 /usr/dt/bin
-110 /usr/ucb
-include .PATHrc.local
+echo 10 $HOME/.local/bin
+echo 15 $HOME/.rvm/bin
+echo 20 /usr/local/bin
+echo 30 $HOME/bin
+echo 50 /usr/xpg4/bin
+echo 60 /usr/ccs/bin
+echo 70 /usr/bin
+echo 80 /bin
+echo 90 /usr/sbin
+echo 100 /usr/dt/bin
+echo 110 /usr/ucb
+source $HOME/.PATHrc.local
