@@ -14,7 +14,7 @@ export EDITOR='vim'
 export VISUAL='gvim'
 export PAGER='less'
 export LESS='-MqSX -x2'
-export LESSOPEN='| bash ~/dotfiles/Lesspipe/lesspip.sh %s'
+export LESSOPEN='| bash ~/dotfiles/Lesspipe/lesspipe.sh %s'
 
 # I often don't have write permission for files Cscope finds, so don't
 # try to open them for writing.
@@ -39,36 +39,32 @@ BASH_COMPLETION=$HOME/etc/bash_completion
 
 PERLBREWRC=$HOME/perl5/perlbrew/etc/bashrc
 
-# Search for and remove occurrences of $1 in the environment variable $2. Use
-# $3 to compare the items. $2 defaults to PATH; $3 to =. Use =~ for $3 for
-# regex comparisons.
 rk_path_remove () {
 	local IFS=':'
 	local NEWPATH
 	local DIR
 	local PATHVARIABLE=${2:-PATH}
-	local OP=${3:-=}
 	for DIR in ${!PATHVARIABLE} ; do
-		[ "$DIR" $OP "$1" ] || NEWPATH=${NEWPATH:+$NEWPATH:}$DIR
+		[[ $DIR = $1 ]] || NEWPATH=${NEWPATH:+$NEWPATH:}$DIR
 	done
 	export $PATHVARIABLE="$NEWPATH"
 }
 
 rk_path_prepend () {
-	rk_path_remove $1 $2 =
+	rk_path_remove $1 $2
 	local PATHVARIABLE=${2:-PATH}
 	export $PATHVARIABLE="$1${!PATHVARIABLE:+:${!PATHVARIABLE}}"
 }
 
 rk_path_append () {
-	rk_path_remove $1 $2 =
+	rk_path_remove $1 $2
 	local PATHVARIABLE=${2:-PATH}
 	export $PATHVARIABLE="${!PATHVARIABLE:+${!PATHVARIABLE}:}$1"
 }
 
 while read item
 do
-	rk_path_prepend $item PATH =
+	rk_path_prepend $item PATH
 done < <(source $HOME/.PATHrc | sort -rn | cut '-d ' -s -f 2-)
 
 [ -r $HOME/.bash_profile.local ] && source $HOME/.bash_profile.local
