@@ -45,3 +45,5 @@ shopt -s checkwinsize
 source ~/dotfiles/functions.sh
 
 [[ -r $HOME/.bashrc.local ]] && source $HOME/.bashrc.local
+
+[[ -r /etc/bashrc ]] && source /etc/bashrc
