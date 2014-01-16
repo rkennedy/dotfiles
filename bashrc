@@ -25,7 +25,7 @@ FIGNORE='.o:~:.rpo:.class'
 unset MAILCHECK IGNOREEOF CDPATH HISTFILE
 
 # Put screen session name and window number in prompt
-[ -n "$STY" ] && screen="$(echo $STY | sed 's/^[0-9]\{1,\}\.//; s/\..*$//'):$WINDOW "
+[[ -n $STY ]] && screen="$(echo $STY | sed 's/^[0-9]\{1,\}\.//; s/\..*$//'):$WINDOW "
 # current directory in green. On next line, hostname and history number
 PS1='[$screen\[\e[0;32m\]\w\[\e[0m\]]\n\h [\!]\$ '
 
@@ -38,10 +38,10 @@ shopt -s autocd extglob force_fignore no_empty_cmd_completion nocaseglob
 shopt -u sourcepath
 shopt -s checkwinsize
 
-[ -r $BASH_COMPLETION ] && source $BASH_COMPLETION
+[[ -r $BASH_COMPLETION ]] && source $BASH_COMPLETION
 
-[ -r $PERLBREWRC ] && source $PERLBREWRC
+[[ -r $PERLBREWRC ]] && source $PERLBREWRC
 
 source ~/dotfiles/functions.sh
 
-[ -r $HOME/.bashrc.local ] && source $HOME/.bashrc.local
+[[ -r $HOME/.bashrc.local ]] && source $HOME/.bashrc.local
