@@ -2,9 +2,6 @@
 # for login shells.
 # Set environment variables in .bash_profile and .cshrc.
 
-# We don't want the system versions. Let RVM manage it instead.
-unset GEM_HOME GEM_PATH
-
 if ls --color=auto 2>/dev/null >/dev/null; then
 	alias ls='ls -obF --color'
 else
@@ -46,8 +43,5 @@ shopt -s checkwinsize
 [ -r $PERLBREWRC ] && source $PERLBREWRC
 
 source ~/dotfiles/functions.sh
-
-# Load RVM into a shell session as a function
-[ -r $HOME/.rvm/scripts/rvm ] && source $HOME/.rvm/scripts/rvm
 
 [ -r $HOME/.bashrc.local ] && source $HOME/.bashrc.local
