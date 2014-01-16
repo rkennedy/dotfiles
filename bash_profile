@@ -14,7 +14,7 @@ export EDITOR='vim'
 export VISUAL='gvim'
 export PAGER='less'
 export LESS='-MqSX -x2'
-export LESSOPEN='| bash ~/dotfiles/Lesspipe/lesspip.sh %s'
+export LESSOPEN='| bash ~/dotfiles/Lesspipe/lesspipe.sh %s'
 
 # I often don't have write permission for files Cscope finds, so don't
 # try to open them for writing.
