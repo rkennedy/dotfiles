@@ -40,8 +40,6 @@ shopt -s checkwinsize
 
 [[ -r $BASH_COMPLETION ]] && source $BASH_COMPLETION
 
-[[ -r $PERLBREWRC ]] && source $PERLBREWRC
-
 source ~/dotfiles/functions.sh
 
 [[ -r $HOME/.bashrc.local ]] && source $HOME/.bashrc.local

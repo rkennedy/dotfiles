@@ -60,8 +60,6 @@ export PYTHONSTARTUP=$HOME/dotfiles/python-shell-enhancement/pythonstartup.py
 
 BASH_COMPLETION=$HOME/etc/bash_completion
 
-PERLBREWRC=$HOME/perl5/perlbrew/etc/bashrc
-
 while read item
 do
 	rk_path_append $item PATH
