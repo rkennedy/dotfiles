@@ -64,8 +64,8 @@ PERLBREWRC=$HOME/perl5/perlbrew/etc/bashrc
 
 while read item
 do
-	rk_path_prepend $item PATH
-done < <(source $HOME/.PATHrc | sort -rn | cut '-d ' -s -f 2-)
+	rk_path_append $item PATH
+done < <(source $HOME/.PATHrc | sort -n | cut '-d ' -s -f 2-)
 
 [ -r $HOME/.bash_profile.local ] && source $HOME/.bash_profile.local
 
