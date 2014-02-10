@@ -19,6 +19,12 @@ type dircolors >/dev/null 2>&1 && {
 	eval `dircolors -b ~/dotfiles/dir_colors`
 }
 
+source $HOME/dotfiles/path_funcs.sh
+
+# Even when not interactive, we want access to local programs,
+# especially git
+[[ $- == *i* ]] || rk_path_prepend $HOME/.local/bin
+
 HISTSIZE=100
 HISTCONTROL=erasedups
 FIGNORE='.o:~:.rpo:.class'

@@ -39,28 +39,7 @@ BASH_COMPLETION=$HOME/etc/bash_completion
 
 PERLBREWRC=$HOME/perl5/perlbrew/etc/bashrc
 
-rk_path_remove () {
-	local IFS=':'
-	local NEWPATH
-	local DIR
-	local PATHVARIABLE=${2:-PATH}
-	for DIR in ${!PATHVARIABLE} ; do
-		[[ $DIR = $1 ]] || NEWPATH=${NEWPATH:+$NEWPATH:}$DIR
-	done
-	export $PATHVARIABLE="$NEWPATH"
-}
-
-rk_path_prepend () {
-	rk_path_remove $1 $2
-	local PATHVARIABLE=${2:-PATH}
-	export $PATHVARIABLE="$1${!PATHVARIABLE:+:${!PATHVARIABLE}}"
-}
-
-rk_path_append () {
-	rk_path_remove $1 $2
-	local PATHVARIABLE=${2:-PATH}
-	export $PATHVARIABLE="${!PATHVARIABLE:+${!PATHVARIABLE}:}$1"
-}
+source $HOME/dotfiles/path_funcs.sh
 
 while read item
 do
