@@ -37,3 +37,6 @@
 [submodule "vim/bundle/vim-gitgutter"]
 	path = vim/bundle/vim-gitgutter
 	url = http://github.com/airblade/vim-gitgutter.git
+[submodule "vim/bundle/vim-delphi"]
+	path = vim/bundle/vim-delphi
+	url = http://github.com/rkennedy/vim-delphi

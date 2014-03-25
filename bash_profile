@@ -3,28 +3,7 @@
 # Set environment variables here. If bash is not the login shell, then
 # be sure to also make corresponding environment settings in .cshrc.
 
-rk_path_remove () {
-	local IFS=':'
-	local NEWPATH
-	local DIR
-	local PATHVARIABLE=${2:-PATH}
-	for DIR in ${!PATHVARIABLE} ; do
-		[[ $DIR = $1 ]] || NEWPATH=${NEWPATH:+$NEWPATH:}$DIR
-	done
-	export $PATHVARIABLE="$NEWPATH"
-}
-
-rk_path_prepend () {
-	rk_path_remove $1 $2
-	local PATHVARIABLE=${2:-PATH}
-	export $PATHVARIABLE="$1${!PATHVARIABLE:+:${!PATHVARIABLE}}"
-}
-
-rk_path_append () {
-	rk_path_remove $1 $2
-	local PATHVARIABLE=${2:-PATH}
-	export $PATHVARIABLE="${!PATHVARIABLE:+${!PATHVARIABLE}:}$1"
-}
+source $HOME/dotfiles/path_funcs.sh
 
 rk_path_prepend $HOME/.local/lib LD_LIBRARY_PATH
 rk_path_prepend $HOME/.local/include C_INCLUDE_PATH
