@@ -40,3 +40,6 @@
 [submodule "vim/bundle/vim-delphi"]
 	path = vim/bundle/vim-delphi
 	url = http://github.com/rkennedy/vim-delphi
+[submodule "ack2"]
+	path = ack2
+	url = https://github.com/petdance/ack2

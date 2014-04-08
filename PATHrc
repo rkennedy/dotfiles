@@ -1,4 +1,5 @@
 echo 10 $HOME/.local/bin
+echo 12 $HOME/dotfiles/bin
 echo 15 $HOME/.rvm/bin
 echo 20 /usr/local/bin
 echo 30 $HOME/bin
