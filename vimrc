@@ -21,6 +21,7 @@ set cinoptions+=l1 " align code under case label, not brace
 set cinoptions+=t0 " don't indent function return type
 set cinoptions+=(0 " align with unclosed parenthesis ...
 set cinoptions+=W4 " ... unless it's at the end of a line
+set cinoptions+=g0 " align C++ visibility with the enclosing block
 
 filetype plugin indent on
 
