@@ -62,3 +62,5 @@ colorscheme solarized
 if !empty($POWERLINE_HOME)
 	set runtimepath+=$POWERLINE_HOME/bindings/vim
 endif
+
+silent! source $HOME/dotfiles.local/vimrc
