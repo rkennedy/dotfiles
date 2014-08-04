@@ -1,6 +1,25 @@
-silent! execute pathogen#infect()
-
 set nocompatible " not vi-compatible
+
+" Begin Vundle setup
+filetype off
+set runtimepath+=$HOME/.vim/bundle/vundle
+call vundle#rc()
+
+Bundle 'gmarik/vundle'
+
+Bundle 'tpope/vim-abolish'
+Bundle 'altercation/vim-colors-solarized'
+Bundle 'rkennedy/vim-delphi'
+Bundle 'tpope/vim-git'
+Bundle 'airblade/vim-gitgutter'
+Bundle 'tpope/vim-markdown'
+Bundle 'tpope/vim-repeat'
+Bundle 'tpope/vim-sensible'
+Bundle 'tpope/vim-tbone'
+Bundle 'peterhoeg/vim-tmux'
+
+" End Vundle setup
+
 set guifont=Lucida\ Sans\ Typewriter
 syntax on
 set foldcolumn=2 " left columns for code-folding indicators
