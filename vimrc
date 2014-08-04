@@ -5,19 +5,20 @@ filetype off
 set runtimepath+=$HOME/.vim/bundle/vundle
 call vundle#rc()
 
-Bundle 'gmarik/vundle'
+Plugin 'gmarik/vundle'
 
-Bundle 'tpope/vim-abolish'
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'rkennedy/vim-delphi'
-Bundle 'tpope/vim-git'
-Bundle 'airblade/vim-gitgutter'
-Bundle 'tpope/vim-markdown'
-Bundle 'tpope/vim-repeat'
-Bundle 'tpope/vim-sensible'
-Bundle 'tpope/vim-tbone'
-Bundle 'peterhoeg/vim-tmux'
+Plugin 'tpope/vim-abolish'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'rkennedy/vim-delphi'
+Plugin 'tpope/vim-git'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'tpope/vim-markdown'
+Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-sensible'
+Plugin 'tpope/vim-tbone'
+Plugin 'peterhoeg/vim-tmux'
 
+" Also check for local .vimrc file
 " End Vundle setup
 
 set guifont=Lucida\ Sans\ Typewriter
