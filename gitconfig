@@ -6,6 +6,7 @@ name = Rob Kennedy
 editor = vim
 pager = less -RF
 excludesfile = ~/dotfiles/gitexcludes
+preloadindex = true
 
 [color]
 ui = auto
@@ -37,3 +38,5 @@ autocorrect = 10
 [color "diff"]
 meta = dim yellow  # With Solarized, this is orange
 func = blue
+
+# vim: set ft=gitconfig:
