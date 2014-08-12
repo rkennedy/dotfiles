@@ -3,6 +3,7 @@ echo 12 $HOME/dotfiles/bin
 echo 15 $HOME/.rvm/bin
 echo 20 /usr/local/bin
 echo 30 $HOME/bin
+echo 40 $HOME/dotfiles/git-extras/bin
 echo 50 /usr/xpg4/bin
 echo 60 /usr/ccs/bin
 echo 70 /usr/bin
