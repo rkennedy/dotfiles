@@ -24,7 +24,6 @@ After cloning the repository, do the following:
     * colordiffrc
     * gitconfig
     * inputrc
-    * PATHrc
     * screenrc
     * tmux.conf
     * vimrc
