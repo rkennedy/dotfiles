@@ -42,4 +42,4 @@
 	url = https://github.com/petdance/ack2
 [submodule "git-extras"]
 	path = git-extras
-	url = https://github.com/visionmedia/git-extras
+	url = https://github.com/rkennedy/git-extras

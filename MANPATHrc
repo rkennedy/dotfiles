@@ -1,0 +1,3 @@
+echo 10 $DOTFILES/git-extras/man
+
+# vim: set ft=sh:
