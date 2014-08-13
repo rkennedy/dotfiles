@@ -21,3 +21,11 @@ rk_path_append () {
 	export $PATHVARIABLE="${!PATHVARIABLE:+${!PATHVARIABLE}:}$1"
 }
 
+rk_path_import () {
+	env=$1
+	file=$2
+	[[ -r $file ]] && while read item
+	do
+		rk_path_append $item $env
+	done < <(source $file | sort -n | cut '-d ' -s -f 2-)
+}

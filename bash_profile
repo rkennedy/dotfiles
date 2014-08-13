@@ -42,10 +42,8 @@ export PYTHONSTARTUP=$DOTFILES/python-shell-enhancement/pythonstartup.py
 BASH_COMPLETION=$HOME/etc/bash_completion
 [[ -r $BASH_COMPLETION ]] && source $BASH_COMPLETION
 
-while read item
-do
-	rk_path_append $item PATH
-done < <(source $HOME/.PATHrc | sort -n | cut '-d ' -s -f 2-)
+rk_path_import PATH $DOTFILES/PATHrc
+rk_path_import MANPATH $DOTFILES/MANPATHrc
 
 [[ -r $HOME/.bash_profile.local ]] && source $HOME/.bash_profile.local
 
