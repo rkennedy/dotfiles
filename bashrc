@@ -2,7 +2,7 @@
 # for login shells.
 # Set environment variables in .bash_profile and .cshrc.
 
-[[ -z ${DOTFILES+x} ]] && export DOTFILES="$(cd "$(dirname -- "$(readlink ${BASH_SOURCE[0]})")"; pwd -P)"
+[[ -z ${DOTFILES+x} ]] && export DOTFILES="$(dirname "$(perl -MCwd=realpath -e 'print realpath($ARGV[0])' "${BASH_SOURCE[0]}")")"
 
 if ls --color=auto 2>/dev/null >/dev/null; then
 	alias ls='ls -obF --color'
