@@ -44,7 +44,7 @@ do
 	rk_path_append $item PATH
 done < <(source $HOME/.PATHrc | sort -n | cut '-d ' -s -f 2-)
 
-[ -r $HOME/.bash_profile.local ] && source $HOME/.bash_profile.local
+[[ -r $HOME/.bash_profile.local ]] && source $HOME/.bash_profile.local
 
 case $(hostname) in
 	coachwood )
