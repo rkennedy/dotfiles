@@ -3,7 +3,9 @@
 # Set environment variables here. If bash is not the login shell, then
 # be sure to also make corresponding environment settings in .cshrc.
 
-source $HOME/dotfiles/path_funcs.sh
+[[ -z ${DOTFILES+x} ]] && export DOTFILES="$(cd "$(dirname -- "$(readlink ${BASH_SOURCE[0]})")"; pwd -P)"
+
+source $DOTFILES/path_funcs.sh
 
 rk_path_prepend $HOME/.local/lib LD_LIBRARY_PATH
 rk_path_prepend $HOME/.local/include C_INCLUDE_PATH
@@ -16,7 +18,7 @@ export EDITOR='vim'
 export VISUAL='gvim'
 export PAGER='less'
 export LESS='-MqSX -x2'
-export LESSOPEN='| bash ~/dotfiles/Lesspipe/lesspipe.sh %s'
+export LESSOPEN='| bash $DOTFILES/Lesspipe/lesspipe.sh %s'
 
 # I often don't have write permission for files Cscope finds, so don't
 # try to open them for writing.
@@ -35,7 +37,7 @@ export REVIEW_VIEWER='vim'
 # rather than the light one.
 export COLORFGBG='15;0'
 
-export PYTHONSTARTUP=$HOME/dotfiles/python-shell-enhancement/pythonstartup.py
+export PYTHONSTARTUP=$DOTFILES/python-shell-enhancement/pythonstartup.py
 
 BASH_COMPLETION=$HOME/etc/bash_completion
 

@@ -2,6 +2,8 @@
 # for login shells.
 # Set environment variables in .bash_profile and .cshrc.
 
+[[ -z ${DOTFILES+x} ]] && export DOTFILES="$(cd "$(dirname -- "$(readlink ${BASH_SOURCE[0]})")"; pwd -P)"
+
 if ls --color=auto 2>/dev/null >/dev/null; then
 	alias ls='ls -obF --color'
 else
@@ -16,10 +18,10 @@ alias ps='ps -o "pid tty user time args"'
 alias cr='PAGER=cat /net/code/ovsrc/int/tools/bin/cvs_review'
 
 type dircolors >/dev/null 2>&1 && {
-	eval `dircolors -b ~/dotfiles/dir_colors`
+	eval `dircolors -b $DOTFILES/dir_colors`
 }
 
-source $HOME/dotfiles/path_funcs.sh
+source $DOTFILES/path_funcs.sh
 
 # Even when not interactive, we want access to local programs,
 # especially git
@@ -46,7 +48,7 @@ shopt -s checkwinsize
 
 [[ -r $BASH_COMPLETION ]] && source $BASH_COMPLETION
 
-source ~/dotfiles/functions.sh
+source $DOTFILES/functions.sh
 
 [[ -r $HOME/.bashrc.local ]] && source $HOME/.bashrc.local
 
