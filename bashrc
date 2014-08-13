@@ -46,8 +46,6 @@ shopt -s autocd extglob force_fignore no_empty_cmd_completion nocaseglob
 shopt -u sourcepath
 shopt -s checkwinsize
 
-[[ -r $BASH_COMPLETION ]] && source $BASH_COMPLETION
-
 source $DOTFILES/functions.sh
 
 [[ -r $HOME/.bashrc.local ]] && source $HOME/.bashrc.local

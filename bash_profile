@@ -40,6 +40,7 @@ export COLORFGBG='15;0'
 export PYTHONSTARTUP=$DOTFILES/python-shell-enhancement/pythonstartup.py
 
 BASH_COMPLETION=$HOME/etc/bash_completion
+[[ -r $BASH_COMPLETION ]] && source $BASH_COMPLETION
 
 while read item
 do
