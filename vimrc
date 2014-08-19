@@ -43,6 +43,9 @@ set cinoptions+=(0 " align with unclosed parenthesis ...
 set cinoptions+=W4 " ... unless it's at the end of a line
 set cinoptions+=g0 " align C++ visibility with the enclosing block
 
+" Open new windows below (:new) or right (:vnew) of the current window
+set splitbelow splitright
+
 filetype plugin indent on
 
 " Makefiles require real tabs, not spaces.
