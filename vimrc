@@ -16,6 +16,7 @@ Plugin 'tpope/vim-markdown'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-sensible'
 Plugin 'tpope/vim-tbone'
+Plugin 'tpope/vim-unimpaired'
 Plugin 'peterhoeg/vim-tmux'
 
 " Also check for local .vimrc file
