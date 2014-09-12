@@ -29,3 +29,7 @@ pretty() {
 dark() {
 	export COLORFGBG='15;1'
 }
+
+no_solarized() {
+	export NO_SOLARIZED=1
+}

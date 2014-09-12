@@ -61,7 +61,11 @@ function RK_settabs()
 endfunction
 autocmd BufReadPost * call RK_settabs()
 
-colorscheme solarized
+if $NO_SOLARIZED == 1
+	colorscheme desert
+else
+	colorscheme solarized
+endif
 
 if !empty($POWERLINE_HOME)
 	set runtimepath+=$POWERLINE_HOME/bindings/vim
