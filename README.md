@@ -30,10 +30,13 @@ After cloning the repository, do the following:
 
 3. Create *~/.config* and create a link to *dotfiles/powerline*.
 
-4. Create *~/.vim* and create links to *dotfiles/vim/autoload* and *dotfiles/vim/bundle*.
+4. Install [Vundle][vundle]:
+
+        git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/vundle
 
 5. Create *~/.bash_profile.local* and set `POWERLINE_HOME` and `COLORFGBF`.
 
 6. Create */.gitconfig.local* and `user.email`.
 
 [powerline]: https://github.com/Lokaltog/powerline
+[vundle]: https://github.com/gmarik/Vundle.vim
