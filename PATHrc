@@ -11,6 +11,6 @@ echo 80 /bin
 echo 90 /usr/sbin
 echo 100 /usr/dt/bin
 echo 110 /usr/ucb
-source $HOME/.PATHrc.local
+[[ -r $HOME/.PATHrc.local ]] && source $HOME/.PATHrc.local
 
 # vim: set ft=sh:
