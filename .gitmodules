@@ -13,3 +13,6 @@
 [submodule "git-extras"]
 	path = git-extras
 	url = https://github.com/rkennedy/git-extras
+[submodule "pyenv"]
+	path = pyenv
+	url = https://github.com/yyuu/pyenv

@@ -37,6 +37,7 @@ export REVIEW_VIEWER='vim'
 # rather than the light one.
 export COLORFGBG='15;0'
 
+export PYENV_ROOT=$DOTFILES/pyenv
 export PYTHONSTARTUP=$DOTFILES/python-shell-enhancement/pythonstartup.py
 
 BASH_COMPLETION=$HOME/etc/bash_completion
@@ -44,6 +45,8 @@ BASH_COMPLETION=$HOME/etc/bash_completion
 
 rk_path_import PATH $DOTFILES/PATHrc
 rk_path_import MANPATH $DOTFILES/MANPATHrc
+
+eval "$(pyenv init -)"
 
 [[ -r $HOME/.bash_profile.local ]] && source $HOME/.bash_profile.local
 
