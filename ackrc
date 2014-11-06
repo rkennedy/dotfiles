@@ -1,3 +1,5 @@
 --color-match=dark red
 --color-file=magenta
 --color-line=yellow
+
+--ignore-dir=.git
