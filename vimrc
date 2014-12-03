@@ -18,6 +18,7 @@ Plugin 'tpope/vim-sensible'
 Plugin 'tpope/vim-tbone'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'peterhoeg/vim-tmux'
+Plugin 'tpope/vim-fugitive'
 
 " Also check for local .vimrc file
 " End Vundle setup
