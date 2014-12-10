@@ -30,9 +30,27 @@ After cloning the repository, do the following:
 
 3. Create *~/.config* and create a link to *dotfiles/powerline*.
 
-4. Install [Vundle][vundle]:
+4. Set up Vim:
 
+    1. Install [Vundle][vundle]:
+
+        ```bash
         git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/vundle
+        ```
+
+    2. Run Vim and install Vundle plug-ins:
+
+        ```vim
+        :PluginInstall
+        ```
+
+    3. Create an undo folder in a location according to the OS:
+
+        * On Windows, create *`$APPDATA`/Vim/undo*.
+        * On Mac, create *~/Library/Vim/undo*.
+        * On Linux, create *`$XDG_DATA_HOME`/vim/undo* or
+            *~/.local/share/vim/undo* depending on whether `XDG_DATA_HOME` is
+            set in your environment.
 
 5. Create *~/.bash_profile.local* and set `POWERLINE_HOME` and `COLORFGBF`.
 
