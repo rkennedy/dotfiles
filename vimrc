@@ -7,17 +7,29 @@ call vundle#rc()
 
 Plugin 'gmarik/vundle'
 
+" Change words to other variants
 Plugin 'tpope/vim-abolish'
+" Solarized color scheme
 Plugin 'altercation/vim-colors-solarized'
+" Delphi syntax highlighting
 Plugin 'rkennedy/vim-delphi'
+" Handle Git files
 Plugin 'tpope/vim-git'
+" Show changed lines in gutter
 Plugin 'airblade/vim-gitgutter'
+" Markdown syntax highlighting
 Plugin 'tpope/vim-markdown'
+" Repeat commands
 Plugin 'tpope/vim-repeat'
+" Default Vim settings
 Plugin 'tpope/vim-sensible'
+" Copy and paste between tmux windows
 Plugin 'tpope/vim-tbone'
+" Pairs of keyboard motions
 Plugin 'tpope/vim-unimpaired'
+" Tmux syntax highlighting
 Plugin 'peterhoeg/vim-tmux'
+" Operate Git within Vim
 Plugin 'tpope/vim-fugitive'
 
 " Also check for local .vimrc file
