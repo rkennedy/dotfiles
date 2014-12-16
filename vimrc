@@ -31,6 +31,8 @@ Plugin 'tpope/vim-unimpaired'
 Plugin 'peterhoeg/vim-tmux'
 " Operate Git within Vim
 Plugin 'tpope/vim-fugitive'
+" Detect and apply indentation settings
+Plugin 'tpope/vim-sleuth'
 
 " Also check for local .vimrc file
 " End Vundle setup
@@ -42,9 +44,6 @@ set guioptions-=T " disable tool bar
 set ruler
 set hlsearch " highlight all search results
 
-set expandtab " insert spaces instead of tabs
-set tabstop=4 " tab characters take up four columns
-set shiftwidth=4 " '<' and '>' shift code four spaces
 set colorcolumn=80 " highlight column 80
 
 " Don't try to connect to X server for clipboard support; it's unlikely
@@ -68,18 +67,6 @@ endif
 set splitbelow splitright
 
 filetype plugin indent on
-
-" Makefiles require real tabs, not spaces.
-autocmd BufEnter ?akefile* set noexpandtab tabstop=8 shiftwidth=8
-
-function RK_settabs()
-	" Count how many lines start with tab. Compare to the number of
-	" lines starting with four spaces. If tabs win, then set options.
-	if len(filter(getbufline(winbufnr(0), 1, "$"), 'v:val =~ "^\\t"')) > len(filter(getbufline(winbufnr(0), 1, "$"), 'v:val =~ "^    "'))
-		set noexpandtab tabstop=8 shiftwidth=8
-	endif
-endfunction
-autocmd BufReadPost * call RK_settabs()
 
 if $NO_SOLARIZED == 1
 	colorscheme desert
