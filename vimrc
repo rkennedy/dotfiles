@@ -60,7 +60,13 @@ set cinoptions+=W4 " ... unless it's at the end of a line
 set cinoptions+=g0 " align C++ visibility with the enclosing block
 
 if exists('+undofile')
-	let s:dir = has('win32') ? '$APPDATA/Vim' : match(system('uname'), "Darwin") > -1 ? '~/Library/Vim' : empty($XDG_DATA_HOME) ? '~/.local/share/vim' : '$XDG_DATA_HOME/vim'
+	let s:dir = has('win32')
+		\ ? '$APPDATA/Vim'
+		\ : match(system('uname'), "Darwin") > -1
+			\ ? '~/Library/Vim'
+			\ : empty($XDG_DATA_HOME)
+				\ ? '~/.local/share/vim'
+				\ : '$XDG_DATA_HOME/vim'
 	let &undodir = expand(s:dir) . '/undo'
 	set undofile
 endif
