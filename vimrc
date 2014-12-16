@@ -33,6 +33,8 @@ Plugin 'peterhoeg/vim-tmux'
 Plugin 'tpope/vim-fugitive'
 " Detect and apply indentation settings
 Plugin 'tpope/vim-sleuth'
+" Python indentation settings
+Plugin 'hynek/vim-python-pep8-indent'
 
 " Also check for local .vimrc file
 " End Vundle setup
