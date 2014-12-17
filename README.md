@@ -28,7 +28,12 @@ After cloning the repository, do the following:
     * tmux.conf
     * vimrc
 
-3. Create *~/.config* and create a link to *dotfiles/powerline*.
+3. Create *~/.config* (or `$XDG_CONFIG_HOME`) and create a link to *dotfiles/powerline*.
+
+    ```bash
+    mkdir ~/.config
+    ln -s ~/dotfiles/powerline ~/.config/powerline
+    ```
 
 4. Set up Vim:
 
