@@ -7,6 +7,10 @@ call vundle#rc()
 
 Plugin 'gmarik/vundle'
 
+" Status line enhancement
+Plugin 'bling/vim-airline'
+let g:airline_powerline_fonts=1
+let g:airline_theme='powerlineish'
 " Change words to other variants
 Plugin 'tpope/vim-abolish'
 " Solarized color scheme
@@ -80,10 +84,6 @@ if $NO_SOLARIZED == 1
 	colorscheme desert
 else
 	colorscheme solarized
-endif
-
-if !empty($POWERLINE_HOME)
-	set runtimepath+=$POWERLINE_HOME/bindings/vim
 endif
 
 silent! source $HOME/dotfiles.local/vimrc
