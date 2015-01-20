@@ -6,6 +6,7 @@ name = Rob Kennedy
 editor = vim
 pager = less -RF
 excludesfile = ~/dotfiles/gitexcludes
+attributesfile = ~/dotfiles/gitattributes
 preloadindex = true
 
 [color]
