@@ -63,6 +63,8 @@ set cinoptions+=(0 " align with unclosed parenthesis ...
 set cinoptions+=W4 " ... unless it's at the end of a line
 set cinoptions+=g0 " align C++ visibility with the enclosing block
 
+" If Vim supports persistent undo, then determine the platform-appropriate
+" directory and store undo files there.
 if exists('+undofile')
 	let s:dir = has('win32')
 		\ ? '$APPDATA/Vim'
@@ -80,6 +82,9 @@ set splitbelow splitright
 
 filetype plugin indent on
 
+" This refers to an environment variable set (or not) during login. We set it
+" when logging in by phone because the ConnectBot app doesn't easily support
+" customizing the terminal's color scheme.
 if $NO_SOLARIZED == 1
 	colorscheme desert
 else
