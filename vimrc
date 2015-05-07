@@ -11,6 +11,7 @@ Plugin 'gmarik/vundle'
 Plugin 'bling/vim-airline'
 let g:airline_powerline_fonts=1
 let g:airline_theme='powerlineish'
+let g:airline#extensions#whitespace#mixed_indent_algo=1
 " Change words to other variants
 Plugin 'tpope/vim-abolish'
 " Solarized color scheme
