@@ -40,6 +40,10 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-sleuth'
 " Python indentation settings
 Plugin 'hynek/vim-python-pep8-indent'
+" Run Ack within Vim
+Plugin 'mileszs/ack.vim'
+" Run builds asynchronously within Vim
+Plugin 'tpope/vim-dispatch'
 
 " Also check for local .vimrc file
 " End Vundle setup
@@ -48,7 +52,6 @@ set guifont=Lucida\ Sans\ Typewriter
 syntax on
 set foldcolumn=2 " left columns for code-folding indicators
 set guioptions-=T " disable tool bar
-set ruler
 set hlsearch " highlight all search results
 
 set colorcolumn=80 " highlight column 80
