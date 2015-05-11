@@ -33,7 +33,7 @@ Plugin 'tpope/vim-tbone'
 " Pairs of keyboard motions
 Plugin 'tpope/vim-unimpaired'
 " Tmux syntax highlighting
-Plugin 'peterhoeg/vim-tmux'
+Plugin 'tmux-plugins/vim-tmux'
 " Operate Git within Vim
 Plugin 'tpope/vim-fugitive'
 " Detect and apply indentation settings
