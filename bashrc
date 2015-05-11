@@ -15,8 +15,6 @@ alias which='type -p'
 
 alias ps='ps -o "pid tty user time args"'
 
-alias cr='PAGER=cat /net/code/ovsrc/int/tools/bin/cvs_review'
-
 type dircolors >/dev/null 2>&1 && {
 	eval `dircolors -b $DOTFILES/dir_colors`
 }

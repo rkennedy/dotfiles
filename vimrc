@@ -45,7 +45,7 @@ Plugin 'mileszs/ack.vim'
 " Run builds asynchronously within Vim
 Plugin 'tpope/vim-dispatch'
 
-" Also check for local .vimrc file
+" NOTE: Also check for local .vimrc file
 " End Vundle setup
 
 set guifont=Lucida\ Sans\ Typewriter
