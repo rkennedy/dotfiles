@@ -11,8 +11,6 @@ cvs_diff() {
 		| less -RF
 }
 
-export GREP_OPTIONS=--color=auto
-
 ..() {
 	cd ..
 }

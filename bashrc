@@ -21,6 +21,10 @@ type dircolors >/dev/null 2>&1 && {
 	eval `dircolors -b $DOTFILES/dir_colors`
 }
 
+# We usually set environment variables like this in .bash_profile, but it can
+# affect non-interactive invocations of grep, so we set it here instead.
+export GREP_OPTIONS=--color=auto
+
 source $DOTFILES/path_funcs.sh
 
 # Even when not interactive, we want access to local programs,
