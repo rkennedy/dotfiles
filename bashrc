@@ -46,7 +46,7 @@ set +o physical
 # Delay job-completion notification until printing of next prompt
 set +o notify
 
-shopt -s autocd extglob force_fignore no_empty_cmd_completion nocaseglob
+shopt -s autocd force_fignore no_empty_cmd_completion
 shopt -u sourcepath
 shopt -s checkwinsize
 
