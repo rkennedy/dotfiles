@@ -2,7 +2,7 @@
 # for login shells.
 # Set environment variables in .bash_profile and .cshrc.
 
-[[ -z ${DOTFILES+x} ]] && export DOTFILES="$(dirname "$(perl -MCwd=realpath -e 'print realpath($ARGV[0])' "${BASH_SOURCE[0]}")")"
+[[ -z ${DOTFILES:+x} ]] && export DOTFILES="$(dirname "$(perl -MCwd=realpath -e 'print realpath($ARGV[0])' "${BASH_SOURCE[0]}")")"
 
 if ls --color=auto 2>/dev/null >/dev/null; then
 	alias ls='ls -obF --color'
@@ -18,6 +18,10 @@ alias ps='ps -o "pid tty user time args"'
 type dircolors >/dev/null 2>&1 && {
 	eval `dircolors -b $DOTFILES/dir_colors`
 }
+
+# We usually set environment variables like this in .bash_profile, but it can
+# affect non-interactive invocations of grep, so we set it here instead.
+export GREP_OPTIONS=--color=auto
 
 source $DOTFILES/path_funcs.sh
 
@@ -38,7 +42,7 @@ set +o physical
 # Delay job-completion notification until printing of next prompt
 set +o notify
 
-shopt -s autocd extglob force_fignore no_empty_cmd_completion nocaseglob
+shopt -s autocd force_fignore no_empty_cmd_completion
 shopt -u sourcepath
 shopt -s checkwinsize
 

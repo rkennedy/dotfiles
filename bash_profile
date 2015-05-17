@@ -3,7 +3,7 @@
 # Set environment variables here. If bash is not the login shell, then
 # be sure to also make corresponding environment settings in .cshrc.
 
-[[ -z ${DOTFILES+x} ]] && export DOTFILES="$(dirname "$(perl -MCwd=realpath -e 'print realpath($ARGV[0])' "${BASH_SOURCE[0]}")")"
+[[ -z ${DOTFILES:+x} ]] && export DOTFILES="$(dirname "$(perl -MCwd=realpath -e 'print realpath($ARGV[0])' "${BASH_SOURCE[0]}")")"
 
 source $DOTFILES/path_funcs.sh
 
