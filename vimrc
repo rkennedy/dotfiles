@@ -54,6 +54,9 @@ set foldcolumn=2 " left columns for code-folding indicators
 set guioptions-=T " disable tool bar
 set hlsearch " highlight all search results
 
+" Options to better see where we are
+set number
+set relativenumber
 set colorcolumn=80 " highlight column 80
 
 " Don't try to connect to X server for clipboard support; it's unlikely
