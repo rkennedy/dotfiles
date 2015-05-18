@@ -39,8 +39,6 @@ PS1=$'[%F{green}%~%f]\n%m [%!]%(!.#.$) '
 # Delay job-completion notification until printing of next prompt
 setopt nonotify
 setopt auto_cd
-#setopt force_fignore  # Not in zsh
-#setopt checkwinsize  # Not in zsh
 
 source $DOTFILES/functions.sh
 
