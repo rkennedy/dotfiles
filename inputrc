@@ -3,4 +3,3 @@ set mark-directories on
 set show-all-if-ambiguous off
 set show-all-if-unmodified off
 set visible-stats on
-set editing-mode vi

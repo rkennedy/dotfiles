@@ -15,11 +15,16 @@ alias which='type -p'
 
 alias ps='ps -o "pid tty user time args"'
 
-alias cr='PAGER=cat /net/code/ovsrc/int/tools/bin/cvs_review'
-
 type dircolors >/dev/null 2>&1 && {
 	eval `dircolors -b $DOTFILES/dir_colors`
 }
+
+# Allow quick switching to zsh
+if type -Pf zsh >/dev/null 2>&1; then
+  alias z='export SHELL=`type -Pf zsh`; exec $SHELL -l'
+else
+  alias z='echo no zsh available'
+fi
 
 # We usually set environment variables like this in .bash_profile, but it can
 # affect non-interactive invocations of grep, so we set it here instead.
@@ -36,10 +41,8 @@ HISTCONTROL=erasedups
 FIGNORE='.o:~:.rpo:.class'
 unset MAILCHECK IGNOREEOF CDPATH HISTFILE
 
-# Put screen session name and window number in prompt
-[[ -n $STY ]] && screen="$(echo $STY | sed 's/^[0-9]\{1,\}\.//; s/\..*$//'):$WINDOW "
 # current directory in green. On next line, hostname and history number
-PS1='[$screen\[\e[0;32m\]\w\[\e[0m\]]\n\h [\!]\$ '
+PS1='[\[\e[0;32m\]\w\[\e[0m\]]\n\h [\!]\$ '
 
 # Use logical directory paths for cd instead of physical.
 set +o physical
