@@ -48,7 +48,7 @@ Plugin 'tpope/vim-dispatch'
 " Also check for local .vimrc file
 " End Vundle setup
 
-set guifont=Lucida\ Sans\ Typewriter
+set guifont=Sauce\ Code\ Powerline:h10
 syntax on
 set foldcolumn=2 " left columns for code-folding indicators
 set guioptions-=T " disable tool bar
