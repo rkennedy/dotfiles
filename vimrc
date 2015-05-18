@@ -66,6 +66,7 @@ set cinoptions+=t0 " don't indent function return type
 set cinoptions+=(0 " align with unclosed parenthesis ...
 set cinoptions+=W4 " ... unless it's at the end of a line
 set cinoptions+=g0 " align C++ visibility with the enclosing block
+set nojoinspaces " no extra space between sentences joined from multiple lines
 
 " If Vim supports persistent undo, then determine the platform-appropriate
 " directory and store undo files there.
