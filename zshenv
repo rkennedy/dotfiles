@@ -40,8 +40,10 @@ export PYTHONSTARTUP=$DOTFILES/python-shell-enhancement/pythonstartup.py
 #BASH_COMPLETION=$HOME/etc/bash_completion
 #[[ -r $BASH_COMPLETION ]] && source $BASH_COMPLETION
 
-path=("${(@f)$(source $DOTFILES/PATHrc | sort -n | cut '-d ' -s -f 2-)}")
-manpath=("${(@f)$(source $DOTFILES/MANPATHrc | sort -n | cut '-d ' -s -f 2-)}")
+typeset -U path
+path=($path "${(@f)$(source $DOTFILES/PATHrc | sort -n | cut '-d ' -s -f 2-)}")
+typeset -U manpath
+manpath=($manpath "${(@f)$(source $DOTFILES/MANPATHrc | sort -n | cut '-d ' -s -f 2-)}")
 
 eval "$(pyenv init -)"
 
