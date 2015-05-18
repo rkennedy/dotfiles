@@ -19,6 +19,13 @@ type dircolors >/dev/null 2>&1 && {
 	eval `dircolors -b $DOTFILES/dir_colors`
 }
 
+# Allow quick switching to zsh
+if type -Pf zsh >/dev/null 2>&1; then
+  alias z='export SHELL=`type -Pf zsh`; exec $SHELL -l'
+else
+  alias z='echo no zsh available'
+fi
+
 # We usually set environment variables like this in .bash_profile, but it can
 # affect non-interactive invocations of grep, so we set it here instead.
 export GREP_OPTIONS=--color=auto

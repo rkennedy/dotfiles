@@ -17,6 +17,13 @@ type dircolors >/dev/null 2>&1 && {
 	eval `dircolors -b $DOTFILES/dir_colors`
 }
 
+# Allow quick switching to bash
+if whence -p bash >/dev/null 2>&1; then
+    alias b='export SHELL=`whence -p bash`; exec $SHELL -l'
+else
+    alias b='echo no bash available'
+fi
+
 # We usually set environment variables like this in .zshenv, but it can affect
 # non-interactive invocations of grep, so we set it here instead.
 export GREP_OPTIONS=--color=auto
