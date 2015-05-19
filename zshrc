@@ -1,45 +1,14 @@
-# Settings for interactive shell go here.
+# Settings for interactive shell go in $ZSH_CUSTOM
 
-[[ -z ${DOTFILES:+x} ]] && export DOTFILES="$(dirname "$(perl -MCwd=realpath -e 'print realpath($ARGV[0])' "${(%):-%x}")")"
+# Oh My Zsh configuration
+export ZSH=$DOTFILES/oh-my-zsh
 
-if ls --color=auto 2>/dev/null >/dev/null; then
-	alias ls='ls -obF --color'
-else
-	alias ls='ls -obF'
-fi
-alias la='ls -a'
-alias rm='rm -i' cp='cp -i' mv='mv -i'
-alias which='type -p'
+ZSH_THEME="agnoster"
 
-alias ps='ps -o "pid tty user time args"'
+DISABLE_AUTO_UPDATE="true"
 
-type dircolors >/dev/null 2>&1 && {
-	eval `dircolors -b $DOTFILES/dir_colors`
-}
+DISABLE_UNTRACKED_FILES_DIRTY="true"
 
-# Allow quick switching to bash
-if whence -p bash >/dev/null 2>&1; then
-    alias b='export SHELL=`whence -p bash`; exec $SHELL -l'
-else
-    alias b='echo no bash available'
-fi
-
-# We usually set environment variables like this in .zshenv, but it can affect
-# non-interactive invocations of grep, so we set it here instead.
-export GREP_OPTIONS=--color=auto
-
-HISTSIZE=100
-setopt hist_ignore_all_dups
-fignore=(.o ~ .rpo .class)
-unset MAILCHECK IGNOREEOF CDPATH HISTFILE
-
-# current directory in green. On next line, hostname and history number
-PS1=$'[%F{green}%~%f]\n%m [%!]%(!.#.$) '
-
-# Delay job-completion notification until printing of next prompt
-setopt nonotify
-setopt auto_cd
-
-source $DOTFILES/functions.sh
-
-[[ -r $HOME/.zshrc.local ]] && source $HOME/.zshrc.local
+ZSH_CUSTOM=$DOTFILES/omz-custom
+plugins=(git)
+source $ZSH/oh-my-zsh.sh
