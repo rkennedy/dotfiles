@@ -33,10 +33,6 @@ export CVS_REVIEW_MODE='Diff'
 export DIFF='diff -up'
 export REVIEW_VIEWER='vim'
 
-# Make Vim detect computers that use the dark Solarized color scheme
-# rather than the light one.
-export COLORFGBG='15;0'
-
 export PYENV_ROOT=$DOTFILES/pyenv
 export PYTHONSTARTUP=$DOTFILES/python-shell-enhancement/pythonstartup.py
 

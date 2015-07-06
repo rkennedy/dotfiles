@@ -14,8 +14,9 @@ let g:airline_theme='powerlineish'
 let g:airline#extensions#whitespace#mixed_indent_algo=1
 " Change words to other variants
 Plugin 'tpope/vim-abolish'
-" Solarized color scheme
-Plugin 'altercation/vim-colors-solarized'
+" Base16 color scheme
+Plugin 'chriskempson/base16-vim'
+let base16colorspace=256
 " Delphi syntax highlighting
 Plugin 'rkennedy/vim-delphi'
 " Handle Git files
@@ -48,7 +49,7 @@ Plugin 'tpope/vim-dispatch'
 " NOTE: Also check for local .vimrc file
 " End Vundle setup
 
-set guifont=Lucida\ Sans\ Typewriter
+set guifont=Sauce\ Code\ Powerline:h10
 syntax on
 set foldcolumn=2 " left columns for code-folding indicators
 set guioptions-=T " disable tool bar
@@ -69,6 +70,7 @@ set cinoptions+=t0 " don't indent function return type
 set cinoptions+=(0 " align with unclosed parenthesis ...
 set cinoptions+=W4 " ... unless it's at the end of a line
 set cinoptions+=g0 " align C++ visibility with the enclosing block
+set nojoinspaces " no extra space between sentences joined from multiple lines
 
 " If Vim supports persistent undo, then determine the platform-appropriate
 " directory and store undo files there.
@@ -92,10 +94,10 @@ filetype plugin indent on
 " This refers to an environment variable set (or not) during login. We set it
 " when logging in by phone because the ConnectBot app doesn't easily support
 " customizing the terminal's color scheme.
-if $NO_SOLARIZED == 1
+if $NO_CUSTOM_TERM_COLORS == 1
 	colorscheme desert
 else
-	colorscheme solarized
+	colorscheme base16-bright
 endif
 
 silent! source $HOME/dotfiles.local/vimrc

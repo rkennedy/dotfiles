@@ -55,4 +55,6 @@ shopt -s checkwinsize
 
 source $DOTFILES/functions.sh
 
+dark
+
 [[ -r $HOME/.bashrc.local ]] && source $HOME/.bashrc.local
