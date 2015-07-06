@@ -25,11 +25,6 @@ export CSCOPE_EDITOR='view'
 export CVSEDITOR='vim'
 export CVSREAD='Yes'
 
-# Settings for cvs_review
-export CVS_REVIEW_MODE='Diff'
-export DIFF='diff -up'
-export REVIEW_VIEWER='vim'
-
 export PYENV_ROOT=$DOTFILES/pyenv
 export PYTHONSTARTUP=$DOTFILES/python-shell-enhancement/pythonstartup.py
 
