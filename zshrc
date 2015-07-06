@@ -42,4 +42,6 @@ setopt auto_cd
 
 source $DOTFILES/functions.sh
 
+dark
+
 [[ -r $HOME/.zshrc.local ]] && source $HOME/.zshrc.local

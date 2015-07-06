@@ -14,8 +14,9 @@ let g:airline_theme='powerlineish'
 let g:airline#extensions#whitespace#mixed_indent_algo=1
 " Change words to other variants
 Plugin 'tpope/vim-abolish'
-" Solarized color scheme
-Plugin 'altercation/vim-colors-solarized'
+" Base16 color scheme
+Plugin 'chriskempson/base16-vim'
+let base16colorspace=256
 " Delphi syntax highlighting
 Plugin 'rkennedy/vim-delphi'
 " Handle Git files
@@ -93,10 +94,10 @@ filetype plugin indent on
 " This refers to an environment variable set (or not) during login. We set it
 " when logging in by phone because the ConnectBot app doesn't easily support
 " customizing the terminal's color scheme.
-if $NO_SOLARIZED == 1
+if $NO_CUSTOM_TERM_COLORS == 1
 	colorscheme desert
 else
-	colorscheme solarized
+	colorscheme base16-bright
 endif
 
 silent! source $HOME/dotfiles.local/vimrc

@@ -26,8 +26,14 @@ pretty() {
 
 dark() {
 	export COLORFGBG='15;1'
+	source $DOTFILES/base16-shell/base16-bright.dark.sh
 }
 
-no_solarized() {
-	export NO_SOLARIZED=1
+light() {
+	export COLORFGBG='1;15'
+	source $DOTFILES/base16-shell/base16-bright.light.sh
+}
+
+no_custom_term_colors() {
+	export NO_CUSTOM_TERM_COLORS=1
 }

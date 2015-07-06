@@ -57,7 +57,8 @@ After cloning the repository, do the following:
             *~/.local/share/vim/undo* depending on whether `XDG_DATA_HOME` is
             set in your environment.
 
-5. Create *~/.bash_profile.local* and set `POWERLINE_HOME` and `COLORFGBF`.
+5. Create *~/.bash_profile.local* and set `POWERLINE_HOME` and call `dark` or
+    `light`.
 
 6. Create */.gitconfig.local* and `user.email`.
 
