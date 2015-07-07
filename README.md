@@ -62,5 +62,10 @@ After cloning the repository, do the following:
 
 6. Create */.gitconfig.local* and `user.email`.
 
+# Mobile
+When using ConnectBot, Powerline fonts are not available. Configure it to run
+the `no_powerline_fonts` command on login, which will set an environment
+variable that *.vimrc* knows to look for prior to setting the up the display.
+
 [powerline]: https://github.com/Lokaltog/powerline
 [vundle]: https://github.com/gmarik/Vundle.vim
