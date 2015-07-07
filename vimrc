@@ -29,7 +29,9 @@ Plugin 'rkennedy/vim-delphi'
 " Handle Git files
 Plugin 'tpope/vim-git'
 " Show changed lines in gutter
-Plugin 'airblade/vim-gitgutter'
+Plugin 'mhinz/vim-signify'
+let g:signify_vcs_list = ['git', 'cvs']
+let g:signify_vcs_cmds = { 'cvs': 'cvs -d '.$CVSROOT.' diff -U0 -- %f' }
 " Markdown syntax highlighting
 Plugin 'tpope/vim-markdown'
 " Repeat commands
