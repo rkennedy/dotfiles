@@ -24,9 +24,10 @@ After cloning the repository, do the following:
     * colordiffrc
     * gitconfig
     * inputrc
-    * screenrc
     * tmux.conf
     * vimrc
+    * zshenv
+    * zshrc
 
 3. Create *~/.config* (or `$XDG_CONFIG_HOME`) and create a link to *dotfiles/powerline*.
 
