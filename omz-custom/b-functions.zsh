@@ -28,6 +28,6 @@ light() {
 
 dark
 
-no_custom_term_colors() {
-	export NO_CUSTOM_TERM_COLORS=1
+no_powerline_fonts() {
+	export NO_POWERLINE_FONTS=1
 }

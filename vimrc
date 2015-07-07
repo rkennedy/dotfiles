@@ -9,7 +9,14 @@ Plugin 'gmarik/vundle'
 
 " Status line enhancement
 Plugin 'bling/vim-airline'
-let g:airline_powerline_fonts=1
+" This refers to an environment variable set (or not) during login. We set it
+" when logging in by phone because the ConnectBot app doesn't support fonts
+" required for Powerline.
+if $NO_POWERLINE_FONTS == 1
+	let g:airline_powerline_fonts=0
+else
+	let g:airline_powerline_fonts=1
+endif
 let g:airline_theme='powerlineish'
 let g:airline#extensions#whitespace#mixed_indent_algo=1
 " Change words to other variants
@@ -91,13 +98,6 @@ set splitbelow splitright
 
 filetype plugin indent on
 
-" This refers to an environment variable set (or not) during login. We set it
-" when logging in by phone because the ConnectBot app doesn't easily support
-" customizing the terminal's color scheme.
-if $NO_CUSTOM_TERM_COLORS == 1
-	colorscheme desert
-else
-	colorscheme base16-bright
-endif
+colorscheme base16-bright
 
 silent! source $HOME/dotfiles.local/vimrc
