@@ -1,5 +1,23 @@
 set nocompatible " not vi-compatible
 
+function RKGetSignifyHLGroup(lineno)
+  " Description: Returns the highlight group used by vim-signify depending on
+  "              how the line was edited. Called by vim-signature.
+  call sy#sign#get_current_signs()
+  if has_key(b:sy.internal, a:lineno)
+    let type = b:sy.internal[a:lineno]['type']
+    if type =~ 'SignifyAdd'
+      return 'DiffAdd'
+    elseif type =~ 'SignifyChange'
+      return 'DiffChange'
+    elseif type =~ 'SignifyDelete'
+      return 'DiffDelete'
+    end
+  else
+    return 'LineNr'
+  endif
+endfunction
+
 " Begin Vundle setup
 filetype off
 set runtimepath+=$HOME/.vim/bundle/vundle
@@ -54,6 +72,9 @@ Plugin 'hynek/vim-python-pep8-indent'
 Plugin 'mileszs/ack.vim'
 " Run builds asynchronously within Vim
 Plugin 'tpope/vim-dispatch'
+" Display marks in sign column
+Plugin 'kshenoy/vim-signature'
+let g:SignatureMarkTextHL = function('RKGetSignifyHLGroup')
 
 " NOTE: Also check for local .vimrc file
 " End Vundle setup
@@ -101,5 +122,9 @@ set splitbelow splitright
 filetype plugin indent on
 
 colorscheme base16-bright
+" The default base16-bright scheme sets Search to an unreadable combination
+" and sets the background of DiffChange inconsistently with vim-signify.
+hi Search ctermfg=18 ctermbg=11
+hi DiffChange ctermfg=04 ctermbg=18
 
 silent! source $HOME/dotfiles.local/vimrc
