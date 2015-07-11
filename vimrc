@@ -18,6 +18,15 @@ function RKGetSignifyHLGroup(lineno)
   endif
 endfunction
 
+function! RKPatchInactiveColors(palette)
+  if g:airline_theme == 'powerlineish'
+    for colors in values(a:palette.inactive)
+      let colors[0] = '#9e9e9e'
+      let colors[2] = 247
+    endfor
+  endif
+endfunction
+
 " Begin Vundle setup
 filetype off
 set runtimepath+=$HOME/.vim/bundle/vundle
@@ -36,6 +45,7 @@ else
 	let g:airline_powerline_fonts=1
 endif
 let g:airline_theme='powerlineish'
+let g:airline_theme_patch_func = 'RKPatchInactiveColors'
 let g:airline#extensions#whitespace#mixed_indent_algo=1
 " Change words to other variants
 Plugin 'tpope/vim-abolish'
