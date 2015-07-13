@@ -1,22 +1,16 @@
 {
-	"default_module": "powerline.segments.common",
-	"segment_data": {
-		"date": {
-			"before": " ",
-			"after": " "
-		}
-	},
 	"segments": {
 		"right": [
 			{
-				"name": "date",
+				"function": "powerline.segments.common.time.date",
+				"name": "time",
 				"args": {
 					"format": "%H:%M",
 					"istime": true
 				}
 			},
 			{
-				"name": "hostname"
+				"function": "powerline.segments.common.net.hostname"
 			}
 		]
 	}
