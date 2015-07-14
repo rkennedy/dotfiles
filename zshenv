@@ -38,12 +38,6 @@ manpath=($manpath "${(@f)$(source $DOTFILES/MANPATHrc | sort -n | cut '-d ' -s -
 
 eval "$(pyenv init -)"
 
-[[ -r $HOME/.zshenv.local ]] && source $HOME/.zshenv.local
+umask 022
 
-case $(hostname) in
-    coachwood )
-        umask 002
-        ;;
-    *)
-        umask 022
-esac
+[[ -r $HOME/.zshenv.local ]] && source $HOME/.zshenv.local

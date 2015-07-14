@@ -39,15 +39,9 @@ rk_path_import MANPATH $DOTFILES/MANPATHrc
 
 eval "$(pyenv init -)"
 
-[[ -r $HOME/.bash_profile.local ]] && source $HOME/.bash_profile.local
+umask 022
 
-case $(hostname) in
-	coachwood )
-		umask 002
-		;;
-	*)
-		umask 022
-esac
+[[ -r $HOME/.bash_profile.local ]] && source $HOME/.bash_profile.local
 
 # Source the file that's executed for interactive non-login shells.
 [[ -r $HOME/.bashrc ]] && source $HOME/.bashrc
