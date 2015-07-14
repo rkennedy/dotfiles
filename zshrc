@@ -3,7 +3,7 @@
 # Oh My Zsh configuration
 export ZSH=$DOTFILES/oh-my-zsh
 
-ZSH_THEME="agnoster"
+ZSH_THEME="powerline"
 
 DISABLE_AUTO_UPDATE="true"
 
