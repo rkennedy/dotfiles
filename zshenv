@@ -1,4 +1,4 @@
-[[ -z ${DOTFILES:+x} ]] && export DOTFILES="$(dirname "$(perl -MCwd=realpath -e 'print realpath($ARGV[0])' "${(%):-%x}")")"
+: ${DOTFILES:=${${(%):-%x}:A:h}}
 
 typeset -U -T LD_LIBRARY_PATH ld_library_path
 ld_library_path=($HOME/.local/lib ${(@)ld_library_path})
