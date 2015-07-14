@@ -10,5 +10,5 @@ DISABLE_AUTO_UPDATE="true"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 ZSH_CUSTOM=$DOTFILES/omz-custom
-plugins=(git)
+plugins=()
 source $ZSH/oh-my-zsh.sh
