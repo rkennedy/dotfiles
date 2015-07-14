@@ -31,10 +31,11 @@ export PYTHONSTARTUP=$DOTFILES/python-shell-enhancement/pythonstartup.py
 #BASH_COMPLETION=$HOME/etc/bash_completion
 #[[ -r $BASH_COMPLETION ]] && source $BASH_COMPLETION
 
-typeset -U path
-path=($path "${(@f)$(source $DOTFILES/PATHrc | sort -n | cut '-d ' -s -f 2-)}")
-typeset -U manpath
-manpath=($manpath "${(@f)$(source $DOTFILES/MANPATHrc | sort -n | cut '-d ' -s -f 2-)}")
+paths=("${(@f)$(source $DOTFILES/PATHrc | sort -n | cut '-d ' -s -f 2-)}")
+path=(${path:|paths} ${(u)paths})
+
+paths=("${(@f)$(source $DOTFILES/MANPATHrc | sort -n | cut '-d ' -s -f 2-)}")
+manpath=(${manpath:|paths} ${(u)paths})
 
 eval "$(pyenv init -)"
 
