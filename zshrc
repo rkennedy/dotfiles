@@ -11,5 +11,8 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 ZSH_CUSTOM=$DOTFILES/omz-custom
 plugins=()
-plugins=($plugins zsh-syntax-highlighting)
+plugins+=(zsh-syntax-highlighting)
+ZSH_HIGHLIGHT_HIGHLIGHTERS=()
+ZSH_HIGHLIGHT_HIGHLIGHTERS+=(main)
+ZSH_HIGHLIGHT_HIGHLIGHTERS+=(brackets)
 source $ZSH/oh-my-zsh.sh
