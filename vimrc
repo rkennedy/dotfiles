@@ -39,11 +39,7 @@ Plugin 'bling/vim-airline'
 " This refers to an environment variable set (or not) during login. We set it
 " when logging in by phone because the ConnectBot app doesn't support fonts
 " required for Powerline.
-if $NO_POWERLINE_FONTS == 1
-	let g:airline_powerline_fonts=0
-else
-	let g:airline_powerline_fonts=1
-endif
+let g:airline_powerline_fonts=!($NO_POWERLINE_FONTS == 1)
 let g:airline_theme='powerlineish'
 let g:airline_theme_patch_func = 'RKPatchInactiveColors'
 let g:airline#extensions#whitespace#mixed_indent_algo=1
