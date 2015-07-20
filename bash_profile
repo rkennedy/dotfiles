@@ -37,7 +37,9 @@ BASH_COMPLETION=$HOME/etc/bash_completion
 rk_path_import PATH $DOTFILES/PATHrc
 rk_path_import MANPATH $DOTFILES/MANPATHrc
 
-eval "$(pyenv init -)"
+if type pyenv >/dev/null 2>&1; then
+    eval "$(pyenv init -)"
+fi
 
 umask 022
 
