@@ -31,4 +31,7 @@ PS1=$'[%F{green}%~%f]\n%m [%!]%(!.#.$) '
 # Delay job-completion notification until printing of next prompt
 setopt nonotify
 
+# Do not include usernames in the cd completion list
+unsetopt cdable_vars
+
 unsetopt auto_cd
