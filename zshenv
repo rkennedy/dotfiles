@@ -37,7 +37,9 @@ path=(${path:|paths} ${(u)paths})
 paths=("${(@f)$(source $DOTFILES/MANPATHrc | sort -n | cut '-d ' -s -f 2-)}")
 manpath=(${manpath:|paths} ${(u)paths})
 
-eval "$(pyenv init -)"
+if type pyenv >&/dev/null; then
+    eval "$(pyenv init -)"
+fi
 
 umask 022
 
