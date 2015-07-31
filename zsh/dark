@@ -1,0 +1,4 @@
+export COLORFGBG='15;1'
+source $DOTFILES/base16-shell/base16-bright.dark.sh
+
+# vim: set ft=zsh:

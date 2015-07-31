@@ -1,0 +1,4 @@
+pygmentize -g -f terminal256 -O bg=dark "$@" \
+    | $PAGER -RF
+
+# vim: set ft=zsh:

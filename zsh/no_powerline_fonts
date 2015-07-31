@@ -1,0 +1,3 @@
+export NO_POWERLINE_FONTS=1
+
+# vim: set ft=zsh:

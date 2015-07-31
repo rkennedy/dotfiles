@@ -1,0 +1,6 @@
+find ${@:-.} -type d -name CVS -prune \
+    | sed 's/\/CVS//' \
+    | xargs cvs up -l \
+    | grep -v -E '^\?'
+
+# vim: set ft=zsh:

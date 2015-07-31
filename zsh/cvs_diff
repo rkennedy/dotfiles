@@ -1,0 +1,6 @@
+cvs diff -uNp "$@" \
+    | grep -v -E '^\?' \
+    | colordiff \
+    | less -RF
+
+# vim: set ft=zsh:
