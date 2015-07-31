@@ -33,9 +33,13 @@ export PYTHONSTARTUP=$DOTFILES/python-shell-enhancement/pythonstartup.py
 
 paths=("${(@f)$(source $DOTFILES/PATHrc | sort -n | cut '-d ' -s -f 2-)}")
 path=(${path:|paths} ${(u)paths})
+unset paths
 
-paths=("${(@f)$(source $DOTFILES/MANPATHrc | sort -n | cut '-d ' -s -f 2-)}")
-manpath=(${manpath:|paths} ${(u)paths})
+typeset -T -U DEFAULT_MANPATH=$(env MANPATH= man --path) default_manpath
+typeset -T -U PATHS=$(source $DOTFILES/MANPATHrc | sort -n | cut -d' ' -s -f 2- | paste -sd : -) paths
+manpath=(${manpath:|paths} ${(u)paths} ${default_manpath:|manpath})
+typeset -U MANPATH
+unset DEFAULT_MANPATH default_manpath paths
 
 if type pyenv >&/dev/null; then
     eval "$(pyenv init -)"
