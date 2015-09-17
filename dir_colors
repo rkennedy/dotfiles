@@ -1,4 +1,4 @@
-COLOR tty
+COLOR all
 
 TERM ansi
 TERM color-xterm
