@@ -35,6 +35,8 @@ LINK 35
 ORPHAN 40;31;01
 MISSING 05;37;41
 
+OTHER_WRITABLE 04;31
+
 RESET 0 # reset to "normal" color
 
 FIFO 40;33 # pipe
