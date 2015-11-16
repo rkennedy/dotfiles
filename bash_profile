@@ -43,6 +43,10 @@ fi
 
 umask 022
 
+source $DOTFILES/functions.sh
+
+dark
+
 [[ -r $HOME/.bash_profile.local ]] && source $HOME/.bash_profile.local
 
 # Source the file that's executed for interactive non-login shells.
