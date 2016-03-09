@@ -30,7 +30,7 @@ endfunction
 " Begin Vundle setup
 filetype off
 set runtimepath+=$HOME/.vim/bundle/vundle
-call vundle#rc()
+call vundle#begin()
 
 Plugin 'gmarik/vundle'
 
@@ -83,6 +83,9 @@ Plugin 'kshenoy/vim-signature'
 let g:SignatureMarkTextHL = function('RKGetSignifyHLGroup')
 
 " NOTE: Also check for local .vimrc file
+silent! source $HOME/dotfiles.local/vimrc
+
+call vundle#end()
 " End Vundle setup
 
 set guifont=Sauce\ Code\ Powerline:h10
@@ -133,4 +136,3 @@ colorscheme base16-bright
 hi Search ctermfg=18 ctermbg=11
 hi DiffChange ctermfg=04 ctermbg=18
 
-silent! source $HOME/dotfiles.local/vimrc
