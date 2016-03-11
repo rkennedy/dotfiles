@@ -1,0 +1,16 @@
+#!/bin/env bash
+
+if [[ $# -eq 0 ]]; then
+    set -$- -- --all
+fi
+while getopts ":h" opt; do
+    case $opt in
+        h)
+            echo "usage: git tree [<git-log options>]"
+            echo "    Common options include --all and HEAD"
+            ;;
+    esac
+done
+git log --graph --pretty=tformat:'%C(yellow)%h%Creset -%Cred%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --parents "$@"
+
+# vim: set ft=sh:
