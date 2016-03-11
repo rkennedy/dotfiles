@@ -36,4 +36,7 @@ autocorrect = 10
 meta = dim yellow  # With Solarized, this is orange
 func = blue
 
+[diff]
+noprefix = true
+
 # vim: set ft=gitconfig:
