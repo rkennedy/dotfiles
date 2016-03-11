@@ -14,6 +14,7 @@ alias rm='rm -i' cp='cp -i' mv='mv -i'
 alias which='type -p'
 
 alias ps='ps -o "pid tty user time args"'
+alias grep='grep --color=auto'
 
 type dircolors >/dev/null 2>&1 && {
 	eval `dircolors -b $DOTFILES/dir_colors`
@@ -25,10 +26,6 @@ if type -Pf zsh >/dev/null 2>&1; then
 else
   alias z='echo no zsh available'
 fi
-
-# We usually set environment variables like this in .bash_profile, but it can
-# affect non-interactive invocations of grep, so we set it here instead.
-export GREP_OPTIONS=--color=auto
 
 source $DOTFILES/path_funcs.sh
 
