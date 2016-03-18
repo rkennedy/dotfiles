@@ -5,7 +5,6 @@ else
 fi
 alias la='ls -a'
 alias rm='rm -i' cp='cp -i' mv='mv -i'
-alias which='type -p'
 
 alias ps='ps -o "pid tty user time args"'
 alias grep='grep --color=auto'
