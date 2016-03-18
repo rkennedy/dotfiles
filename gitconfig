@@ -47,4 +47,9 @@ function = blue
 [diff]
 noprefix = true
 
+[filter "lfs"]
+clean = git-lfs clean %f
+smudge = git-lfs smudge %f
+required = true
+
 # vim: set ft=gitconfig:
