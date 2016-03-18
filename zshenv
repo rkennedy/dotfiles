@@ -28,6 +28,9 @@ export CVSREAD='Yes'
 export PYENV_ROOT=$DOTFILES/pyenv
 export PYTHONSTARTUP=$DOTFILES/python-shell-enhancement/pythonstartup.py
 
+# This is the default value. We duplicate it here to mirror .gitconfig settings.
+export GREP_COLORS='ms=01;31:mc=01;31:sl=:cx=:fn=35:ln=32:bn=32:se=36'
+
 #BASH_COMPLETION=$HOME/etc/bash_completion
 #[[ -r $BASH_COMPLETION ]] && source $BASH_COMPLETION
 

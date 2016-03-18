@@ -36,6 +36,14 @@ autocorrect = 10
 meta = dim yellow  # With Solarized, this is orange
 func = blue
 
+[color "grep"]
+matchSelected = bold red
+matchContext = bold red
+filename = magenta
+linenumber = green
+separator = cyan
+function = blue
+
 [diff]
 noprefix = true
 
