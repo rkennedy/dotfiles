@@ -20,14 +20,15 @@ else
     alias b='echo no bash available'
 fi
 
-HISTSIZE=100
-setopt hist_ignore_all_dups
+HISTSIZE=10050
+SAVEHIST=10000
+HISTFILE=~/.zsh_history
 # Include start time and elapsed time in history
 setopt extended_history
 # Add "|" to redirection instructions in history to allow clobbering
 setopt hist_allow_clobber
-# Don't display duplicates in history search
-setopt hist_find_no_dups
+# Don't allow duplicate history entries at all
+setopt hist_ignore_all_dups hist_find_no_dups hist_expire_dups_first hist_save_no_dups
 # Don't add an item to history if it starts with space
 setopt hist_ignore_space
 # Don't keep function definitions in the history
@@ -36,9 +37,11 @@ setopt hist_no_functions
 setopt hist_no_store
 # Normalize spaces in the history list
 setopt hist_reduce_blanks
+# Append current shell's history upon exit
+setopt append_history
 
 fignore=(.o ~ .rpo .class)
-unset MAILCHECK IGNOREEOF CDPATH HISTFILE
+unset MAILCHECK IGNOREEOF CDPATH
 
 # current directory in green. On next line, hostname and history number
 PS1=$'[%F{green}%~%f]\n%m [%!]%(!.#.$) '
@@ -71,7 +74,10 @@ setopt auto_param_slash auto_remove_slash
 setopt complete_in_word
 # Show file-type marks in completion list
 setopt list_types
+
 bindkey '^r' history-incremental-search-backward
+bindkey "^[[A" history-beginning-search-backward
+bindkey "^[[B" history-beginning-search-forward
 
 
 fpath=($DOTFILES/zsh $fpath)
