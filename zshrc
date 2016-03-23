@@ -79,6 +79,7 @@ autoload cvs_up cvs_diff
 autoload pretty
 autoload dark light
 autoload no_powerline_fonts
+autoload t
 
 dark
 

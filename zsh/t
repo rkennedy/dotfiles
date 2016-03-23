@@ -1,0 +1,4 @@
+: ${1:=default}
+exec tmux new-session -A -s "$@"
+
+# vim: set ft=zsh:

@@ -37,3 +37,8 @@ light() {
 no_powerline_fonts() {
 	export NO_POWERLINE_FONTS=1
 }
+
+t() {
+	: ${1:=default}
+	exec tmux new-session -A "$@"
+}
