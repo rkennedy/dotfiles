@@ -11,6 +11,6 @@ while getopts ":h" opt; do
             ;;
     esac
 done
-git log --graph --pretty=tformat:'%C(yellow)%h%Creset -%Cred%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --parents "$@"
+git log --graph --pretty=tformat:'%C(yellow)%h%Creset -%Cred%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset' --parents "$@"
 
 # vim: set ft=sh:
