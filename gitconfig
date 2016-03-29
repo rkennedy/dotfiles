@@ -15,7 +15,6 @@ ui = auto
 [alias]
 info = show --stat
 root = rev-parse --show-toplevel
-co = checkout
 
 [http]
 # See http://stackoverflow.com/a/8467406/33732 for sslCAinfo
