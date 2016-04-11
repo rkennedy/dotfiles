@@ -35,7 +35,8 @@ call vundle#begin()
 Plugin 'gmarik/vundle'
 
 " Status line enhancement
-Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 " This refers to an environment variable set (or not) during login. We set it
 " when logging in by phone because the ConnectBot app doesn't support fonts
 " required for Powerline.
