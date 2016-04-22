@@ -158,17 +158,19 @@ function do_prompt()
     local result
     for func in ${(@)fns}; do
         $func
-        text=${reply[1]}
-        start_bgc=${reply[2]}
-        end_bgc=${reply[3]}
-        if [ $first -eq 0 ]; then
-            result+="%{%K{${start_bgc}}%}${sep}%{%f%}"
-        else
-            result+="%{%F{${old_end_bgc}}%K{${start_bgc}}%}"
-            first=0
+        if ((${#reply} > 0)); then
+            text=${reply[1]}
+            start_bgc=${reply[2]}
+            end_bgc=${reply[3]}
+            if [ $first -eq 0 ]; then
+                result+="%{%K{${start_bgc}}%}${sep}%{%f%}"
+            else
+                result+="%{%F{${old_end_bgc}}%K{${start_bgc}}%}"
+                first=0
+            fi
+            result+="%{%K{${start_bgc}}%} %{%k%}${text}%{%K{${end_bgc}}%} %{%k%}"
+            result+="%{%F{${end_bgc}}%}"
         fi
-        result+="%{%K{${start_bgc}}%} %{%k%}${text}%{%K{${end_bgc}}%} %{%k%}"
-        result+="%{%F{${end_bgc}}%}"
     done
     result+="%{%k%}$sep%{%f%} "
     print -n $result
