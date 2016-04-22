@@ -83,41 +83,42 @@ function prompt_jobs()
         reply+=($bgc $bgc)
     fi
 }
-zstyle ':prompts:*:prompt_pipestatus:pass' fg 'white'
-zstyle ':prompts:*:prompt_pipestatus:fail' fg 'white'
-zstyle ':prompts:*:prompt_pipestatus:pass' bg 'green'
-zstyle ':prompts:*:prompt_pipestatus:fail' bg 'dark red'
-zstyle ':prompts:*:prompt_pipestatus' separator '|'
 function prompt_pipestatus()
 {
     local -a ps
-    ps=($pipestatus)
+    ps=($pipestat)
     reply=()
     local success=(0)
     local result
-    if [[ ${#ps:*success} -ne ${#ps} ]]; then
-        zstyle -g sep ':prompts:*:prompt_pipestatus' separator
-        local first=0
+    if ((${#ps:*success} != ${#ps})); then
+        local first=1
+        local previous_s
+        local fgc bgc first_bgc
         for s in $ps; do
-            if [[ $s -eq 0 ]]; then
-                zstyle -g fgc 'prompts:*:prompt_pipestatus:pass' fg
-                zstyle -g bgc 'prompts:*:prompt_pipestatus:pass' bg
+            if (($s == 0)); then
+                fgc=231
+                bgc=22
             else
-                zstyle -g fgc 'prompts:*:prompt_pipestatus:fail' fg
-                zstyle -g bgc 'prompts:*:prompt_pipestatus:fail' bg
+                fgc=231
+                bgc=52
             fi
-            if [[ $first -ne 0 ]]; then
-                first=1
-                result+=" %{%F{$bgc}%}$sep%{%F{$fgc}%K{$bgc}%} $s"
-            else
-                result+="%{%F{$fgc}%K{$bgc}%}${s}"
+            if (($first == 1)); then
+                result+="%{%F{$fgc}%K{$bgc}%}"
                 first_bgc=$bgc
+                first=0
+            else
+                if (( ($s == 0 && $previous_s == 0) || ($s != 0 && $previous_s != 0) )); then
+                    result+="  "
+                else
+                    result+=" %{%F{$bgc}%}%{%F{$fgc}%K{$bgc}%} "
+                fi
             fi
+            result+="${s}"
+            previous_s=$s
         done
         reply+=($result)
         reply+=($first_bgc $bgc)
     fi
-    print $reply
 }
 zstyle ':prompts:*:prompt_git_commit' fg 250
 zstyle ':prompts:*:prompt_git_commit' bg 236
@@ -142,12 +143,11 @@ ps1_functions+=(prompt_hostname)
 ps1_functions+=(prompt_user)
 ps1_functions+=(prompt_cwd)
 #ps1_functions+=(prompt_jobs)
-#rps1_functions+=(prompt_pipestatus)
+rps1_functions+=(prompt_pipestatus)
 rps1_functions+=(prompt_git_commit)
 
 function do_left_prompt()
 {
-    local prompt_pipestatus=$pipestatus
     local sep=''
     local first=1
     local result
@@ -172,7 +172,6 @@ function do_left_prompt()
 }
 function do_right_prompt()
 {
-    local prompt_pipestatus=$pipestatus
     local sep=''
     local result
     for func in ${(@)rps1_functions}; do
@@ -190,4 +189,4 @@ function do_right_prompt()
 }
 
 PS1='$(do_left_prompt)'
-RPS1='$(do_right_prompt)'
+RPS1='$(pipestat=($pipestatus) do_right_prompt)'
