@@ -31,14 +31,14 @@ function prompt_hostname()
         reply+=($bgc $bgc)
     fi
 }
-zstyle ':prompts:*:prompt_user' fg 'white'  # also bold
+zstyle ':prompts:*:prompt_user' fg '231'  # also bold
 zstyle ':prompts:*:prompt_user' bg '31'
 function prompt_user()
 {
     reply=()
     zstyle -g fgc ':prompts:*:prompt_user' fg
     zstyle -g bgc ':prompts:*:prompt_user' bg
-    reply+=("%{%F{$fgc}%K{$bgc}%}%n")
+    reply+=("%{%F{$fgc}%K{$bgc}%}%B%n%b%{%K{$bgc}%}")
     reply+=($bgc $bgc)
 }
 zstyle ':prompts:*:prompt_cwd' fg '250'  # last component also bold
@@ -66,8 +66,9 @@ function prompt_cwd()
         fi
         result+=("${(q@s:/:)cwd}")
     fi
+    result[-1]=("%B${result[-1]}%b")
     zstyle -s ':prompts:rkline:prompt_cwd' ps ps
-    reply+=("%{%F{$fgc}%K{$bgc}%}${(ej:${ps}:)result}")
+    reply+=("%{%F{$fgc}%K{$bgc}%}${(ej:${ps}:)result}%{%K{$bgc}%}")
     reply+=($bgc $bgc)
 }
 zstyle ':prompts:*:prompt_jobs' fg '220'
