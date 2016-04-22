@@ -14,7 +14,6 @@ setopt prompt_subst
 autoload colors && colors
 
 zstyle :prompts:rkline security-indicator ''
-zstyle :prompts:rkline section-separator ''
 
 # Prompt function should set $reply array to contain the prompt contents,
 # the starting background color, and the ending background color. It should
@@ -28,7 +27,7 @@ function prompt_hostname()
         zstyle -g secure_char :prompts:rkline security-indicator
         zstyle -g fgc ':prompts:*:prompt_hostname' fg
         zstyle -g bgc ':prompts:*:prompt_hostname' bg
-        reply+=("%{%F{$fgc}%K{$bgc}%}${secure_char} %m%{%f%k%}")
+        reply+=("%{%F{$fgc}%K{$bgc}%}${secure_char} %m")
         reply+=($bgc $bgc)
     fi
 }
@@ -39,7 +38,7 @@ function prompt_user()
     reply=()
     zstyle -g fgc ':prompts:*:prompt_user' fg
     zstyle -g bgc ':prompts:*:prompt_user' bg
-    reply+=("%{%F{$fgc}%K{$bgc}%}%n%{%f%k%}")
+    reply+=("%{%F{$fgc}%K{$bgc}%}%n")
     reply+=($bgc $bgc)
 }
 zstyle ':prompts:*:prompt_cwd' fg '250'  # last component also bold
@@ -69,7 +68,7 @@ function prompt_cwd()
         result+=("${(q@s:/:)cwd}")
     fi
     zstyle -s ':prompts:rkline:prompt_cwd' ps ps
-    reply+=("%{%F{$fgc}%K{$bgc}%}${(ej:${ps}:)result}%{%f%k%}")
+    reply+=("%{%F{$fgc}%K{$bgc}%}${(ej:${ps}:)result}")
     reply+=($bgc $bgc)
 }
 zstyle ':prompts:*:prompt_jobs' fg '220'
@@ -80,7 +79,7 @@ function prompt_jobs()
     if ((${(%):-%j} > 0)); then
         zstyle -g fgc ':prompts:*:prompt_jobs' fg
         zstyle -g bgc ':prompts:*:prompt_jobs' bg
-        reply+=("%{%F{$fgc}%K{$bgc}%}%j%{%f%k%}")
+        reply+=("%{%F{$fgc}%K{$bgc}%}%j")
         reply+=($bgc $bgc)
     fi
 }
@@ -91,12 +90,14 @@ zstyle ':prompts:*:prompt_pipestatus:fail' bg 'dark red'
 zstyle ':prompts:*:prompt_pipestatus' separator '|'
 function prompt_pipestatus()
 {
+    local -a ps
     ps=($pipestatus)
     reply=()
-    success=(0)
+    local success=(0)
+    local result
     if [[ ${#ps:*success} -ne ${#ps} ]]; then
         zstyle -g sep ':prompts:*:prompt_pipestatus' separator
-        first=0
+        local first=0
         for s in $ps; do
             if [[ $s -eq 0 ]]; then
                 zstyle -g fgc 'prompts:*:prompt_pipestatus:pass' fg
@@ -113,24 +114,23 @@ function prompt_pipestatus()
                 first_bgc=$bgc
             fi
         done
-        result+="%{%f%k$}"
         reply+=($result)
         reply+=($first_bgc $bgc)
     fi
     print $reply
 }
-zstyle ':prompts:*:prompt_git_commit' fg 'light gray'
-zstyle ':prompts:*:prompt_git_commit' bg 'dark gray'
+zstyle ':prompts:*:prompt_git_commit' fg 250
+zstyle ':prompts:*:prompt_git_commit' bg 236
 zstyle ':prompts:rkline' branch ''
 function prompt_git_commit()
 {
     reply=()
     ID=$(git symbolic-ref --quiet --short HEAD || git describe --all --exact-match 2>|/dev/null || git rev-parse --short HEAD)
-    if $?; then
+    if (($? == 0)); then
         zstyle -g fgc ':prompts:*:prompt_git_commit' fg
         zstyle -g bgc ':prompts:*:prompt_git_commit' bg
         zstyle -g BRANCH ':prompts:rkline' branch
-        reply+=("%{%F{$fgc}%K{$bgc}%}${BRANCH} ${ID}%{%f%k%}")
+        reply+=("%{%F{$fgc}%K{$bgc}%}${BRANCH} ${ID}")
         reply+=($bgc $bgc)
     fi
 }
@@ -145,35 +145,49 @@ ps1_functions+=(prompt_cwd)
 #rps1_functions+=(prompt_pipestatus)
 rps1_functions+=(prompt_git_commit)
 
-function do_prompt()
+function do_left_prompt()
 {
-    prompt_pipestatus=$pipestatus
-    if [[ $1 == "right" ]]; then
-        fns=(${rps1_functions})
-    else
-        fns=(${ps1_functions})
-    fi
-    zstyle -s ':prompts:rkline' section-separator sep
+    local prompt_pipestatus=$pipestatus
+    local sep=''
     local first=1
     local result
-    for func in ${(@)fns}; do
+    for func in ${(@)ps1_functions}; do
         $func
         if ((${#reply} > 0)); then
             text=${reply[1]}
             start_bgc=${reply[2]}
             end_bgc=${reply[3]}
+            result+="%{%K{$start_bgc}%}"
             if [ $first -eq 0 ]; then
-                result+="%{%K{${start_bgc}}%}${sep}%{%f%}"
+                result+="${sep}"
             else
-                result+="%{%F{${old_end_bgc}}%K{${start_bgc}}%}"
                 first=0
             fi
-            result+="%{%K{${start_bgc}}%} %{%k%}${text}%{%K{${end_bgc}}%} %{%k%}"
+            result+="%{%K{${start_bgc}}%} ${text} "
             result+="%{%F{${end_bgc}}%}"
         fi
     done
     result+="%{%k%}$sep%{%f%} "
     print -n $result
 }
+function do_right_prompt()
+{
+    local prompt_pipestatus=$pipestatus
+    local sep=''
+    local result
+    for func in ${(@)rps1_functions}; do
+        $func
+        if ((${#reply} > 0)); then
+            text=${reply[1]}
+            start_bgc=${reply[2]}
+            end_bgc=${reply[3]}
+            result+="%{%F{$start_bgc}%}$sep%{%f%}"
+            result+="%{%K{$start_bgc}%} ${text} "
+        fi
+    done
+    result+="%{%k%}"
+    print -n $result
+}
 
-PS1='$(do_prompt left)'
+PS1='$(do_left_prompt)'
+RPS1='$(do_right_prompt)'
