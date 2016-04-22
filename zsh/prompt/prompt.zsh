@@ -94,10 +94,10 @@ function prompt_pipestatus()
                 first_bgc=$bgc
                 first=0
             else
-                if (( ($s == 0 && $previous_s == 0) || ($s != 0 && $previous_s != 0) )); then
-                    result+="  "
-                else
+                if (($s == 0 ^^ $previous_s == 0)); then
                     result+=" %{%F{$bgc}%}%{%F{$fgc}%K{$bgc}%} "
+                else
+                    result+="  "
                 fi
             fi
             result+="${s}"
