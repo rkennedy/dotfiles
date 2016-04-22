@@ -125,7 +125,7 @@ zstyle ':prompts:rkline' branch ''
 function prompt_git_commit()
 {
     reply=()
-    ID=$(git symbolic-ref --quiet --short HEAD || git describe --all --exact-match 2>|/dev/null || git rev-parse --short HEAD)
+    ID=$(git symbolic-ref --quiet --short HEAD || git describe --all --exact-match || git rev-parse --short HEAD) 2> /dev/null
     if (($? == 0)); then
         zstyle -g fgc ':prompts:*:prompt_git_commit' fg
         zstyle -g bgc ':prompts:*:prompt_git_commit' bg
