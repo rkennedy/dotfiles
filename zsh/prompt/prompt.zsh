@@ -44,13 +44,17 @@ function prompt_user()
 zstyle ':prompts:*:prompt_cwd' fg '250'  # last component also bold
 zstyle ':prompts:*:prompt_cwd' bg '240'
 zstyle ':prompts:rkline:prompt_cwd' ps '  '
-zstyle ':prompts:rkline' elipsis '⋯'
+zstyle ':prompts:rkline' ellipsis '⋯'
 function prompt_cwd()
 {
     reply=()
     zstyle -g fgc ':prompts:*:prompt_cwd' fg
     zstyle -g bgc ':prompts:*:prompt_cwd' bg
-    cwd=${(%):-%3~}
+    zstyle -s ':prompts:rkline' ellipsis ellipsis
+    # If the path length is four or more components, start with an ellipsis.
+    # Then give the final three path components.
+    cwd=${(%):-%4(~:$ellipsis/:)%3~}
+    #cwd=${(%):-%3~}
     local -a result
     if [[ $cwd == '/' ]]; then
         result+=('/')
@@ -59,11 +63,6 @@ function prompt_cwd()
             # path is absolute
             result+=('/')
             cwd="${cwd[2,-1]}"
-        elif [[ $cwd =~ '^~' ]]; then
-            # path isn't truncated
-        else
-            zstyle -s ':prompts:rkline' elipsis elipsis
-            result+=($elipsis)
         fi
         result+=("${(q@s:/:)cwd}")
     fi
