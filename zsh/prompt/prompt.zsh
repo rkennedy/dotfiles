@@ -8,53 +8,41 @@
 # On right:
 # - results of previous command pipeline: ${pipestatus[@]}
 # - current branch or commit ID, if in source repo
-zmodload zsh/zutil
 setopt prompt_subst
 
 autoload colors && colors
 
-zstyle :prompts:rkline security-indicator ''
-
-# Prompt function should set $reply array to contain the prompt contents,
+# Prompt functions should set $reply array to contain the prompt contents,
 # the starting background color, and the ending background color. It should
 # set it to empty if there should be no contents for the prompt section.
-zstyle ':prompts:*:prompt_hostname' fg '220'
-zstyle ':prompts:*:prompt_hostname' bg '166'
+
 function prompt_hostname()
 {
     reply=()
     if (($+SSH_CLIENT)); then
-        zstyle -g secure_char :prompts:rkline security-indicator
-        zstyle -g fgc ':prompts:*:prompt_hostname' fg
-        zstyle -g bgc ':prompts:*:prompt_hostname' bg
+        local secure_char=''
+        local fgc=220 bgc=166
         reply+=("%{%F{$fgc}%K{$bgc}%}${secure_char} %m")
         reply+=($bgc $bgc)
     fi
 }
-zstyle ':prompts:*:prompt_user' fg '231'  # also bold
-zstyle ':prompts:*:prompt_user' bg '31'
+
 function prompt_user()
 {
     reply=()
-    zstyle -g fgc ':prompts:*:prompt_user' fg
-    zstyle -g bgc ':prompts:*:prompt_user' bg
+    local fgc=231 bgc=31
     reply+=("%{%F{$fgc}%K{$bgc}%}%B%n%b%{%K{$bgc}%}")
     reply+=($bgc $bgc)
 }
-zstyle ':prompts:*:prompt_cwd' fg '250'  # last component also bold
-zstyle ':prompts:*:prompt_cwd' bg '240'
-zstyle ':prompts:rkline:prompt_cwd' ps '  '
-zstyle ':prompts:rkline' ellipsis '⋯'
+
 function prompt_cwd()
 {
     reply=()
-    zstyle -g fgc ':prompts:*:prompt_cwd' fg
-    zstyle -g bgc ':prompts:*:prompt_cwd' bg
-    zstyle -s ':prompts:rkline' ellipsis ellipsis
+    local fgc=250 bgc=240
+    local ellipsis='⋯'
     # If the path length is four or more components, start with an ellipsis.
     # Then give the final three path components.
-    cwd=${(%):-%4(~:$ellipsis/:)%3~}
-    #cwd=${(%):-%3~}
+    local cwd=${(%):-%4(~:$ellipsis/:)%3~}
     local -a result
     if [[ $cwd == '/' ]]; then
         result+=('/')
@@ -67,22 +55,21 @@ function prompt_cwd()
         result+=("${(q@s:/:)cwd}")
     fi
     result[-1]=("%B${result[-1]}%b")
-    zstyle -s ':prompts:rkline:prompt_cwd' ps ps
+    local ps='  '
     reply+=("%{%F{$fgc}%K{$bgc}%}${(ej:${ps}:)result}%{%K{$bgc}%}")
     reply+=($bgc $bgc)
 }
-zstyle ':prompts:*:prompt_jobs' fg '220'
-zstyle ':prompts:*:prompt_jobs' bg '166'
+
 function prompt_jobs()
 {
     reply=()
     if ((${(%):-%j} > 0)); then
-        zstyle -g fgc ':prompts:*:prompt_jobs' fg
-        zstyle -g bgc ':prompts:*:prompt_jobs' bg
+        local fgc=220 bgc=166
         reply+=("%{%F{$fgc}%K{$bgc}%}%j")
         reply+=($bgc $bgc)
     fi
 }
+
 function prompt_pipestatus()
 {
     local -a ps
@@ -120,18 +107,16 @@ function prompt_pipestatus()
         reply+=($first_bgc $bgc)
     fi
 }
-zstyle ':prompts:*:prompt_git_commit' fg 250
-zstyle ':prompts:*:prompt_git_commit' bg 236
-zstyle ':prompts:rkline' branch ''
+
 function prompt_git_commit()
 {
     reply=()
+    local ID
     ID=$(git symbolic-ref --quiet --short HEAD || git describe --all --exact-match || git rev-parse --short HEAD) 2> /dev/null
     if (($? == 0)); then
-        zstyle -g fgc ':prompts:*:prompt_git_commit' fg
-        zstyle -g bgc ':prompts:*:prompt_git_commit' bg
-        zstyle -g BRANCH ':prompts:rkline' branch
-        reply+=("%{%F{$fgc}%K{$bgc}%}${BRANCH} ${ID}")
+        local fgc=250 bgc=236
+        local branch=''
+        reply+=("%{%F{$fgc}%K{$bgc}%}${branch} ${ID}")
         reply+=($bgc $bgc)
     fi
 }
