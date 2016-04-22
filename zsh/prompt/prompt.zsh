@@ -50,9 +50,17 @@ function prompt_cwd()
             result+=('/')
             cwd="${cwd[2,-1]}"
         fi
-        result+=("${(q@s:/:)cwd}")
+        # Split the remaining path string on slashes.
+        # Escape percent signs so when the prompt evaluates the result, the
+        # names are interpretted correctly.
+        result+=(${(@s:/:)cwd:s/\%/\%\%})
     fi
+    # The last path component should appear bold
     result[-1]=("%B${result[-1]}%b")
+    # Quote all the components so that when we use the "e" modifier below,
+    # only the separator variable gets expanded and not the path components,
+    # which can happen if a $ appears in a directory name.
+    result=(${(q@)result})
     local ps='  '
     reply+=("%{%F{$fgc}%K{$bgc}%}${(ej:${ps}:)result}%{%K{$bgc}%}")
     reply+=($bgc $bgc)
@@ -114,7 +122,7 @@ function prompt_git_commit()
     if (($? == 0)); then
         local fgc=250 bgc=236
         local branch=''
-        reply+=("%{%F{$fgc}%K{$bgc}%}${branch} ${ID}")
+        reply+=("%{%F{$fgc}%K{$bgc}%}${branch:s/\%/\%\%} ${ID:s/\%/\%\%}")
         reply+=($bgc $bgc)
     fi
 }
