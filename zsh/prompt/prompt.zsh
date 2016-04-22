@@ -10,8 +10,6 @@
 # - current branch or commit ID, if in source repo
 setopt prompt_subst
 
-autoload colors && colors
-
 # Prompt functions should set $reply array to contain the prompt contents,
 # the starting background color, and the ending background color. It should
 # set it to empty if there should be no contents for the prompt section.
