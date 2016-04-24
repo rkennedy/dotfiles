@@ -1,3 +1,4 @@
+#!/usr/bin/env zsh
 cvs diff -uNp "$@" \
     | grep -v -E '^\?' \
     | colordiff \

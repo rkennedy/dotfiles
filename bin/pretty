@@ -1,3 +1,4 @@
+#!/usr/bin/env zsh
 pygmentize -g -f terminal256 -O bg=dark "$@" \
     | $PAGER -RF
 

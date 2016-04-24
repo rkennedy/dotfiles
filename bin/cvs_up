@@ -1,3 +1,4 @@
+#!/usr/bin/env zsh
 find ${@:-.} -type d -name CVS -prune \
     | sed 's/\/CVS//' \
     | xargs cvs up -l \
