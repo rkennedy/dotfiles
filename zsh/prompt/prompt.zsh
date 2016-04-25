@@ -68,10 +68,16 @@ function prompt_cwd()
     reply+=($bgc $bgc)
 }
 
+function capture_jobcount()
+{
+    jobcount=${(%):-%j}
+}
+precmd_functions+=(capture_jobcount)
+
 function prompt_jobs()
 {
     reply=()
-    if ((${(%):-%j} > 0)); then
+    if ((${jobcount} > 0)); then
         local fgc=220 bgc=166
         reply+=("%{%F{$fgc}%K{$bgc}%}%j")
         reply+=($bgc $bgc)
@@ -138,7 +144,7 @@ typeset -a rps1_functions
 ps1_functions+=(prompt_hostname)
 ps1_functions+=(prompt_user)
 ps1_functions+=(prompt_cwd)
-#ps1_functions+=(prompt_jobs)
+ps1_functions+=(prompt_jobs)
 rps1_functions+=(prompt_pipestatus)
 rps1_functions+=(prompt_git_commit)
 
