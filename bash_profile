@@ -12,7 +12,7 @@ rk_path_prepend $HOME/.local/include C_INCLUDE_PATH
 rk_path_prepend $HOME/.local/include CPLUS_INCLUDE_PATH
 rk_path_prepend $HOME/.local/lib LIBRARY_PATH
 
-export LC_COLATE='C'
+export LC_COLLATE='C'
 
 export EDITOR='vim'
 export VISUAL='gvim'

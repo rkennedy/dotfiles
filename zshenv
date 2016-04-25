@@ -9,7 +9,7 @@ cplus_include_path=($HOME/.local/include ${(@)cplus_include_path})
 typeset -U -T LIBRARY_PATH library_path
 library_path=($HOME/.local/lib ${(@)library_path})
 
-export LC_COLATE='C'
+export LC_COLLATE='C'
 
 export EDITOR='vim'
 export VISUAL='gvim'
