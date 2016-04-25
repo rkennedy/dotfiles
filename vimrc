@@ -119,15 +119,15 @@ set nojoinspaces " no extra space between sentences joined from multiple lines
 " If Vim supports persistent undo, then determine the platform-appropriate
 " directory and store undo files there.
 if exists('+undofile')
-	let s:dir = has('win32')
-		\ ? '$APPDATA/Vim'
-		\ : match(system('uname'), "Darwin") > -1
-			\ ? '~/Library/Vim'
-			\ : empty($XDG_DATA_HOME)
-				\ ? '~/.local/share/vim'
-				\ : '$XDG_DATA_HOME/vim'
-	let &undodir = expand(s:dir) . '/undo'
-	set undofile
+  let s:dir = has('win32')
+    \ ? '$APPDATA/Vim'
+    \ : match(system('uname'), "Darwin") > -1
+      \ ? '~/Library/Vim'
+      \ : empty($XDG_DATA_HOME)
+        \ ? '~/.local/share/vim'
+        \ : '$XDG_DATA_HOME/vim'
+  let &undodir = expand(s:dir) . '/undo'
+  set undofile
 endif
 
 " Open new windows below (:new) or right (:vnew) of the current window

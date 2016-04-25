@@ -5,9 +5,9 @@
 [[ -z ${DOTFILES:+x} ]] && export DOTFILES="$(dirname "$(perl -MCwd=realpath -e 'print realpath($ARGV[0])' "${BASH_SOURCE[0]}")")"
 
 if ls --color=auto 2>/dev/null >/dev/null; then
-	alias ls='ls -obF --color'
+    alias ls='ls -obF --color'
 else
-	alias ls='ls -obF'
+    alias ls='ls -obF'
 fi
 alias la='ls -a'
 alias rm='rm -i' cp='cp -i' mv='mv -i'
@@ -17,14 +17,14 @@ alias ps='ps -o "pid tty user time args"'
 alias grep='grep --color=auto'
 
 type dircolors >/dev/null 2>&1 && {
-	eval `dircolors -b $DOTFILES/dir_colors`
+    eval `dircolors -b $DOTFILES/dir_colors`
 }
 
 # Allow quick switching to zsh
 if type -Pf zsh >/dev/null 2>&1; then
-  alias z='export SHELL=`type -Pf zsh`; exec $SHELL -l'
+    alias z='export SHELL=`type -Pf zsh`; exec $SHELL -l'
 else
-  alias z='echo no zsh available'
+    alias z='echo no zsh available'
 fi
 
 source $DOTFILES/path_funcs.sh
