@@ -18,9 +18,10 @@ function prompt_hostname()
 {
     reply=()
     if (($+SSH_CLIENT)); then
-        local secure_char=''
+        ((${NO_POWERLINE_FONTS:-0} == 0))
+        local secure_char=${(%):-%(?.' '.)}
         local fgc=220 bgc=166
-        reply+=("%{%F{$fgc}%K{$bgc}%}${secure_char} %m")
+        reply+=("%{%F{$fgc}%K{$bgc}%}${secure_char}%m")
         reply+=($bgc $bgc)
     fi
 }
@@ -61,7 +62,8 @@ function prompt_cwd()
     # only the separator variable gets expanded and not the path components,
     # which can happen if a $ appears in a directory name.
     result=(${(q@)result})
-    local ps='  '
+    ((${NO_POWERLINE_FONTS:-0} == 0))
+    local ps=${(%):-%(?.'  './)}
     reply+=("%{%F{$fgc}%K{$bgc}%}${(ej:${ps}:)result}%{%K{$bgc}%}")
     reply+=($bgc $bgc)
 }
@@ -101,9 +103,11 @@ function prompt_pipestatus()
                 first=0
             else
                 if (($s == 0 ^^ $previous_s == 0)); then
-                    result+=" %{%F{$bgc}%}%{%F{$fgc}%K{$bgc}%} "
+                    ((${NO_POWERLINE_FONTS:-0} == 0))
+                    result+=" %{%F{$bgc}%}${(%):-%(?..)}%{%F{$fgc}%K{$bgc}%} "
                 else
-                    result+="  "
+                    ((${NO_POWERLINE_FONTS:-0} == 0))
+                    result+=" ${(%):-%(?..|)} "
                 fi
             fi
             result+="${s}"
@@ -121,7 +125,8 @@ function prompt_git_commit()
     ID=$(git symbolic-ref --quiet --short HEAD || git describe --all --exact-match || git rev-parse --short HEAD) 2> /dev/null
     if (($? == 0)); then
         local fgc=250 bgc=236
-        local branch=''
+        ((${NO_POWERLINE_FONTS:-0} == 0))
+        local branch=${(%):-%(?.''.±)}
         reply+=("%{%F{$fgc}%K{$bgc}%}${branch:s/\%/\%\%} ${ID:s/\%/\%\%}")
         reply+=($bgc $bgc)
     fi
@@ -139,7 +144,8 @@ rps1_functions+=(prompt_git_commit)
 
 function do_left_prompt()
 {
-    local sep=''
+    ((${NO_POWERLINE_FONTS:-0} == 0))
+    local sep=${(%):-%(?.''.)}
     local first=1
     local result
     for func in ${(@)ps1_functions}; do
@@ -163,7 +169,8 @@ function do_left_prompt()
 }
 function do_right_prompt()
 {
-    local sep=''
+    ((${NO_POWERLINE_FONTS:-0} == 0))
+    local sep=${(%):-%(?.''.)}
     local result
     for func in ${(@)rps1_functions}; do
         $func
