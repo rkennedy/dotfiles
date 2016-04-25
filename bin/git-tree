@@ -3,11 +3,16 @@
 if [[ $# -eq 0 ]]; then
     set -$- -- --all
 fi
-while getopts ":h" opt; do
-    case $opt in
-        h)
+for arg in "$@"; do
+    case $arg in
+        -h|--help)
             echo "usage: git tree [<git-log options>]"
             echo "    Common options include --all and HEAD"
+            git log $arg
+            exit
+            ;;
+        --)
+            break
             ;;
     esac
 done
