@@ -10,6 +10,7 @@ typeset -U -T LIBRARY_PATH library_path
 library_path=($HOME/.local/lib ${(@)library_path})
 
 export LC_COLLATE='C'
+export LANG='en_US.UTF-8'
 
 export EDITOR='vim'
 export VISUAL='gvim'
