@@ -81,11 +81,11 @@ bindkey "^[[B" history-beginning-search-forward
 
 
 fpath=($DOTFILES/zsh $fpath)
-autoload dark light
+autoload dark light update_color
 autoload no_powerline_fonts
 autoload t
 
-dark
+: ${COLORFGBG:='1:15'}
 
 ZSH_HIGHLIGHT_HIGHLIGHTERS=()
 ZSH_HIGHLIGHT_HIGHLIGHTERS+=(main)
@@ -93,5 +93,7 @@ ZSH_HIGHLIGHT_HIGHLIGHTERS+=(brackets)
 . $DOTFILES/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 [[ -r $HOME/.zshrc.local ]] && source $HOME/.zshrc.local
+
+update_color
 
 [[ -r $POWERLINE_HOME/bindings/zsh/powerline.zsh ]] && . $POWERLINE_HOME/bindings/zsh/powerline.zsh

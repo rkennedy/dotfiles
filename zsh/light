@@ -1,4 +1,4 @@
 export COLORFGBG='1;15'
-source $DOTFILES/base16-shell/base16-bright.light.sh
+update_color
 
 # vim: set ft=zsh:

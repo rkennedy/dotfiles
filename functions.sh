@@ -16,6 +16,17 @@ light() {
 	source $DOTFILES/base16-shell/base16-bright.light.sh
 }
 
+update_color() {
+	local -a colors
+	colors=(${COLORFGBG//;/ })
+	if ((${colors[0]} > ${colors[1]})); then
+		local shade=dark
+	else
+		local shade=light
+	fi
+	source $DOTFILES/base16-shell/base16-bright.${shade}.sh
+}
+
 no_powerline_fonts() {
 	export NO_POWERLINE_FONTS=1
 }

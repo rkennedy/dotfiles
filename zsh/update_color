@@ -1,0 +1,10 @@
+local -a colors
+colors=("${(@s/;/)COLORFGBG}")
+if (($colors[1] > $colors[2])); then
+    local shade=light
+else
+    local shade=dark
+fi
+source $DOTFILES/base16-shell/base16-bright.${shade}.sh
+
+# vim: set ft=zsh:
