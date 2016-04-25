@@ -15,6 +15,8 @@ ui = auto
 [alias]
 info = show --stat
 root = rev-parse --show-toplevel
+list-files = diff-tree --no-commit-id --name-only -r
+pushf = push --force-with-lease
 
 [http]
 # See http://stackoverflow.com/a/8467406/33732 for sslCAinfo
