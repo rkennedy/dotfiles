@@ -45,6 +45,7 @@ unset MAILCHECK IGNOREEOF CDPATH
 
 # current directory in green. On next line, hostname and history number
 PS1=$'[%F{green}%~%f]\n%m [%!]%(!.#.$) '
+. $DOTFILES/zsh/prompt/prompt.zsh
 
 # Delay job-completion notification until printing of next prompt
 unsetopt notify
@@ -95,5 +96,3 @@ ZSH_HIGHLIGHT_HIGHLIGHTERS+=(brackets)
 [[ -r $HOME/.zshrc.local ]] && source $HOME/.zshrc.local
 
 update_color
-
-[[ -r $POWERLINE_HOME/bindings/zsh/powerline.zsh ]] && . $POWERLINE_HOME/bindings/zsh/powerline.zsh
