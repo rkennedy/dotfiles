@@ -15,6 +15,10 @@ rk_path_prepend $HOME/.local/lib LIBRARY_PATH
 export LC_COLLATE='C'
 export LANG='en_US.UTF-8'
 
+# Git uses this to request passwords, but fails when there's no X server, so
+# let's disable it.
+unset SSH_ASKPASS
+
 export EDITOR='vim'
 export VISUAL='gvim'
 export PAGER='less'
