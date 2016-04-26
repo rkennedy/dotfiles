@@ -89,7 +89,8 @@ function prompt_pipestatus()
     local -a ps
     ps=($pipestat)
     reply=()
-    local success=(0)
+    local success
+    success=(0)
     local result
     if ((${#ps:*success} != ${#ps})); then
         local first=1
