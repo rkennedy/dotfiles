@@ -20,6 +20,9 @@ else
     alias b='echo no bash available'
 fi
 
+# view is frequently linked to vi, which is awful.
+alias view='vim -R'
+
 HISTSIZE=10050
 SAVEHIST=10000
 HISTFILE=~/.zsh_history
