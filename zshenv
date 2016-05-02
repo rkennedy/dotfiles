@@ -1,4 +1,5 @@
 : ${DOTFILES:=${${(%):-%x}:A:h}}
+export DOTFILES
 
 typeset -U -T LD_LIBRARY_PATH ld_library_path
 ld_library_path=($HOME/.local/lib ${(@)ld_library_path})

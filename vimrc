@@ -27,16 +27,14 @@ function! RKPatchInactiveColors(palette)
   endif
 endfunction
 
-" Begin Vundle setup
+" Begin plug-in setup
 filetype off
-set runtimepath+=$HOME/.vim/bundle/vundle
-call vundle#begin()
 
-Plugin 'gmarik/vundle'
+set runtimepath+=$DOTFILES/vim-bundle/vim-pathogen
+execute pathogen#infect("$DOTFILES/vim-bundle/{}")
 
-" Status line enhancement
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
+" vim-airline/vim-airline
+" vim-airline/vim-airline-themes
 " This refers to an environment variable set (or not) during login. We set it
 " when logging in by phone because the ConnectBot app doesn't support fonts
 " required for Powerline.
@@ -44,50 +42,20 @@ let g:airline_powerline_fonts=!($NO_POWERLINE_FONTS == 1)
 let g:airline_theme='powerlineish'
 let g:airline_theme_patch_func = 'RKPatchInactiveColors'
 let g:airline#extensions#whitespace#mixed_indent_algo=1
-" Change words to other variants
-Plugin 'tpope/vim-abolish'
-" Base16 color scheme
-Plugin 'chriskempson/base16-vim'
+
+" chriskempson/base16-vim
 let base16colorspace=256
-" Delphi syntax highlighting
-Plugin 'rkennedy/vim-delphi'
-" Handle Git files
-Plugin 'tpope/vim-git'
-" Show changed lines in gutter
-Plugin 'mhinz/vim-signify'
+
+" mhinz/vim-signify
 let g:signify_vcs_list = ['git', 'cvs']
 let g:signify_vcs_cmds = { 'cvs': 'cvs -d '.$CVSROOT.' diff -U0 -- %f' }
-" Markdown syntax highlighting
-Plugin 'tpope/vim-markdown'
-" Repeat commands
-Plugin 'tpope/vim-repeat'
-" Default Vim settings
-Plugin 'tpope/vim-sensible'
-" Copy and paste between tmux windows
-Plugin 'tpope/vim-tbone'
-" Pairs of keyboard motions
-Plugin 'tpope/vim-unimpaired'
-" Tmux syntax highlighting
-Plugin 'tmux-plugins/vim-tmux'
-" Operate Git within Vim
-Plugin 'tpope/vim-fugitive'
-" Detect and apply indentation settings
-Plugin 'tpope/vim-sleuth'
-" Python indentation settings
-Plugin 'hynek/vim-python-pep8-indent'
-" Run Ack within Vim
-Plugin 'mileszs/ack.vim'
-" Run builds asynchronously within Vim
-Plugin 'tpope/vim-dispatch'
-" Display marks in sign column
-Plugin 'kshenoy/vim-signature'
+
+" kshenoy/vim-signature
 let g:SignatureMarkTextHL = function('RKGetSignifyHLGroup')
 
 " NOTE: Also check for local .vimrc file
 silent! source $HOME/dotfiles.local/vimrc
-
-call vundle#end()
-" End Vundle setup
+" End plug-in setup
 
 set guifont=Sauce\ Code\ Powerline:h10
 syntax on

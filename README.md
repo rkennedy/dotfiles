@@ -38,19 +38,7 @@ After cloning the repository, do the following:
 
 4. Set up Vim:
 
-    1. Install [Vundle][vundle]:
-
-        ```bash
-        git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/vundle
-        ```
-
-    2. Run Vim and install Vundle plug-ins:
-
-        ```vim
-        :PluginInstall
-        ```
-
-    3. Create an undo folder in a location according to the OS:
+    1. Create an undo folder in a location according to the OS:
 
         * On Windows, create *`$APPDATA`/Vim/undo*.
         * On Mac, create *~/Library/Vim/undo*.
@@ -69,4 +57,3 @@ the `no_powerline_fonts` command on login, which will set an environment
 variable that *.vimrc* knows to look for prior to setting the up the display.
 
 [powerline]: https://github.com/Lokaltog/powerline
-[vundle]: https://github.com/gmarik/Vundle.vim
