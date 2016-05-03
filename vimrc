@@ -50,6 +50,12 @@ let base16colorspace=256
 let g:signify_vcs_list = ['git', 'cvs']
 let g:signify_vcs_cmds = { 'cvs': 'cvs -d '.$CVSROOT.' diff -U0 -- %f' }
 
+" mileszs/ack.vim
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
+let g:ack_use_dispatch = 1
+
 " kshenoy/vim-signature
 let g:SignatureMarkTextHL = function('RKGetSignifyHLGroup')
 
