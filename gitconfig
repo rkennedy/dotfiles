@@ -49,7 +49,7 @@ separator = cyan
 function = blue
 
 [diff]
-noprefix = true
+mnemonicPrefix = true
 
 [filter "lfs"]
 clean = git-lfs clean %f
