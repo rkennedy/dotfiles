@@ -33,6 +33,9 @@ status = true
 [help]
 autocorrect = 10
 
+[rebase]
+instructionFormat = %s (%ar) <%an>
+
 [color "diff"]
 meta = dim yellow  # With Solarized, this is orange
 func = blue
