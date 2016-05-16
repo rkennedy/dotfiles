@@ -1,4 +1,5 @@
 [user]
+useConfigOnly = true
 name = Rob Kennedy
 # email set in .gitconfig.local
 
