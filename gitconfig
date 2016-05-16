@@ -55,6 +55,9 @@ mnemonicPrefix = true
 [merge]
 conflictStyle = diff3
 
+[rerere]
+enabled = true
+
 [filter "lfs"]
 clean = git-lfs clean %f
 smudge = git-lfs smudge %f
