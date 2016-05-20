@@ -71,8 +71,8 @@ autoload -U compinit
 compinit
 # Do not autoselect the first completion entry
 unsetopt menu_complete
-# Add shashes to the ends of completed directory names, but remove them again if
-# they're at the end of a word.
+# Add slashes to the ends of completed directory names, but remove them again
+# if they're at the end of a word.
 setopt auto_param_slash auto_remove_slash
 # Attempt completion from the middle of a word, if that's where the cursor is.
 setopt complete_in_word
@@ -83,6 +83,10 @@ bindkey '^r' history-incremental-search-backward
 bindkey "^[[A" history-beginning-search-backward
 bindkey "^[[B" history-beginning-search-forward
 
+# Git uses this to request passwords, but fails when there's no X server, so
+# let's disable it. We do this here and in zshenv because /etc/zshrc might set
+# this after zshenv has already been processed.
+unset SSH_ASKPASS
 
 fpath=($DOTFILES/zsh $fpath)
 autoload dark light update_color

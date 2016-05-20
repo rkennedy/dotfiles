@@ -14,7 +14,8 @@ export LC_COLLATE='C'
 export LANG='en_US.UTF-8'
 
 # Git uses this to request passwords, but fails when there's no X server, so
-# let's disable it.
+# let's disable it. Note that this might get re-set during execution of
+# /etc/zshrc, so we may have to undo this again
 unset SSH_ASKPASS
 
 export EDITOR='vim'
