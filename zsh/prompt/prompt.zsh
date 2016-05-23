@@ -179,8 +179,11 @@ function prompt_virtual_env()
 }
 
 typeset -a ps1_functions
+ps1_functions=()
 typeset -a rps1_functions
+rps1_functions=()
 typeset -a ps4_functions
+ps4_functions=()
 
 ps1_functions+=(prompt_hostname)
 ps1_functions+=(prompt_user)
