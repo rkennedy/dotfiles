@@ -146,6 +146,18 @@ function prompt_git_commit()
     fi
 }
 
+export VIRTUAL_ENV_DISABLE_PROMPT=1
+function prompt_virtual_env()
+{
+    reply=()
+    if ((${+VIRTUAL_ENV} == 1)); then
+        # Dark blue on white
+        local fgc=33 bgc=253
+        reply+=("%{%F{$fgc}%K{$bgc}%}${VIRTUAL_ENV:t}")
+        reply+=($bgc $bgc)
+    fi
+}
+
 typeset -a ps1_functions
 typeset -a rps1_functions
 
@@ -155,6 +167,7 @@ ps1_functions+=(prompt_cwd)
 ps1_functions+=(prompt_jobs)
 rps1_functions+=(prompt_pipestatus)
 rps1_functions+=(prompt_git_commit)
+rps1_functions+=(prompt_virtual_env)
 
 function do_left_prompt()
 {
