@@ -14,6 +14,26 @@ setopt prompt_subst
 # the starting background color, and the ending background color. It should
 # set it to empty if there should be no contents for the prompt section.
 
+function trace_depth()
+{
+    reply=()
+    # Light gray on gray
+    local fgc=250 bgc=240
+    reply+=("%{%F{$fgc}%K{$bgc}%}%e")
+    reply+=($bgc $bgc)
+}
+
+function trace_function()
+{
+    reply=()
+    ((${NO_POWERLINE_FONTS:-0} == 0))
+    local sep=${(%):-%(?.'  '.:)}
+    # Blue on white
+    local fgc=4 bgc=7
+    reply+=("%{%F{$fgc}%K{$bgc}%}%N${sep}%i")
+    reply+=($bgc $bgc)
+}
+
 function prompt_hostname()
 {
     reply=()
@@ -160,6 +180,7 @@ function prompt_virtual_env()
 
 typeset -a ps1_functions
 typeset -a rps1_functions
+typeset -a ps4_functions
 
 ps1_functions+=(prompt_hostname)
 ps1_functions+=(prompt_user)
@@ -168,6 +189,8 @@ ps1_functions+=(prompt_jobs)
 rps1_functions+=(prompt_pipestatus)
 rps1_functions+=(prompt_git_commit)
 rps1_functions+=(prompt_virtual_env)
+ps4_functions+=(trace_depth)
+ps4_functions+=(trace_function)
 
 function do_left_prompt()
 {
@@ -175,7 +198,8 @@ function do_left_prompt()
     local sep=${(%):-%(?.''.)}
     local first=1
     local result
-    for func in ${(@)ps1_functions}; do
+    local function_list="${1}_functions"
+    for func in ${(@P)function_list}; do
         $func
         if ((${#reply} > 0)); then
             text=${reply[1]}
@@ -194,6 +218,7 @@ function do_left_prompt()
     result+="%{%k%}$sep%{%f%} "
     print -n $result
 }
+
 function do_right_prompt()
 {
     ((${NO_POWERLINE_FONTS:-0} == 0))
@@ -213,5 +238,6 @@ function do_right_prompt()
     print -n $result
 }
 
-PS1='$(do_left_prompt)'
+PS1='$(do_left_prompt ps1)'
 RPS1='$(pipestat=($pipestatus) do_right_prompt)'
+PS4="$(do_left_prompt ps4)"
