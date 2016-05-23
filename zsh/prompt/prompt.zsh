@@ -20,6 +20,7 @@ function prompt_hostname()
     if (($+SSH_CLIENT)); then
         ((${NO_POWERLINE_FONTS:-0} == 0))
         local secure_char=${(%):-%(?.' '.)}
+        # Yellow on orange
         local fgc=220 bgc=166
         reply+=("%{%F{$fgc}%K{$bgc}%}${secure_char}%m")
         reply+=($bgc $bgc)
@@ -29,6 +30,7 @@ function prompt_hostname()
 function prompt_user()
 {
     reply=()
+    # White on cyan
     local fgc=231 bgc=31
     reply+=("%{%F{$fgc}%K{$bgc}%}%B%n%b%{%K{$bgc}%}")
     reply+=($bgc $bgc)
@@ -37,6 +39,7 @@ function prompt_user()
 function prompt_cwd()
 {
     reply=()
+    # Gray on dark gray
     local fgc=250 bgc=240
     local ellipsis='⋯'
     # If the path length is four or more components, start with an ellipsis.
@@ -78,6 +81,7 @@ function prompt_jobs()
 {
     reply=()
     if ((${jobcount} > 0)); then
+        # Yellow on orange
         local fgc=220 bgc=166
         reply+=("%{%F{$fgc}%K{$bgc}%}%j")
         reply+=($bgc $bgc)
@@ -98,9 +102,11 @@ function prompt_pipestatus()
         local fgc bgc first_bgc
         for s in $ps; do
             if (($s == 0)); then
+                # White on dark green
                 fgc=231
                 bgc=22
             else
+                # White on dark red
                 fgc=231
                 bgc=52
             fi
@@ -131,6 +137,7 @@ function prompt_git_commit()
     local ID
     ID=$(git symbolic-ref --quiet --short HEAD || git describe --all --exact-match || git rev-parse --short HEAD) 2> /dev/null
     if (($? == 0)); then
+        # Gray on dark gray
         local fgc=250 bgc=236
         ((${NO_POWERLINE_FONTS:-0} == 0))
         local branch=${(%):-%(?.''.±)}
