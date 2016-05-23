@@ -209,7 +209,7 @@ function do_left_prompt()
             start_bgc=${reply[2]}
             end_bgc=${reply[3]}
             result+="%{%K{$start_bgc}%}"
-            if [ $first -eq 0 ]; then
+            if (($first == 0)); then
                 result+="${sep}"
             else
                 first=0
