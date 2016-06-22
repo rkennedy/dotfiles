@@ -74,6 +74,7 @@ set number
 set relativenumber
 set colorcolumn=80 " highlight column 80
 set cursorline
+set showcmd
 
 " Don't show the current mode; it's already shown by Airline.
 set noshowmode
