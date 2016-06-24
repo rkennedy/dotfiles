@@ -92,6 +92,7 @@ fpath=($DOTFILES/zsh $fpath)
 autoload dark light update_color
 autoload no_powerline_fonts
 autoload t
+autoload man
 
 : ${COLORFGBG:='1:15'}
 
