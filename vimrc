@@ -49,6 +49,7 @@ let base16colorspace=256
 " mhinz/vim-signify
 let g:signify_vcs_list = ['git', 'cvs']
 let g:signify_vcs_cmds = { 'cvs': 'cvs -d '.$CVSROOT.' diff -U0 -- %f' }
+let g:signify_sign_change = '±'
 
 " mileszs/ack.vim
 if executable('ag')
