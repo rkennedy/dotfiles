@@ -30,6 +30,7 @@ endfunction
 " Begin plug-in setup
 filetype off
 
+let g:pathogen_blacklist=['vim-airline']
 set runtimepath+=$DOTFILES/vim-bundle/vim-pathogen
 execute pathogen#infect("$DOTFILES/vim-bundle/{}")
 
@@ -117,3 +118,6 @@ colorscheme base16-bright
 hi Search ctermfg=18 ctermbg=11
 hi DiffChange ctermfg=04 ctermbg=18
 
+source vim-statusline.vim
+
+" vim: set sw=2 et:
