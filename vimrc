@@ -118,6 +118,6 @@ colorscheme base16-bright
 hi Search ctermfg=18 ctermbg=11
 hi DiffChange ctermfg=04 ctermbg=18
 
-source vim-statusline.vim
+source $DOTFILES/vim-statusline.vim
 
 " vim: set sw=2 et:
