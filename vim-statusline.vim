@@ -3,42 +3,66 @@ function! RKStatusLineCurLine()
 endfunction
 
 let s:modes = {
-  \ 'n': { 'text': 'NORMAL', 'modifier': 'n' },
-  \ 'i': { 'text': 'INSERT', 'modifier': 'i' },
-  \ 'R': { 'text': 'REPLACE', 'modifier': 'r' },
-  \ 'v': { 'text': 'VISUAL', 'modifier': 'v' },
-  \ 'V': { 'text': 'V-LINE', 'modifier': 'v' },
-  \ '': { 'text': 'V-BLOCK', 'modifier': 'v' },
-  \ 's': { 'text': 'SELECT', 'modifier': 'n' },
-  \ 'S': { 'text': 'S-LINE', 'modifier': 'n' },
-  \ '^S': { 'text': 'S-BLOCK', 'modifier': 'n' },
-  \ 'c': { 'text': 'COMMAND', 'modifier': 'n' },
+  \ 'n': { 'text': 'N', 'modifier': 'n' },
+  \ 'i': { 'text': 'I', 'modifier': 'i' },
+  \ 'R': { 'text': 'R', 'modifier': 'r' },
+  \ 'v': { 'text': 'V', 'modifier': 'v' },
+  \ 'V': { 'text': 'VL', 'modifier': 'v' },
+  \ '': { 'text': 'VB', 'modifier': 'v' },
+  \ 's': { 'text': 'S', 'modifier': 'n' },
+  \ 'S': { 'text': 'SL', 'modifier': 'n' },
+  \ '^S': { 'text': 'SB', 'modifier': 'n' },
+  \ 'c': { 'text': 'C', 'modifier': 'n' },
 \ }
+
+if $NO_POWERLINE_FONTS
+  let s:separators = {
+    \ 'solid': {
+      \ 'left': '',
+      \ 'right': '',
+    \ },
+    \ 'open' : {
+      \ 'left': '',
+      \ 'right': '',
+    \ }
+  \ }
+else
+  let s:separators = {
+    \ 'solid': {
+      \ 'left': '',
+      \ 'right': '',
+    \ },
+    \ 'open' : {
+      \ 'left': '',
+      \ 'right': '',
+    \ }
+  \ }
+endif
 
 function! RKStatusLineMode(winnum)
   let l:active = a:winnum == winnr()
   let l:bufnum = winbufnr(a:winnum)
 
   if l:active
-    let l:leftsep = ''
-    let l:rightsep = ''
+    let l:leftsep = $NO_POWERLINE_FONTS ? '' : ''
+    let l:rightsep = $NO_POWERLINE_FONTS ? '' : ''
   else
-    let l:leftsep = ''
-    let l:rightsep = ''
+    let l:leftsep = $NO_POWERLINE_FONTS ? '' : ''
+    let l:rightsep = $NO_POWERLINE_FONTS ? '' : ''
   endif
 
-  let l:left1 = ' ' . get(s:modes, mode(), {'text':'<' . mode() . '>'}).text . ' '
+  let l:left1 = ' %-2(' . get(s:modes, mode(), {'text':'<' . mode() . '>'}).text . '%) '
   let l:left1 = l:left1 . '%{ &paste ? '' PASTE '' : '''' }'
   let l:left1 = l:left1 . '%{ &spell ? '' SPELL '' : '''' }'
 
-  let l:left3 = ' %(±%{fugitive#head(7)}  %)'
+  let l:left3 = ' %(±%{fugitive#head(7)}%{ $NO_POWERLINE_FONTS ? "\\" : "  " }%)'
   let l:left3 = l:left3 . '%{ &readonly ? "○": "●" } '
 
-  let l:right1 = ' %3p%%  '
+  let l:right1 = ' %3p%% %{ $NO_POWERLINE_FONTS ? "" : "" }'
   let l:right1 = l:right1 . '%{RKStatusLineCurLine()}/%L '
-  let l:right1 = l:right1 . ':%4c '
+  let l:right1 = l:right1 . '%3c| '
 
-  let l:right2 = ' %{&fenc}  %{&ff} '
+  let l:right2 = ' %{&fenc . ($NO_POWERLINE_FONTS ? "/" : "  ") . &ff} '
 
   let l:right3 = ' %{&ft} '
 
