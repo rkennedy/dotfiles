@@ -1,3 +1,6 @@
+" Don't show the current mode; it's already shown on the status line.
+set noshowmode
+
 function! RKStatusLineCurLine()
   return printf('%*d', len(line('$')), line('.'))
 endfunction

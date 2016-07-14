@@ -78,9 +78,6 @@ set colorcolumn=80 " highlight column 80
 set cursorline
 set showcmd
 
-" Don't show the current mode; it's already shown by Airline.
-set noshowmode
-
 " Don't try to connect to X server for clipboard support; it's unlikely
 " the X server on my systems will be active.
 set clipboard=exclude:.*
