@@ -18,31 +18,11 @@ function RKGetSignifyHLGroup(lineno)
   endif
 endfunction
 
-function! RKPatchInactiveColors(palette)
-  if g:airline_theme == 'powerlineish'
-    for colors in values(a:palette.inactive)
-      let colors[0] = '#9e9e9e'
-      let colors[2] = 247
-    endfor
-  endif
-endfunction
-
 " Begin plug-in setup
 filetype off
 
-let g:pathogen_blacklist=['vim-airline']
 set runtimepath+=$DOTFILES/vim-bundle/vim-pathogen
 execute pathogen#infect("$DOTFILES/vim-bundle/{}")
-
-" vim-airline/vim-airline
-" vim-airline/vim-airline-themes
-" This refers to an environment variable set (or not) during login. We set it
-" when logging in by phone because the ConnectBot app doesn't support fonts
-" required for Powerline.
-let g:airline_powerline_fonts=!($NO_POWERLINE_FONTS == 1)
-let g:airline_theme='powerlineish'
-let g:airline_theme_patch_func = 'RKPatchInactiveColors'
-let g:airline#extensions#whitespace#mixed_indent_algo=1
 
 " chriskempson/base16-vim
 let base16colorspace=256
