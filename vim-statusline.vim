@@ -1,3 +1,7 @@
+if !has('statusline')
+  finish
+endif
+
 " Don't show the current mode; it's already shown on the status line.
 set noshowmode
 
@@ -104,10 +108,12 @@ function! s:RefreshStatus()
   endfor
 endfunction
 
-augroup status
-  autocmd!
-  autocmd VimEnter,WinEnter,BufWinEnter * call <SID>RefreshStatus()
-augroup END
+if has('autocmd')
+  augroup status
+    autocmd!
+    autocmd VimEnter,WinEnter,BufWinEnter * call <SID>RefreshStatus()
+  augroup END
+endif
 
 set laststatus=2  " always show status bar
 

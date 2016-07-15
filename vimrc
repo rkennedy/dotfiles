@@ -47,28 +47,47 @@ silent! source $HOME/dotfiles.local/vimrc
 
 set guifont=Sauce\ Code\ Powerline:h10
 syntax on
-set foldcolumn=2 " left columns for code-folding indicators
+if has('folding')
+  set foldcolumn=2 " left columns for code-folding indicators
+endif
 set guioptions-=T " disable tool bar
-set hlsearch " highlight all search results
+if has('extra_search')
+  set hlsearch " highlight all search results
+endif
 
 " Options to better see where we are
 set number
-set relativenumber
-set colorcolumn=80 " highlight column 80
-set cursorline
-set showcmd
+if exists('+relativenumber')
+  set relativenumber
+endif
+if has('syntax')
+  set colorcolumn=80 " highlight column 80
+  set cursorline
+endif
+if has('cmdline_info')
+  set showcmd
+endif
 
 " Don't try to connect to X server for clipboard support; it's unlikely
 " the X server on my systems will be active.
-set clipboard=exclude:.*
+if has('xterm_clipboard')
+  set clipboard=exclude:.*
+endif
+
+"set listchars=nbsp:␣,eol:¶,trail:·,tab:▶‣
 
 set formatoptions+=r " automatically insert comment-continuation char
-set cinoptions+=l1 " align code under case label, not brace
-set cinoptions+=t0 " don't indent function return type
-set cinoptions+=(0 " align with unclosed parenthesis ...
-set cinoptions+=W4 " ... unless it's at the end of a line
-set cinoptions+=g0 " align C++ visibility with the enclosing block
+set formatoptions-=o " Don't continue comments after pressing O or o.
+set formatoptions+=j " Remove comment leader when joining lines
 set nojoinspaces " no extra space between sentences joined from multiple lines
+
+if has('cindent')
+  set cinoptions+=l1 " align code under case label, not brace
+  set cinoptions+=t0 " don't indent function return type
+  set cinoptions+=(0 " align with unclosed parenthesis ...
+  set cinoptions+=W4 " ... unless it's at the end of a line
+  set cinoptions+=g0 " align C++ visibility with the enclosing block
+endif
 
 " If Vim supports persistent undo, then determine the platform-appropriate
 " directory and store undo files there.
@@ -89,11 +108,13 @@ set splitbelow splitright
 
 filetype plugin indent on
 
-colorscheme base16-bright
-" The default base16-bright scheme sets Search to an unreadable combination
-" and sets the background of DiffChange inconsistently with vim-signify.
-hi Search ctermfg=18 ctermbg=11
-hi DiffChange ctermfg=04 ctermbg=18
+if has('syntax')
+  colorscheme base16-bright
+  " The default base16-bright scheme sets Search to an unreadable combination
+  " and sets the background of DiffChange inconsistently with vim-signify.
+  hi Search ctermfg=18 ctermbg=11
+  hi DiffChange ctermfg=04 ctermbg=18
+endif
 
 source $DOTFILES/vim-statusline.vim
 
