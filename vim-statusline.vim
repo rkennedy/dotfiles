@@ -2,7 +2,7 @@
 set noshowmode
 
 function! RKStatusLineCurLine()
-  return printf('%*d', len(line('$')), line('.'))
+  return ($NO_POWERLINE_FONTS ? "" : "") . printf('%*d', len(line('$')), line('.'))
 endfunction
 
 let s:modes = {
@@ -61,7 +61,7 @@ function! RKStatusLineMode(winnum)
   let l:left3 = ' %(±%{fugitive#head(7)}%{ $NO_POWERLINE_FONTS ? "\\" : "  " }%)'
   let l:left3 = l:left3 . '%{ &readonly ? "○": "●" } '
 
-  let l:right1 = ' %3p%% %{ $NO_POWERLINE_FONTS ? "" : "" }'
+  let l:right1 = ' %3p%% '
   let l:right1 = l:right1 . '%{RKStatusLineCurLine()}/%L '
   let l:right1 = l:right1 . '%3c| '
 
