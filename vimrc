@@ -118,4 +118,4 @@ endif
 
 source $DOTFILES/vim-statusline.vim
 
-" vim: set sw=2 et:
+" vim: set ts=2 sw=2 et:

@@ -244,3 +244,5 @@ function do_right_prompt()
 PS1='$(do_left_prompt ps1)'
 RPS1='$(pipestat=($pipestatus) do_right_prompt)'
 PS4="$(do_left_prompt ps4)"
+
+# vim: set ts=4 et sw=4:
