@@ -15,6 +15,8 @@ alias which='type -p'
 
 alias ps='ps -o "pid tty user time args"'
 alias grep='grep --color=auto'
+alias ack='ack --color-match="dark red" --color-file=magenta --color-line=yellow'
+alias ag='ag --color --color-match=31 --color-path=35 --color-line-number=33'
 
 type dircolors >/dev/null 2>&1 && {
     eval `dircolors -b $DOTFILES/dir_colors`
