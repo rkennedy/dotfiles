@@ -96,7 +96,7 @@ autoload no_powerline_fonts
 autoload t
 autoload man
 
-: ${COLORFGBG:='1:15'}
+: ${COLORFGBG:='1;15'}
 
 ZSH_HIGHLIGHT_HIGHLIGHTERS=()
 ZSH_HIGHLIGHT_HIGHLIGHTERS+=(main)
