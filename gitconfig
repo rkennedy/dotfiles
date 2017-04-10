@@ -19,6 +19,7 @@ info = show --stat
 root = rev-parse --show-toplevel
 list-files = diff-tree --no-commit-id --name-only -r
 pushf = push --force-with-lease
+pushnew = !git push --set-upstream origin $(git rev-parse --abbrev-ref HEAD)
 
 [http]
 # See http://stackoverflow.com/a/8467406/33732 for sslCAinfo
