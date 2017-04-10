@@ -51,12 +51,16 @@ meta = dim yellow  # With Solarized, this is orange
 func = blue
 
 [color "grep"]
-matchSelected = bold red
-matchContext = bold red
+matchSelected = red
+matchContext = red
 filename = magenta
-linenumber = green
+linenumber = yellow
 separator = cyan
 function = blue
+
+[grep]
+patternType = extended
+fallbackToNoIndex = true
 
 [diff]
 mnemonicPrefix = true
