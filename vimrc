@@ -23,6 +23,7 @@ filetype off
 
 set runtimepath+=$DOTFILES/vim-bundle/vim-pathogen
 execute pathogen#infect("$DOTFILES/vim-bundle/{}")
+execute pathogen#infect("$DOTFILES.local/vim-bundle/{}")
 
 " chriskempson/base16-vim
 let base16colorspace=256
