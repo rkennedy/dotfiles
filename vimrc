@@ -117,6 +117,8 @@ if has('syntax')
   hi DiffChange ctermfg=04 ctermbg=18
 endif
 
+command Wz :write | :suspend
+
 source $DOTFILES/vim-statusline.vim
 
 " vim: set ts=2 sw=2 et:
