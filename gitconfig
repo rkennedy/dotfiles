@@ -43,6 +43,8 @@ autocorrect = 10
 
 [rebase]
 instructionFormat = %s (%ar) <%an>
+autostash = true
+autoSquash = true
 
 [color "diff"]
 meta = dim yellow  # With Solarized, this is orange
