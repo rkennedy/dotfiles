@@ -14,6 +14,7 @@ preloadindex = true
 ui = auto
 
 [alias]
+git = !git
 info = show --stat
 root = rev-parse --show-toplevel
 list-files = diff-tree --no-commit-id --name-only -r
