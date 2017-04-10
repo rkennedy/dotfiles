@@ -1,13 +1,3 @@
-# Prompt:
-# On left:
-# - remote host name, plus SSH indicator: ${(%):-%m}, plus ?
-# - current user name: ${(%):-%n}
-# - abbreviated path: ${(%):-%3~}
-# - number of background jobs: ${(%):-%j}
-#
-# On right:
-# - results of previous command pipeline: ${pipestatus[@]}
-# - current branch or commit ID, if in source repo
 setopt prompt_subst
 
 # Prompt functions should set $reply array to contain the prompt contents,
@@ -34,14 +24,37 @@ function trace_function()
     reply+=($bgc $bgc)
 }
 
+function get_hostname_colors()
+{
+    local hosthash=$(hostname | cksum | cut -f1 -d' ')
+    case $((hosthash % 4)) in
+        0)
+            fgc=233
+            bgc=201
+            ;;
+        1)
+            # Yellow on orange
+            fgc=220
+            bgc=166
+            ;;
+        2)
+            fgc=21
+            bgc=196
+            ;;
+        3)
+            fgc=21
+            bgc=34
+            ;;
+    esac
+}
+
 function prompt_hostname()
 {
     reply=()
     if (($+SSH_CLIENT)); then
         ((${NO_POWERLINE_FONTS:-0} == 0))
         local secure_char=${(%):-%(?.' '.)}
-        # Yellow on orange
-        local fgc=220 bgc=166
+        get_hostname_colors
         reply+=("%{%F{$fgc}%K{$bgc}%}${secure_char}%m")
         reply+=($bgc $bgc)
     fi
