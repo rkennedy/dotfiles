@@ -8,7 +8,7 @@ alias rm='rm -i' cp='cp -i' mv='mv -i'
 
 alias ps='ps -o "pid tty user time args"'
 alias grep='grep --color=auto'
-alias ack='ack --color-match="dark red" --color-file=magenta --color-line=yellow'
+alias ack='ack --color-match="dark red" --color-filename=magenta --color-lineno=yellow'
 alias ag='ag --color --color-match=31 --color-path=35 --color-line-number=33'
 
 type dircolors >&/dev/null && {
