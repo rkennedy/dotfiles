@@ -35,6 +35,8 @@ ff = only
 
 [pager]
 status = true
+branch = true
+tag = true
 
 [help]
 autocorrect = 10
