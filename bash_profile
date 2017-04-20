@@ -20,6 +20,7 @@ export LANG='en_US.UTF-8'
 unset SSH_ASKPASS
 
 export EDITOR='vim'
+export SUDO_EDITOR='vim'
 export VISUAL='gvim'
 export PAGER='less'
 export LESS='-MqSX -x2'
