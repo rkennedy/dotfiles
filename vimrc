@@ -121,4 +121,9 @@ command Wz :write | :suspend
 
 source $DOTFILES/vim-statusline.vim
 
+" Display highlighting settings under cursor position
+map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+
 " vim: set ts=2 sw=2 et:
