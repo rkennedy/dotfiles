@@ -42,6 +42,10 @@ let g:ack_use_dispatch = 1
 " kshenoy/vim-signature
 let g:SignatureMarkTextHL = function('RKGetSignifyHLGroup')
 
+" tpope/vim-markdown
+let g:markdown_fenced_languages = ["c++=cpp", 'python', 'bash=sh']
+let g:markdown_syntax_conceal = 1
+
 " NOTE: Also check for local .vimrc file
 silent! source $HOME/dotfiles.local/vimrc
 " End plug-in setup
