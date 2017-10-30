@@ -94,19 +94,23 @@ if has('cindent')
   set cinoptions+=g0 " align C++ visibility with the enclosing block
 endif
 
-" If Vim supports persistent undo, then determine the platform-appropriate
-" directory and store undo files there.
+" Determine the platform-appropriate directory for storing Vim data
+let s:dir = has('win32')
+  \ ? '$APPDATA/Vim'
+  \ : match(system('uname'), "Darwin") > -1
+    \ ? '~/Library/Vim'
+    \ : empty($XDG_DATA_HOME)
+      \ ? '~/.local/share/vim'
+      \ : '$XDG_DATA_HOME/vim'
+
+" If Vim supports persistent undo, then store undo files in s:dir.
 if exists('+undofile')
-  let s:dir = has('win32')
-    \ ? '$APPDATA/Vim'
-    \ : match(system('uname'), "Darwin") > -1
-      \ ? '~/Library/Vim'
-      \ : empty($XDG_DATA_HOME)
-        \ ? '~/.local/share/vim'
-        \ : '$XDG_DATA_HOME/vim'
   let &undodir = expand(s:dir) . '/undo'
   set undofile
 endif
+
+" netrw config
+let g:netrw_home = expand(s:dir)
 
 " Open new windows below (:new) or right (:vnew) of the current window
 set splitbelow splitright
