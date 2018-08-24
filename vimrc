@@ -3,7 +3,7 @@ set nocompatible " not vi-compatible
 function RKGetSignifyHLGroup(lineno)
   " Description: Returns the highlight group used by vim-signify depending on
   "              how the line was edited. Called by vim-signature.
-  call sy#sign#get_current_signs()
+  call sy#sign#get_current_signs(b:sy)
   if has_key(b:sy.internal, a:lineno)
     let type = b:sy.internal[a:lineno]['type']
     if type =~ 'SignifyAdd'
