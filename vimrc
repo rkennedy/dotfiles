@@ -67,6 +67,10 @@ if exists('+relativenumber')
 endif
 if has('syntax')
   set colorcolumn=80 " highlight column 80
+  augroup quickfix_colors
+    autocmd!
+    autocmd FileType qf setlocal colorcolumn=
+  augroup END
   set cursorline
 endif
 if has('cmdline_info')
