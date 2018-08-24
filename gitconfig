@@ -17,7 +17,8 @@ ui = auto
 git = !git
 info = show --stat
 root = rev-parse --show-toplevel
-list-files = diff-tree --no-commit-id --name-only -r
+# List files changed in the given commit (like git show --stat, but names only)
+show-files = diff-tree --no-commit-id --name-only -r
 pushf = push --force-with-lease
 pushnew = !git push --set-upstream origin $(git rev-parse --abbrev-ref HEAD)
 
