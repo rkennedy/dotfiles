@@ -1,4 +1,3 @@
-echo 5 $DOTFILES/pyenv/bin
 echo 10 $HOME/.local/bin
 echo 12 $DOTFILES/bin
 echo 15 $HOME/.rvm/bin

@@ -10,9 +10,6 @@
 [submodule "git-extras"]
 	path = git-extras
 	url = https://github.com/rkennedy/git-extras
-[submodule "pyenv"]
-	path = pyenv
-	url = https://github.com/yyuu/pyenv
 [submodule "base16-shell"]
 	path = base16-shell
 	url = https://github.com/chriskempson/base16-shell.git

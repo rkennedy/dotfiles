@@ -33,7 +33,6 @@ export CSCOPE_EDITOR='view'
 export CVSEDITOR='vim'
 export CVSREAD='Yes'
 
-export PYENV_ROOT=$DOTFILES/pyenv
 export PYTHONSTARTUP=$DOTFILES/python-shell-enhancement/pythonstartup.py
 
 # This is the default value. We duplicate it here to mirror .gitconfig settings.
@@ -51,10 +50,6 @@ typeset -T -U PATHS=$(source $DOTFILES/MANPATHrc | sort -n | cut -d' ' -s -f 2- 
 manpath=(${manpath:|paths} ${(u)paths} ${default_manpath:|manpath})
 typeset -U MANPATH
 unset DEFAULT_MANPATH default_manpath paths
-
-if type pyenv >&/dev/null; then
-    eval "$(pyenv init -)"
-fi
 
 umask 022
 

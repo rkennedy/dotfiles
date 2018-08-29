@@ -34,7 +34,6 @@ export CSCOPE_EDITOR='view'
 export CVSEDITOR='vim'
 export CVSREAD='Yes'
 
-export PYENV_ROOT=$DOTFILES/pyenv
 export PYTHONSTARTUP=$DOTFILES/python-shell-enhancement/pythonstartup.py
 
 # This is the default value. We duplicate it here to mirror .gitconfig settings.
@@ -45,10 +44,6 @@ BASH_COMPLETION=$HOME/etc/bash_completion
 
 rk_path_import PATH $DOTFILES/PATHrc
 rk_path_import MANPATH $DOTFILES/MANPATHrc
-
-if type pyenv >/dev/null 2>&1; then
-    eval "$(pyenv init -)"
-fi
 
 umask 022
 
