@@ -73,3 +73,6 @@
 [submodule "vim-bundle/editorconfig-vim"]
 	path = vim-bundle/editorconfig-vim
 	url = https://github.com/editorconfig/editorconfig-vim
+[submodule "vim-bundle/jq.vim"]
+	path = vim-bundle/jq.vim
+	url = https://github.com/vito-c/jq.vim
