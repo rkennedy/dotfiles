@@ -1,0 +1,3 @@
+Host *github.com
+ForwardX11 no
+# vim: set ft=sshconfig:

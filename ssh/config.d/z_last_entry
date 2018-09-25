@@ -1,0 +1,10 @@
+Host *
+IdentityFile ~/.ssh/id_rsa
+ForwardAgent no
+ForwardX11 yes
+Protocol 2
+GSSAPIAuthentication no
+SendEnv TERM_PROGRAM
+ServerAliveInterval 120
+XAuthLocation /opt/X11/bin/xauth
+# vim: set ft=sshconfig:
