@@ -54,4 +54,6 @@ shopt -u autocd
 shopt -u sourcepath
 shopt -s checkwinsize
 
+direnv version >/dev/null 2>&1 && eval "$(direnv hook bash)"
+
 [[ -r $HOME/.bashrc.local ]] && source $HOME/.bashrc.local

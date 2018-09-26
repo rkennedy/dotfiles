@@ -98,6 +98,8 @@ autoload man
 
 : ${COLORFGBG:='1;15'}
 
+direnv version >/dev/null 2>&1 && eval "$(direnv hook zsh)"
+
 ZSH_HIGHLIGHT_HIGHLIGHTERS=()
 ZSH_HIGHLIGHT_HIGHLIGHTERS+=(main)
 ZSH_HIGHLIGHT_HIGHLIGHTERS+=(brackets)
