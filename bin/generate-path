@@ -1,0 +1,22 @@
+#!/usr/bin/env perl
+
+# Arg 1: Value of PATH environment variable
+# Arg 2: Name of PATHrc file containing path ordering
+
+# Usage:
+# PATH=$(generate-path "${PATH}" PATHrc); export PATH
+
+use strict;
+use warnings;
+
+my @existing_paths = split /:/, $ARGV[0];
+chomp(my @ordered_paths = `sh "$ARGV[1]" | sort -n | cut -d' ' -s -f 2-`);
+
+# Print all the pre-existing PATH entries, except those that were explicitly
+# ordered in PATHrc. Then print everything from PATHrc.
+my @paths = grep {
+    my $this = $_;
+    !grep { $_ eq $this } @ordered_paths;
+} @existing_paths;
+$, = ':';
+print @paths, @ordered_paths;

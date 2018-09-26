@@ -41,15 +41,10 @@ export GREP_COLORS='ms=01;31:mc=01;31:sl=:cx=:fn=35:ln=32:bn=32:se=36'
 #BASH_COMPLETION=$HOME/etc/bash_completion
 #[[ -r $BASH_COMPLETION ]] && source $BASH_COMPLETION
 
-paths=("${(@f)$(source $DOTFILES/PATHrc | sort -n | cut '-d ' -s -f 2-)}")
-path=(${path:|paths} ${(u)paths})
-unset paths
-
-typeset -T -U DEFAULT_MANPATH=$(MANPATH= man --path 2>/dev/null) default_manpath
-typeset -T -U PATHS=$(source $DOTFILES/MANPATHrc | sort -n | cut -d' ' -s -f 2- | paste -sd : -) paths
-manpath=(${manpath:|paths} ${(u)paths} ${default_manpath:|manpath})
-typeset -U MANPATH
-unset DEFAULT_MANPATH default_manpath paths
+PATH=$(${DOTFILES}/bin/generate-path "${PATH}" "${DOTFILES}/PATHrc")
+export PATH
+MANPATH=$(${DOTFILES}/bin/generate-path "${MANPATH}" "${DOTFILES}/MANPATHrc")
+export MANPATH
 
 umask 022
 

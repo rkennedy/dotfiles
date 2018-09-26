@@ -42,8 +42,10 @@ export GREP_COLORS='ms=01;31:mc=01;31:sl=:cx=:fn=35:ln=32:bn=32:se=36'
 BASH_COMPLETION=$HOME/etc/bash_completion
 [[ -r $BASH_COMPLETION ]] && source $BASH_COMPLETION
 
-rk_path_import PATH $DOTFILES/PATHrc
-rk_path_import MANPATH $DOTFILES/MANPATHrc
+PATH=$(${DOTFILES}/bin/generate-path "${PATH}" "${DOTFILES}/PATHrc")
+export PATH
+MANPATH=$(${DOTFILES}/bin/generate-path "${MANPATH}" "${DOTFILES}/MANPATHrc")
+export MANPATH
 
 umask 022
 
