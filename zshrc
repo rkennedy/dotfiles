@@ -49,8 +49,10 @@ fignore=(.o ~ .rpo .class)
 unset MAILCHECK IGNOREEOF CDPATH
 
 # current directory in green. On next line, hostname and history number
-PS1=$'[%F{green}%~%f]\n%m [%!]%(!.#.$) '
-. $DOTFILES/zsh/prompt/prompt.zsh
+PS1=$'[\e[0;32m%~\e[0m] %m [%!]%(!.#.$) '
+if ((${ZSH_VERSION%%.*} >= 5)); then
+    . $DOTFILES/zsh/prompt/prompt.zsh
+fi
 
 # Delay job-completion notification until printing of next prompt
 unsetopt notify
@@ -100,10 +102,12 @@ autoload man
 
 direnv version >/dev/null 2>&1 && eval "$(direnv hook zsh)"
 
-ZSH_HIGHLIGHT_HIGHLIGHTERS=()
-ZSH_HIGHLIGHT_HIGHLIGHTERS+=(main)
-ZSH_HIGHLIGHT_HIGHLIGHTERS+=(brackets)
-. $DOTFILES/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+if ((${ZSH_VERSION%%.*} >= 5)); then
+    ZSH_HIGHLIGHT_HIGHLIGHTERS=()
+    ZSH_HIGHLIGHT_HIGHLIGHTERS+=(main)
+    ZSH_HIGHLIGHT_HIGHLIGHTERS+=(brackets)
+    . $DOTFILES/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+fi
 
 [[ -r $HOME/.zshrc.local ]] && source $HOME/.zshrc.local
 
