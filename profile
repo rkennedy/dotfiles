@@ -17,4 +17,18 @@ export PATH
 MANPATH=`${DOTFILES}/bin/generate-path "${MANPATH}" "${DOTFILES}/MANPATHrc"`
 export MANPATH
 
-# vim: set ft=sh:
+s() {
+    if shell=`command -v zsh`; then
+        :
+    elif shell=`command -v bash`; then
+        :
+    else
+        >&2 printf 'no better shell available\n'
+        return 1
+    fi
+    SHELL=${shell}
+    export SHELL
+    exec ${SHELL} -l
+}
+
+# vim: set ft=sh et:
