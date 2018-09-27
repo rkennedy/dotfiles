@@ -11,7 +11,9 @@ typeset -U -T LIBRARY_PATH library_path
 library_path=($HOME/.local/lib ${(@)library_path})
 
 export LC_COLLATE='C'
-export LANG='en_US.UTF-8'
+if locale -a | grep -F en_US.UTF-8 >/dev/null; then
+    export LANG='en_US.UTF-8'
+fi
 
 # Git uses this to request passwords, but fails when there's no X server, so
 # let's disable it. Note that this might get re-set during execution of

@@ -13,7 +13,9 @@ rk_path_prepend $HOME/.local/include CPLUS_INCLUDE_PATH
 rk_path_prepend $HOME/.local/lib LIBRARY_PATH
 
 export LC_COLLATE='C'
-export LANG='en_US.UTF-8'
+if locale -a | grep -F en_US.UTF-8 >/dev/null; then
+    export LANG='en_US.UTF-8'
+fi
 
 # Git uses this to request passwords, but fails when there's no X server, so
 # let's disable it.
