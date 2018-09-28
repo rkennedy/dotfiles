@@ -109,6 +109,6 @@ if ((${ZSH_VERSION%%.*} >= 5)); then
     . $DOTFILES/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fi
 
-[[ -r $HOME/.zshrc.local ]] && source $HOME/.zshrc.local
+[[ -r ${DOTFILES_LOCAL}/zshrc ]] && source ${DOTFILES_LOCAL}/zshrc
 
 update_color

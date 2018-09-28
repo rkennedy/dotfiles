@@ -2,7 +2,9 @@
 # for login shells.
 # Set environment variables in .bash_profile and .cshrc.
 
-[[ -z ${DOTFILES:+x} ]] && export DOTFILES="$(dirname "$(perl -MCwd=realpath -e 'print realpath($ARGV[0])' "${BASH_SOURCE[0]}")")"
+: ${DOTFILES:=$(dirname "$(perl -MCwd=realpath -e 'print realpath($ARGV[0])' "${BASH_SOURCE[0]}")")}
+: ${DOTFILES_LOCAL:=${HOME}/dotfiles.local}
+export DOTFILES DOTFILES_LOCAL
 
 if ls --color=auto 2>/dev/null >/dev/null; then
     alias ls='ls -obF --color'
@@ -56,4 +58,4 @@ shopt -s checkwinsize
 
 direnv version >/dev/null 2>&1 && eval "$(direnv hook bash)"
 
-[[ -r $HOME/.bashrc.local ]] && source $HOME/.bashrc.local
+[[ -r ${DOTFILES_LOCAL}/bashrc ]] && source ${DOTFILES_LOCAL}/bashrc

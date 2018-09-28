@@ -3,7 +3,9 @@
 # Set environment variables here. If bash is not the login shell, then
 # be sure to also make corresponding environment settings in .cshrc.
 
-[[ -z ${DOTFILES:+x} ]] && export DOTFILES="$(dirname "$(perl -MCwd=realpath -e 'print realpath($ARGV[0])' "${BASH_SOURCE[0]}")")"
+: ${DOTFILES:=$(dirname "$(perl -MCwd=realpath -e 'print realpath($ARGV[0])' "${BASH_SOURCE[0]}")")}
+: ${DOTFILES_LOCAL:=${HOME}/dotfiles.local}
+export DOTFILES DOTFILES_LOCAL
 
 source $DOTFILES/path_funcs.sh
 
@@ -55,7 +57,7 @@ source $DOTFILES/functions.sh
 
 : ${COLORFGBG:='15;1'}
 
-[[ -r $HOME/.bash_profile.local ]] && source $HOME/.bash_profile.local
+[[ -r ${DOTFILES_LOCAL}/bash_profile ]] && source ${DOTFILES_LOCAL}/bash_profile
 
 update_color
 

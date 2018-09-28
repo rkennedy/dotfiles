@@ -1,5 +1,6 @@
 : ${DOTFILES:=${${(%):-%x}:A:h}}
-export DOTFILES
+: ${DOTFILES_LOCAL:=${HOME}/dotfiles.local}
+export DOTFILES DOTFILES_LOCAL
 
 typeset -U -T LD_LIBRARY_PATH ld_library_path
 ld_library_path=($HOME/.local/lib ${(@)ld_library_path})
@@ -50,4 +51,4 @@ export MANPATH
 
 umask 022
 
-[[ -r $HOME/.zshenv.local ]] && source $HOME/.zshenv.local
+[[ -r ${DOTFILES_LOCAL}/zshenv ]] && source ${DOTFILES_LOCAL}/zshenv

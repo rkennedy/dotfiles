@@ -1,4 +1,4 @@
 echo 10 $DOTFILES/git-extras/man
-[ -r "${HOME}/.MANPATHrc.local" ] && . "${HOME}/.MANPATHrc.local"
+[ -r "${DOTFILES_LOCAL}/MANPATHrc" ] && . "${DOTFILES_LOCAL}/MANPATHrc"
 
 # vim: set ft=sh:

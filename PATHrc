@@ -12,6 +12,6 @@ echo 80 /bin
 echo 90 /usr/sbin
 echo 100 /usr/dt/bin
 echo 110 /usr/ucb
-[ -r "${HOME}/.PATHrc.local" ] && . "${HOME}/.PATHrc.local"
+[ -r "${DOTFILES_LOCAL}/PATHrc" ] && . "${DOTFILES_LOCAL}/PATHrc"
 
 # vim: set ft=sh:

@@ -5,12 +5,11 @@ else
     >&2 printf "sh isn't bash\n"
     self=${HOME}/.profile
 fi
-if [ -z "${DOTFILES:+x}" ]; then
-    self=`perl -MCwd=realpath -e 'print realpath($ARGV[0])' "${self}"`
-    DOTFILES=`dirname "${self}"`
-    export DOTFILES
-fi
-unset self
+real_self=`perl -MCwd=realpath -e 'print realpath($ARGV[0])' "${self}"`
+: ${DOTFILES:=`dirname "${real_self}"`}
+: ${DOTFILES_LOCAL:=${HOME}/dotfiles.local}
+export DOTFILES DOTFILES_LOCAL
+unset self real_self
 
 PATH=`${DOTFILES}/bin/generate-path "${PATH}" "${DOTFILES}/PATHrc"`
 export PATH

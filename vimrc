@@ -23,7 +23,7 @@ filetype off
 
 set runtimepath+=$DOTFILES/vim-bundle/vim-pathogen
 execute pathogen#infect("$DOTFILES/vim-bundle/{}")
-execute pathogen#infect("$DOTFILES.local/vim-bundle/{}")
+execute pathogen#infect("$DOTFILES_LOCAL/vim-bundle/{}")
 
 " chriskempson/base16-vim
 let base16colorspace=256
@@ -47,7 +47,7 @@ let g:markdown_fenced_languages = ["c++=cpp", 'python', 'bash=sh']
 let g:markdown_syntax_conceal = 1
 
 " NOTE: Also check for local .vimrc file
-silent! source $HOME/dotfiles.local/vimrc
+silent! source $DOTFILES_LOCAL/vimrc
 " End plug-in setup
 
 set guifont=Sauce\ Code\ Powerline:h10
