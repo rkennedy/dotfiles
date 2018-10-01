@@ -46,6 +46,12 @@ let g:SignatureMarkTextHL = function('RKGetSignifyHLGroup')
 let g:markdown_fenced_languages = ["c++=cpp", 'python', 'bash=sh']
 let g:markdown_syntax_conceal = 1
 
+" hashivim/vim-terraform
+let g:terraform_align = 1
+let g:terraform_fold_sections = 1
+let g:terraform_remap_spacebar = 1
+let g:terraform_commentstring = '//%s'
+
 " NOTE: Also check for local .vimrc file
 silent! source $DOTFILES_LOCAL/vimrc
 " End plug-in setup
