@@ -118,6 +118,30 @@ function prompt_jobs()
     fi
 }
 
+function prompt_kubecontext()
+{
+    reply=()
+    local context
+    context=$(kubectl config current-context 2>/dev/null)
+    if (($? == 0)); then
+        # white on blue
+        local fgc=15 bgc=27
+        reply+=("%{%F{$fgc}%}✵$context")
+        reply+=($bgc)
+    fi
+}
+
+function prompt_aws()
+{
+    reply=()
+    if ((${+AWS_PROFILE} == 1)); then
+        # block on orange
+        local fgc=0 bgc=172
+        reply+=("%{%F{$fgc}%}☁ ${AWS_PROFILE}")
+        reply+=($bgc)
+    fi
+}
+
 function prompt_pipestatus()
 {
     local -a ps
@@ -183,6 +207,8 @@ ps1_functions+=(prompt_jobs)
 rps1_functions+=(prompt_pipestatus)
 rps1_functions+=(prompt_git_commit)
 rps1_functions+=(prompt_virtual_env)
+rps1_functions+=(prompt_kubecontext)
+rps1_functions+=(prompt_aws)
 ps4_functions+=(trace_depth)
 ps4_functions+=(trace_function)
 
