@@ -6,7 +6,7 @@ endif
 set noshowmode
 
 function! RKStatusLineCurLine()
-  return ($NO_POWERLINE_FONTS ? "" : "") . printf('%*d', len(line('$')), line('.'))
+  return '㆔' . printf('%*d', len(line('$')), line('.'))
 endfunction
 
 let s:modes = {
@@ -22,54 +22,32 @@ let s:modes = {
   \ 'c': { 'text': 'C', 'modifier': 'n' },
 \ }
 
-if $NO_POWERLINE_FONTS
-  let s:separators = {
-    \ 'solid': {
-      \ 'left': '',
-      \ 'right': '',
-    \ },
-    \ 'open' : {
-      \ 'left': '',
-      \ 'right': '',
-    \ }
-  \ }
-else
-  let s:separators = {
-    \ 'solid': {
-      \ 'left': '',
-      \ 'right': '',
-    \ },
-    \ 'open' : {
-      \ 'left': '',
-      \ 'right': '',
-    \ }
-  \ }
-endif
+function! RKGitBranch()
+  let l:head = fugitive#head(7)
+  if l:head == ''
+    return ''
+  else
+    " TODO Include ± char when directory status is dirty.
+    return ' ᚠ ' . l:head
+  endif
+endfunction
 
 function! RKStatusLineMode(winnum)
   let l:active = a:winnum == winnr()
   let l:bufnum = winbufnr(a:winnum)
 
-  if l:active
-    let l:leftsep = $NO_POWERLINE_FONTS ? '' : ''
-    let l:rightsep = $NO_POWERLINE_FONTS ? '' : ''
-  else
-    let l:leftsep = $NO_POWERLINE_FONTS ? '' : ''
-    let l:rightsep = $NO_POWERLINE_FONTS ? '' : ''
-  endif
-
   let l:left1 = ' %-2(' . get(s:modes, mode(), {'text':'<' . mode() . '>'}).text . '%) '
-  let l:left1 = l:left1 . '%{ &paste ? '' PASTE '' : '''' }'
-  let l:left1 = l:left1 . '%{ &spell ? '' SPELL '' : '''' }'
+  let l:left1 = l:left1 . '%{ &paste ? "(PASTE) " : "" }'
+  let l:left1 = l:left1 . '%{ &spell ? "(SPELL) " : "" }'
 
-  let l:left3 = ' %(±%{fugitive#head(7)}%{ $NO_POWERLINE_FONTS ? "\\" : "  " }%)'
-  let l:left3 = l:left3 . '%{ &readonly ? "○": "●" } '
+  let l:left3 = '%(%{RKGitBranch()}%)'
+  let l:left3 = l:left3 . ' [%{ &readonly ? "○": "●" }] '
 
   let l:right1 = ' %3p%% '
   let l:right1 = l:right1 . '%{RKStatusLineCurLine()}/%L '
-  let l:right1 = l:right1 . '%3c| '
+  let l:right1 = l:right1 . '%3c‖ '
 
-  let l:right2 = ' %{&fenc . ($NO_POWERLINE_FONTS ? "/" : "  ") . &ff} '
+  let l:right2 = ' %{&fenc . "/" . &ff} '
 
   let l:right3 = ' %{&ft} '
 
@@ -87,17 +65,17 @@ function! RKStatusLineMode(winnum)
     let l:color3_4 = printf('StatusLine3_4%s', l:modifier)
     let l:result = '%#' . l:color1 . '#' . l:left1
     if len(l:left3) > 0
-      let l:result = l:result . '%#' . l:color1_3 . '#' . l:leftsep . '%#' . l:color3 . '#' . l:left3 . '%#' . l:color3_4 . '#'
+      let l:result = l:result . '%#' . l:color1_3 . '#%#' . l:color3 . '#' . l:left3 . '%#' . l:color3_4 . '#'
     else
       let l:result = l:result . '%#' . l:color1_4 . '#'
     endif
-    let l:result = l:result . l:leftsep . '%*' . l:main . '%#' . l:color3_4 . '#' . l:rightsep . '%#' . l:color3 . '#' . l:right3 . '%#' . l:color2_3 . '#' . l:rightsep . '%#' . l:color2 . '#' . l:right2 . '%#' . l:color1_2 . '#' . l:rightsep . '%#' . l:color1 . '#' . l:right1 . '%*'
+    let l:result = l:result . '%*' . l:main . '%#' . l:color3_4 . '#%#' . l:color3 . '#' . l:right3 . '%#' . l:color2_3 . '#%#' . l:color2 . '#' . l:right2 . '%#' . l:color1_2 . '#%#' . l:color1 . '#' . l:right1 . '%*'
   else
     let l:result = l:left1
     if len(l:left3) > 0
-      let l:result = l:result . l:leftsep . l:left3
+      let l:result = l:result . l:left3
     endif
-    let l:result = l:result . l:leftsep . l:main . l:rightsep . l:right3 . l:rightsep . l:right2 . l:rightsep . l:right1
+    let l:result = l:result . l:main . l:right3 . l:right2 . l:right1
   endif
   return l:result
 endfunction

@@ -47,8 +47,3 @@ After cloning the repository, do the following:
 5. Create *~/.bash_profile.local* and call `dark` or `light`.
 
 6. Create */.gitconfig.local* and `user.email`.
-
-# Mobile
-When using ConnectBot, Powerline fonts are not available. Configure it to run
-the `no_powerline_fonts` command on login, which will set an environment
-variable that *.vimrc* knows to look for prior to setting the up the display.

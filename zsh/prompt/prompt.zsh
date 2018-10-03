@@ -1,27 +1,25 @@
 setopt prompt_subst
 
-# Prompt functions should set $reply array to contain the prompt contents,
-# the starting background color, and the ending background color. It should
-# set it to empty if there should be no contents for the prompt section.
+# Prompt functions should set $reply array to contain the prompt contents and
+# the background color. It should set it to empty if there should be no
+# contents for the prompt section.
 
 function trace_depth()
 {
     reply=()
     # Light gray on gray
     local fgc=250 bgc=240
-    reply+=("%{%F{$fgc}%K{$bgc}%}%e")
-    reply+=($bgc $bgc)
+    reply+=("%{%F{$fgc}%}%e")
+    reply+=($bgc)
 }
 
 function trace_function()
 {
     reply=()
-    ((${NO_POWERLINE_FONTS:-0} == 0))
-    local sep=${(%):-%(?.'  '.:)}
     # Blue on white
     local fgc=4 bgc=7
-    reply+=("%{%F{$fgc}%K{$bgc}%}%N${sep}%i")
-    reply+=($bgc $bgc)
+    reply+=("%{%F{$fgc}%}%N:%i")
+    reply+=($bgc)
 }
 
 function get_hostname_colors()
@@ -52,11 +50,9 @@ function prompt_hostname()
 {
     reply=()
     if (($+SSH_CLIENT)); then
-        ((${NO_POWERLINE_FONTS:-0} == 0))
-        local secure_char=${(%):-%(?.' '.)}
         get_hostname_colors
-        reply+=("%{%F{$fgc}%K{$bgc}%}${secure_char}%m")
-        reply+=($bgc $bgc)
+        reply+=("%{%F{$fgc}%}%m")
+        reply+=($bgc)
     fi
 }
 
@@ -65,8 +61,8 @@ function prompt_user()
     reply=()
     # White on cyan
     local fgc=231 bgc=31
-    reply+=("%{%F{$fgc}%K{$bgc}%}%B%n%b%{%K{$bgc}%}")
-    reply+=($bgc $bgc)
+    reply+=("%{%F{$fgc}%}%B%n")
+    reply+=($bgc)
 }
 
 function prompt_cwd()
@@ -93,15 +89,16 @@ function prompt_cwd()
         result+=(${(@s:/:)cwd:s/\%/\%\%})
     fi
     # The last path component should appear bold
-    result[-1]=("%B${result[-1]}%b")
+    result[-1]=("%B${result[-1]}")
     # Quote all the components so that when we use the "e" modifier below,
     # only the separator variable gets expanded and not the path components,
     # which can happen if a $ appears in a directory name.
     result=(${(q@)result})
-    ((${NO_POWERLINE_FONTS:-0} == 0))
-    local ps=${(%):-%(?.'  './)}
-    reply+=("%{%F{$fgc}%K{$bgc}%}${(ej:${ps}:)result}%{%K{$bgc}%}")
-    reply+=($bgc $bgc)
+    if [[ ${result[1]} == '/' ]]; then
+        result[1]=""
+    fi
+    reply+=("%{%F{$fgc}%}${(ej:/:)result}")
+    reply+=($bgc)
 }
 
 function capture_jobcount()
@@ -116,8 +113,8 @@ function prompt_jobs()
     if ((${jobcount} > 0)); then
         # Yellow on orange
         local fgc=220 bgc=166
-        reply+=("%{%F{$fgc}%K{$bgc}%}%j")
-        reply+=($bgc $bgc)
+        reply+=("%{%F{$fgc}%}%j")
+        reply+=($bgc)
     fi
 }
 
@@ -130,37 +127,20 @@ function prompt_pipestatus()
     success=(0)
     local result
     if ((${#ps:*success} != ${#ps})); then
-        local first=1
-        local previous_s
-        local fgc bgc first_bgc
+        local -a values
+        local fgc
+        local fgc2=231  # white
+        local bgc=240  # gray
         for s in $ps; do
             if (($s == 0)); then
-                # White on dark green
-                fgc=231
-                bgc=22
+                fgc=46  # green
             else
-                # White on dark red
-                fgc=231
-                bgc=52
+                fgc=196  # red
             fi
-            if (($first == 1)); then
-                result+="%{%F{$fgc}%K{$bgc}%}"
-                first_bgc=$bgc
-                first=0
-            else
-                if (($s == 0 ^^ $previous_s == 0)); then
-                    ((${NO_POWERLINE_FONTS:-0} == 0))
-                    result+=" %{%F{$bgc}%}${(%):-%(?..)}%{%F{$fgc}%K{$bgc}%} "
-                else
-                    ((${NO_POWERLINE_FONTS:-0} == 0))
-                    result+=" ${(%):-%(?..|)} "
-                fi
-            fi
-            result+="${s}"
-            previous_s=$s
+            values+=("%{%F{$fgc}%K{$bgc}%}%B$s%b%{%F{$fgc2}%K{$bgc}%}")
         done
-        reply+=($result)
-        reply+=($first_bgc $bgc)
+        reply+=(${(ej: | :)values})
+        reply+=($bgc)
     fi
 }
 
@@ -172,10 +152,8 @@ function prompt_git_commit()
     if (($? == 0)); then
         # Gray on dark gray
         local fgc=250 bgc=236
-        ((${NO_POWERLINE_FONTS:-0} == 0))
-        local branch=${(%):-%(?.''.±)}
-        reply+=("%{%F{$fgc}%K{$bgc}%}${branch:s/\%/\%\%} ${ID:s/\%/\%\%}")
-        reply+=($bgc $bgc)
+        reply+=("%{%F{$fgc}%}ᚠ ${ID:s/\%/\%\%}")
+        reply+=($bgc)
     fi
 }
 
@@ -186,8 +164,8 @@ function prompt_virtual_env()
     if ((${+VIRTUAL_ENV} == 1)); then
         # Dark blue on white
         local fgc=33 bgc=253
-        reply+=("%{%F{$fgc}%K{$bgc}%}${VIRTUAL_ENV:t}")
-        reply+=($bgc $bgc)
+        reply+=("%{%F{$fgc}%}${VIRTUAL_ENV:t}")
+        reply+=($bgc)
     fi
 }
 
@@ -210,9 +188,6 @@ ps4_functions+=(trace_function)
 
 function do_left_prompt()
 {
-    ((${NO_POWERLINE_FONTS:-0} == 0))
-    local sep=${(%):-%(?.''.)}
-    local first=1
     local result
     local function_list="${1}_functions"
     for func in ${(@P)function_list}; do
@@ -220,34 +195,22 @@ function do_left_prompt()
         if ((${#reply} > 0)); then
             text=${reply[1]}
             start_bgc=${reply[2]}
-            end_bgc=${reply[3]}
-            result+="%{%K{$start_bgc}%}"
-            if (($first == 0)); then
-                result+="${sep}"
-            else
-                first=0
-            fi
-            result+="%{%K{${start_bgc}}%} ${text} "
-            result+="%{%F{${end_bgc}}%}"
+            result+="%{%K{${start_bgc}}%} ${text} %{%k%f%b%}"
         fi
     done
-    result+="%{%k%}$sep%{%f%} "
+    result+="%{%k%f%} "
     print -n $result
 }
 
 function do_right_prompt()
 {
-    ((${NO_POWERLINE_FONTS:-0} == 0))
-    local sep=${(%):-%(?.''.)}
     local result
     for func in ${(@)rps1_functions}; do
         $func
         if ((${#reply} > 0)); then
             text=${reply[1]}
             start_bgc=${reply[2]}
-            end_bgc=${reply[3]}
-            result+="%{%F{$start_bgc}%}$sep%{%f%}"
-            result+="%{%K{$start_bgc}%} ${text} "
+            result+="%{%K{$start_bgc}%} ${text} %{%k%f%b%}"
         fi
     done
     result+="%{%k%}"

@@ -27,10 +27,6 @@ update_color() {
 	source $DOTFILES/base16-shell/base16-bright.${shade}.sh
 }
 
-no_powerline_fonts() {
-	export NO_POWERLINE_FONTS=1
-}
-
 t() {
 	: ${1:=default}
 	exec tmux new-session -A "$@"
