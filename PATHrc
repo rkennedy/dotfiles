@@ -1,4 +1,7 @@
-echo 5 $HOME/.local/`uname -s`/`uname -m`/bin
+echo 5 ${PLAT_PATH}/bin
+if [ -n "${GOROOT}" ]; then
+    echo 6 ${GOROOT}/bin
+fi
 echo 10 $HOME/.local/bin
 echo 12 $DOTFILES/bin
 echo 15 $HOME/.rvm/bin

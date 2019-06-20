@@ -40,6 +40,12 @@ export CVSREAD='Yes'
 
 export PYTHONSTARTUP=$DOTFILES/python-shell-enhancement/pythonstartup.py
 
+export PLAT_PATH=$HOME/.local/`uname -s`/`uname -m`
+if [ -e ${PLAT_PATH}/go ]; then
+    export GOROOT=${PLAT_PATH}/go
+    export GOBIN=${PLAT_PATH}/bin
+fi
+
 # This is the default value. We duplicate it here to mirror .gitconfig settings.
 export GREP_COLORS='ms=01;31:mc=01;31:sl=:cx=:fn=35:ln=32:bn=32:se=36'
 
