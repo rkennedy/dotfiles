@@ -1,8 +1,5 @@
 #!/usr/bin/env bash
 
-if [[ $# -eq 0 ]]; then
-    set -$- -- --all
-fi
 for arg in "$@"; do
     case $arg in
         -h|--help)
