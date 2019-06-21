@@ -71,6 +71,7 @@ conflictStyle = diff3
 
 [rerere]
 enabled = true
+autoupdate = true
 
 [filter "lfs"]
 required = true
