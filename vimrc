@@ -52,6 +52,10 @@ let g:terraform_fold_sections = 1
 let g:terraform_remap_spacebar = 1
 let g:terraform_commentstring = '//%s'
 
+" LucHermitte/local_vimrc
+call lh#local_vimrc#munge('whitelist', '/export/rkennedy/src')
+call lh#local_vimrc#munge('whitelist', '/data/rkennedy/src')
+
 " NOTE: Also check for local .vimrc file
 silent! source $DOTFILES_LOCAL/vimrc
 " End plug-in setup
