@@ -63,6 +63,7 @@ separator = cyan
 function = blue
 
 [grep]
+lineNumber = true
 patternType = extended
 fallbackToNoIndex = true
 
