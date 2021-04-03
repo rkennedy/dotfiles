@@ -27,6 +27,8 @@ export VISUAL='gvim'
 export PAGER='less'
 export LESS='-MqSX -x2'
 export LESSOPEN='| bash $DOTFILES/Lesspipe/lesspipe.sh %s'
+export LESSCOLORIZER='pygmentize -O style=rrt'
+export LESSCOLOR=always
 
 # I often don't have write permission for files Cscope finds, so don't
 # try to open them for writing.
