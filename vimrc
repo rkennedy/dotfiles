@@ -56,6 +56,11 @@ let g:terraform_commentstring = '//%s'
 call lh#local_vimrc#munge('whitelist', '/export/rkennedy/src')
 call lh#local_vimrc#munge('whitelist', '/data/rkennedy/src')
 
+" fatih/vim-go
+let g:go_version_warning = 0
+let g:go_fmt_experimental = 1
+let g:go_fmt_command = 'goimports'
+
 " NOTE: Also check for local .vimrc file
 silent! source $DOTFILES_LOCAL/vimrc
 " End plug-in setup
