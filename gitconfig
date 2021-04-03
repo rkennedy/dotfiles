@@ -15,12 +15,15 @@ ui = auto
 
 [alias]
 git = !git
-info = show --stat
 root = rev-parse --show-toplevel
+# Show the commit message (like git show, but without the changes)
+commitmsg = log -1 --pretty=medium
 # List files changed in the given commit (like git show --stat, but names only)
 show-files = diff-tree --no-commit-id --name-only -r
 pushf = push --force-with-lease
 pushnew = !git push --set-upstream origin $(git rev-parse --abbrev-ref HEAD)
+view = "!f() { git show \"${1:?missing commit ID}:${2:?missing file name}\"; }; f"
+ls-grep = !git ls-files | grep
 
 [http]
 # See http://stackoverflow.com/a/8467406/33732 for sslCAinfo
