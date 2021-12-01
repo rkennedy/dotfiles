@@ -42,9 +42,6 @@ status = true
 branch = true
 tag = true
 
-[help]
-autocorrect = 10
-
 [rebase]
 instructionFormat = %s (%ar) <%an>
 autostash = true
