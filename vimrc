@@ -154,4 +154,10 @@ map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans
 \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
 \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
+" WiX files are XML
+augroup wix_ft
+  autocmd!
+  autocmd BufNewFile,BufRead *.wxs set filetype=xml
+augroup END
+
 " vim: set ts=2 sw=2 et:
