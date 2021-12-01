@@ -46,6 +46,9 @@ if [ -e ${PLAT_PATH}/go ]; then
     export GOBIN=${PLAT_PATH}/bin
 fi
 
+export PIPX_HOME=${PLAT_PATH}/pipx
+export PIPX_BIN_DIR=${PLAT_PATH}/bin
+
 # This is the default value. We duplicate it here to mirror .gitconfig settings.
 export GREP_COLORS='ms=01;31:mc=01;31:sl=:cx=:fn=35:ln=32:bn=32:se=36'
 
