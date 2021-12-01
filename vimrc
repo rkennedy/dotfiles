@@ -160,4 +160,10 @@ augroup wix_ft
   autocmd BufNewFile,BufRead *.wxs set filetype=xml
 augroup END
 
+" Gradle files are Groovy
+augroup groovy_ft
+  autocmd!
+  autocmd BufNewFile,BufRead *.gradle set filetype=groovy
+augroup END
+
 " vim: set ts=2 sw=2 et:
