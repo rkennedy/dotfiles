@@ -83,7 +83,8 @@ setopt complete_in_word
 # Show file-type marks in completion list
 setopt list_types
 
-bindkey '^r' history-incremental-search-backward
+bindkey '^r' history-incremental-pattern-search-backward
+# bindkey '^r' history-incremental-pattern-search-forward  # TODO decide on a key to use
 bindkey "^[[A" history-beginning-search-backward
 bindkey "^[[B" history-beginning-search-forward
 
