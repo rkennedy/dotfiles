@@ -88,3 +88,6 @@
 [submodule "vim-bundle/lh-vim-lib"]
 	path = vim-bundle/lh-vim-lib
 	url = https://github.com/LucHermitte/lh-vim-lib
+[submodule "vim-bundle/vim-surround"]
+	path = vim-bundle/vim-surround
+	url = https://github.com/tpope/vim-surround.git
