@@ -10,6 +10,9 @@ excludesfile = ~/dotfiles/gitexcludes
 attributesfile = ~/dotfiles/gitattributes
 preloadindex = true
 
+[init]
+defaultBranch = main
+
 [color]
 ui = auto
 
