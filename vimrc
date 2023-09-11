@@ -129,9 +129,11 @@ let s:dir = has('win32')
       \ : '$XDG_DATA_HOME/vim'
 
 " If Vim supports persistent undo, then store undo files in s:dir.
-if exists('+undofile')
-  let &undodir = expand(s:dir) . '/undo'
-  set undofile
+if !has('nvim')
+  if exists('+undofile')
+    let &undodir = expand(s:dir) . '/undo'
+    set undofile
+  endif
 endif
 
 " Disable mouse support
