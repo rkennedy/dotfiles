@@ -15,6 +15,7 @@ echo 80 /bin
 echo 90 /usr/sbin
 echo 100 /usr/dt/bin
 echo 110 /usr/ucb
+echo 120 /usr/local/go/bin
 [ -r "${DOTFILES_LOCAL}/PATHrc" ] && . "${DOTFILES_LOCAL}/PATHrc"
 
 # vim: set ft=sh:
