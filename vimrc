@@ -76,6 +76,9 @@ if has('extra_search')
   set hlsearch " highlight all search results
 endif
 
+" Wait forever for compound commands
+set notimeout
+
 " Options to better see where we are
 set number
 if exists('+relativenumber')
@@ -104,6 +107,7 @@ endif
 set formatoptions+=r " automatically insert comment-continuation char
 set formatoptions-=o " Don't continue comments after pressing O or o.
 set formatoptions+=j " Remove comment leader when joining lines
+set formatoptions+=n " Use hanging indents in lists.
 set nojoinspaces " no extra space between sentences joined from multiple lines
 
 if has('cindent')
@@ -112,6 +116,7 @@ if has('cindent')
   set cinoptions+=(0 " align with unclosed parenthesis ...
   set cinoptions+=W4 " ... unless it's at the end of a line
   set cinoptions+=g0 " align C++ visibility with the enclosing block
+  set cinoptions+=:0 " align case labels with enclosing switch block
 endif
 
 " Determine the platform-appropriate directory for storing Vim data
@@ -128,6 +133,9 @@ if exists('+undofile')
   let &undodir = expand(s:dir) . '/undo'
   set undofile
 endif
+
+" Disable mouse support
+set mouse=
 
 " netrw config
 let g:netrw_home = expand(s:dir)
