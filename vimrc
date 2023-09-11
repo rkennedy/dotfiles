@@ -166,4 +166,6 @@ augroup groovy_ft
   autocmd BufNewFile,BufRead *.gradle set filetype=groovy
 augroup END
 
+set tags^=.git/tags;
+
 " vim: set ts=2 sw=2 et:

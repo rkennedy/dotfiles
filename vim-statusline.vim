@@ -23,7 +23,7 @@ let s:modes = {
 \ }
 
 function! RKGitBranch()
-  let l:head = fugitive#head(7)
+  let l:head = FugitiveHead(7)
   if l:head == ''
     return ''
   else
