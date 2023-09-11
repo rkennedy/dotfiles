@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+defaults -currentHost write com.apple.screensaver moduleDict -dict moduleName Arabesque path '/System/Library/Screen Savers/Arabesque.saver' type 0
+
+printf 'Ran at %s\n' "$(date)" >> "${HOME}/reset-ss.log"
