@@ -32,6 +32,8 @@ export VISUAL='gvim'
 export PAGER='less'
 export LESS='-MqSX -x2'
 export LESSOPEN='| bash $DOTFILES/Lesspipe/lesspipe.sh %s'
+export LESSCOLORIZER='pygmentize -O style=rrt'
+export LESSCOLOR=always
 
 # I often don't have write permission for files Cscope finds, so don't
 # try to open them for writing.
@@ -48,6 +50,9 @@ if [ -e ${PLAT_PATH}/go ]; then
     export GOROOT=${PLAT_PATH}/go
     export GOBIN=${PLAT_PATH}/bin
 fi
+
+export PIPX_HOME=${PLAT_PATH}/pipx
+export PIPX_BIN_DIR=${PLAT_PATH}/bin
 
 # This is the default value. We duplicate it here to mirror .gitconfig settings.
 export GREP_COLORS='ms=01;31:mc=01;31:sl=:cx=:fn=35:ln=32:bn=32:se=36'

@@ -82,3 +82,9 @@
 [submodule "vim-bundle/vim-go"]
 	path = vim-bundle/vim-go
 	url = https://github.com/fatih/vim-go
+[submodule "vim-bundle/local_vimrc"]
+	path = vim-bundle/local_vimrc
+	url = https://github.com/LucHermitte/local_vimrc
+[submodule "vim-bundle/lh-vim-lib"]
+	path = vim-bundle/lh-vim-lib
+	url = https://github.com/LucHermitte/lh-vim-lib

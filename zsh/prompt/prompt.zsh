@@ -24,7 +24,7 @@ function trace_function()
 
 function get_hostname_colors()
 {
-    local hosthash=$(hostname | cksum | cut -f1 -d' ')
+    local hosthash=$(hostname | cksum | awk '{print $1}')
     case $((hosthash % 4)) in
         0)
             fgc=233

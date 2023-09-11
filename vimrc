@@ -52,6 +52,16 @@ let g:terraform_fold_sections = 1
 let g:terraform_remap_spacebar = 1
 let g:terraform_commentstring = '//%s'
 
+" LucHermitte/local_vimrc
+call lh#local_vimrc#munge('whitelist', '/export/rkennedy/src')
+call lh#local_vimrc#munge('whitelist', '/data/rkennedy/src')
+call lh#local_vimrc#munge('whitelist', '/home/rkennedy/src/catreader')
+
+" fatih/vim-go
+let g:go_version_warning = 0
+let g:go_fmt_experimental = 1
+let g:go_fmt_command = 'goimports'
+
 " NOTE: Also check for local .vimrc file
 silent! source $DOTFILES_LOCAL/vimrc
 " End plug-in setup
@@ -143,5 +153,17 @@ source $DOTFILES/vim-statusline.vim
 map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
 \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
 \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+
+" WiX files are XML
+augroup wix_ft
+  autocmd!
+  autocmd BufNewFile,BufRead *.wxs set filetype=xml
+augroup END
+
+" Gradle files are Groovy
+augroup groovy_ft
+  autocmd!
+  autocmd BufNewFile,BufRead *.gradle set filetype=groovy
+augroup END
 
 " vim: set ts=2 sw=2 et:
