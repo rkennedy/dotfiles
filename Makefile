@@ -1,46 +1,61 @@
 .PHONY: bootstrap submodules
 
 ifeq (${OS},Windows_NT)
-    undo_file = ${APPDATA}/Vim/undo
+    vim_undo_file = ${APPDATA}/Vim/undo
+    nvim_undo_file = ${APPDATA}/Nvim/undo
 else
-    XDG_CONFIG_HOME := $(shell echo \${XDG_CONFIG_HOME:\$HOME/.config})
+    XDG_CONFIG_HOME ?= ${HOME}/.config
+    XDG_DATA_HOME ?= ${HOME}/.local/share
+    XDG_STATE_HOME ?= ${HOME}/.var
+
     ifeq ($(shell uname -s),Darwin)
-        undo_file = ${HOME}/Library/Vim/undo
+        vim_undo_file = ${HOME}/Library/Vim/undo
+        nvim_undo_file = ${HOME}/Library/nvim/undo
     else
-        XDG_DATA_HOME := $(shell echo \${XDG_DATA_HOME:\$HOME/.local/share})
-        undo_file = ${XDG_DATA_HOME}/vim/undo
+        vim_undo_file = ${XDG_DATA_HOME}/vim/undo
+        nvim_undo_file = ${XDG_STATE_HOME}/nvim/undo
     endif
+
 endif
 
 
-files_to_be_linked =
-files_to_be_linked += ackrc
-files_to_be_linked += bash_profile
-files_to_be_linked += bashrc
-files_to_be_linked += colordiffrc
-files_to_be_linked += hammerspoon
-files_to_be_linked += gitconfig
-files_to_be_linked += inputrc
-files_to_be_linked += tmux.conf
-files_to_be_linked += vimrc
-files_to_be_linked += zshenv
-files_to_be_linked += zshrc
+home_files_to_be_linked =
+home_files_to_be_linked += ackrc
+home_files_to_be_linked += bash_profile
+home_files_to_be_linked += bashrc
+home_files_to_be_linked += colordiffrc
+home_files_to_be_linked += hammerspoon
+home_files_to_be_linked += gitconfig
+home_files_to_be_linked += inputrc
+home_files_to_be_linked += tmux.conf
+home_files_to_be_linked += vimrc
+home_files_to_be_linked += zshenv
+home_files_to_be_linked += zshrc
 
-link_files = $(addprefix ${HOME}/., ${files_to_be_linked})
+home_link_files = $(addprefix ${HOME}/., ${home_files_to_be_linked})
 
-bootstrap: submodules ${link_files} ${XDG_CONFIG_HOME} ${undo_file}
+config_files_to_be_linked =
+config_files_to_be_linked += nvim
+
+config_link_files = $(addprefix ${XDG_CONFIG_HOME}/, ${config_files_to_be_linked})
+
+bootstrap: submodules ${home_link_files} ${config_link_files} ${vim_undo_file} ${nvim_undo_file}
 
 submodules:
 	git submodule update --init --recursive
 
 ${HOME}/.%: %
-	ln -s $(realpath $^) $@
+	ln -s $(realpath $<) $@
 
-${XDG_CONFIG_HOME}:
+${XDG_CONFIG_HOME}/%: %
+	mkdir -p $(dir $@)
+	ln -s $(realpath $<) $@
+
+${vim_undo_file}:
 	mkdir -p $@
 
-${undo_file}:
-	mkdir -p ${undo_file}
+${nvim_undo_file}:
+	mkdir -p $@
 
 # Disable implicit rules. Makes debug output easier to read.
 %: %,v
