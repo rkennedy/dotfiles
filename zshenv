@@ -68,6 +68,10 @@ export MANPATH
 # Set this via environment variable to allow overriding in DOTFILES_LOCAL.
 export ATUIN_SYNC_ADDRESS='https://atuin.goblin-grue.ts.net'
 
+[[ -x /opt/homebrew/bin/brew ]] && {
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+}
+
 umask 022
 
 [[ -r ${DOTFILES_LOCAL}/zshenv ]] && source ${DOTFILES_LOCAL}/zshenv
