@@ -42,7 +42,7 @@ export CVSREAD='Yes'
 
 export PYTHONSTARTUP=$DOTFILES/python-shell-enhancement/pythonstartup.py
 
-export PLAT_PATH=$HOME/.local/`uname -s`/`uname -m`
+export PLAT_PATH=$HOME/.local/$(uname -s)/$(uname -m)
 if [ -e ${PLAT_PATH}/go ]; then
     export GOROOT=${PLAT_PATH}/go
     export GOBIN=${PLAT_PATH}/bin

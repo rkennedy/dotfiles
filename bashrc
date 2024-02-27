@@ -21,7 +21,7 @@ alias ack='ack --color-match="dark red" --color-filename=magenta --color-lineno=
 alias ag='ag --color --color-match=31 --color-path=35 --color-line-number=33'
 
 type dircolors >/dev/null 2>&1 && {
-    eval `dircolors -b $DOTFILES/dir_colors`
+    eval $(dircolors -b $DOTFILES/dir_colors)
 }
 
 # Allow quick switching to zsh
