@@ -1,0 +1,17 @@
+#!/bin/bash
+set -euo pipefail
+
+case "${1}" in
+    up)
+        colima start
+        ssh -fNT -L 9000:colima:9000 colima
+        ;;
+    down)
+        ssh -O exit colima
+        colima stop
+        ;;
+    *)
+        >&2 printf 'taiga [up | down]\n'
+        exit 1
+        ;;
+esac
