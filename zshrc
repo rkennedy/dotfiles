@@ -109,6 +109,8 @@ if ((${ZSH_VERSION%%.*} >= 5)); then
     . $DOTFILES/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fi
 
+. $DOTFILES/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+
 [[ -r ${DOTFILES_LOCAL}/zshrc ]] && source ${DOTFILES_LOCAL}/zshrc
 
 update_color
