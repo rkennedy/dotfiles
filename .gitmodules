@@ -3,7 +3,7 @@
 	url = https://github.com/Rafiot/Lesspipe
 [submodule "python-shell-enhancement"]
 	path = python-shell-enhancement
-	url = https://github.com/jbisbee/python-shell-enhancement.git
+	url = https://github.com/rkennedy/python-shell-enhancement.git
 [submodule "ack2"]
 	path = ack2
 	url = https://github.com/petdance/ack2
