@@ -1,0 +1,3 @@
+enter_accept = true
+
+# Set sync_address in environment to allow overriding via $DOTFILES_LOCAL.

@@ -114,3 +114,7 @@ fi
 [[ -r ${DOTFILES_LOCAL}/zshrc ]] && source ${DOTFILES_LOCAL}/zshrc
 
 update_color
+
+type atuin >&/dev/null && {
+    eval "$(atuin init zsh)"
+}

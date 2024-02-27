@@ -59,6 +59,10 @@ export PATH
 MANPATH=$(${DOTFILES}/bin/generate-path "${MANPATH}" "${DOTFILES}/MANPATHrc")
 export MANPATH
 
+# Set this via environment variable to allow overriding in DOTFILES_LOCAL.
+ATUIN_SYNC_ADDRESS='https://atuin.goblin-grue.ts.net'
+export ATUIN_SYNC_ADDRESS
+
 umask 022
 
 source $DOTFILES/functions.sh
