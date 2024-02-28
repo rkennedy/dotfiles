@@ -1,0 +1,16 @@
+enter_accept = true
+
+[stats]
+common_subcommands = [
+  'cargo',
+  'docker',
+  'git',
+  'go',
+  'kubectl',
+  'npm',
+  'pnpm',
+  'podman',
+  'yarn',
+]
+
+# Set sync_address in environment to allow overriding via $DOTFILES_LOCAL.

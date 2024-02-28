@@ -12,12 +12,12 @@ alias ack='ack --color-match="dark red" --color-filename=magenta --color-lineno=
 alias ag='ag --color --color-match=31 --color-path=35 --color-line-number=33'
 
 type dircolors >&/dev/null && {
-    eval `dircolors -b $DOTFILES/dir_colors`
+    eval $(dircolors -b $DOTFILES/dir_colors)
 }
 
 # Allow quick switching to bash
 if whence -p bash >&/dev/null; then
-    alias b='export SHELL=`whence -p bash`; exec $SHELL -l'
+    alias b='export SHELL=$(whence -p bash); exec $SHELL -l'
 else
     alias b='echo no bash available'
 fi
@@ -109,6 +109,12 @@ if ((${ZSH_VERSION%%.*} >= 5)); then
     . $DOTFILES/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fi
 
+. $DOTFILES/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+
 [[ -r ${DOTFILES_LOCAL}/zshrc ]] && source ${DOTFILES_LOCAL}/zshrc
 
 update_color
+
+type atuin >&/dev/null && {
+    eval "$(atuin init zsh)"
+}

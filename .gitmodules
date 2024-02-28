@@ -3,7 +3,7 @@
 	url = https://github.com/Rafiot/Lesspipe
 [submodule "python-shell-enhancement"]
 	path = python-shell-enhancement
-	url = https://github.com/jbisbee/python-shell-enhancement.git
+	url = https://github.com/rkennedy/python-shell-enhancement.git
 [submodule "ack2"]
 	path = ack2
 	url = https://github.com/petdance/ack2
@@ -91,3 +91,6 @@
 [submodule "vim-bundle/vim-surround"]
 	path = vim-bundle/vim-surround
 	url = https://github.com/tpope/vim-surround.git
+[submodule "zsh/zsh-autosuggestions"]
+	path = zsh/zsh-autosuggestions
+	url = https://github.com/zsh-users/zsh-autosuggestions

@@ -45,7 +45,7 @@ export CVSREAD='Yes'
 
 export PYTHONSTARTUP=$DOTFILES/python-shell-enhancement/pythonstartup.py
 
-export PLAT_PATH=$HOME/.local/`uname -s`/`uname -m`
+export PLAT_PATH=$HOME/.local/$(uname -s)/$(uname -m)
 if [ -e ${PLAT_PATH}/go ]; then
     export GOROOT=${PLAT_PATH}/go
     export GOBIN=${PLAT_PATH}/bin
@@ -64,6 +64,13 @@ PATH=$(${DOTFILES}/bin/generate-path "${PATH}" "${DOTFILES}/PATHrc")
 export PATH
 MANPATH=$(${DOTFILES}/bin/generate-path "${MANPATH}" "${DOTFILES}/MANPATHrc")
 export MANPATH
+
+# Set this via environment variable to allow overriding in DOTFILES_LOCAL.
+export ATUIN_SYNC_ADDRESS='https://atuin.goblin-grue.ts.net'
+
+[[ -x /opt/homebrew/bin/brew ]] && {
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+}
 
 umask 022
 
