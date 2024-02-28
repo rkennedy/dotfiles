@@ -35,7 +35,7 @@ source $DOTFILES/path_funcs.sh
 
 # Even when not interactive, we want access to local programs,
 # especially git
-[[ $- == *i* ]] || rk_path_prepend $HOME/.local/bin
+[[ $- == *i* ]] || rk_path_prepend $HOME/.local/bin PATH
 
 HISTSIZE=100
 HISTCONTROL=erasedups
