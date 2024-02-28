@@ -52,7 +52,6 @@ set +o notify
 
 shopt -s force_fignore
 shopt -s no_empty_cmd_completion
-shopt -u autocd
 shopt -u sourcepath
 shopt -s checkwinsize
 
