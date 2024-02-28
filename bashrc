@@ -54,6 +54,7 @@ shopt -s force_fignore
 shopt -s no_empty_cmd_completion
 shopt -u sourcepath
 shopt -s checkwinsize
+shopt -s histverify
 
 direnv version >/dev/null 2>&1 && eval "$(direnv hook bash)"
 

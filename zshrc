@@ -44,6 +44,8 @@ setopt hist_no_store
 setopt hist_reduce_blanks
 # Append current shell's history upon exit
 setopt append_history
+# Print history expansion before executing
+setopt histverify
 
 fignore=(.o ~ .rpo .class)
 unset MAILCHECK IGNOREEOF CDPATH
