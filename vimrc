@@ -56,6 +56,7 @@ let g:terraform_commentstring = '//%s'
 call lh#local_vimrc#munge('whitelist', '/export/rkennedy/src')
 call lh#local_vimrc#munge('whitelist', '/data/rkennedy/src')
 call lh#local_vimrc#munge('whitelist', '/home/rkennedy/src/catreader')
+call lh#local_vimrc#munge('whitelist', '/home/rkennedy/work/src')
 
 " fatih/vim-go
 let g:go_version_warning = 0
