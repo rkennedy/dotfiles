@@ -135,6 +135,8 @@ if !has('nvim')
     let &undodir = expand(s:dir) . '/undo'
     set undofile
   endif
+else
+  set undofile
 endif
 
 " Disable mouse support
