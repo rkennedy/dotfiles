@@ -3,6 +3,8 @@ setopt prompt_subst
 # Prompt functions should set $reply array to contain the prompt contents and
 # the background color. It should set it to empty if there should be no
 # contents for the prompt section.
+#
+# For color reference: https://en.wikipedia.org/wiki/ANSI_escape_code#8-bit
 
 function trace_depth()
 {
@@ -25,8 +27,9 @@ function trace_function()
 function get_hostname_colors()
 {
     local hosthash=$(hostname | cksum | awk '{print $1}')
-    case $((hosthash % 4)) in
+    case $((hosthash % 7)) in
         0)
+            # Dark gray on magenta
             fgc=233
             bgc=201
             ;;
@@ -36,12 +39,29 @@ function get_hostname_colors()
             bgc=166
             ;;
         2)
-            fgc=21
-            bgc=196
+            # Light gray on red
+            fgc=253
+            bgc=160
             ;;
         3)
-            fgc=21
+            # Dark gray on green
+            fgc=233
             bgc=34
+            ;;
+        4)
+            # Light gray on violet
+            fgc=253
+            bgc=99
+            ;;
+        5)
+            # Black on seafoam
+            fgc=232
+            bgc=48
+            ;;
+        6)
+            # Black on light orange
+            fgc=232
+            bgc=214
             ;;
     esac
 }
