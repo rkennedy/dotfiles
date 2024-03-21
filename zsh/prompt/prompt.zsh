@@ -194,25 +194,28 @@ function prompt_virtual_env()
 }
 
 typeset -a ps1_functions
-ps1_functions=()
 typeset -a rps1_functions
-rps1_functions=()
 typeset -a ps4_functions
-ps4_functions=()
 
-ps1_functions+=(prompt_hostname)
-ps1_functions+=(prompt_user)
-ps1_functions+=(prompt_cwd)
-ps1_functions+=(prompt_jobs)
-rps1_functions+=(prompt_pipestatus)
-rps1_functions+=(prompt_git_commit)
-rps1_functions+=(prompt_virtual_env)
-rps1_functions+=(prompt_kubecontext)
-rps1_functions+=(prompt_aws)
-ps4_functions+=(trace_depth)
-ps4_functions+=(trace_function)
+ps1_functions=(
+    prompt_hostname
+    prompt_user
+    prompt_cwd
+    prompt_jobs
+)
+rps1_functions=(
+    prompt_pipestatus
+    prompt_git_commit
+    prompt_virtual_env
+    prompt_kubecontext
+    prompt_aws
+)
+ps4_functions=(
+    trace_depth
+    trace_function
+)
 
-function do_left_prompt()
+function do_prompt()
 {
     local result
     local function_list="${1}_functions"
@@ -224,27 +227,15 @@ function do_left_prompt()
             result+="%{%K{${start_bgc}}%} ${text} %{%k%f%b%}"
         fi
     done
-    result+="%{%k%f%} "
+    result+="%{%k%f%}"
+    if [ "${1}" != rps1 ]; then
+        result+=' '
+    fi
     print -n $result
 }
 
-function do_right_prompt()
-{
-    local result
-    for func in ${(@)rps1_functions}; do
-        $func
-        if ((${#reply} > 0)); then
-            text=${reply[1]}
-            start_bgc=${reply[2]}
-            result+="%{%K{$start_bgc}%} ${text} %{%k%f%b%}"
-        fi
-    done
-    result+="%{%k%}"
-    print -n $result
-}
-
-PS1='$(do_left_prompt ps1)'
-RPS1='$(pipestat=($pipestatus) do_right_prompt)'
-PS4="$(do_left_prompt ps4)"
+PS1='$(do_prompt ps1)'
+RPS1='$(pipestat=($pipestatus) do_prompt rps1)'
+PS4="$(do_prompt ps4)"
 
 # vim: set ts=4 et sw=4:
