@@ -96,11 +96,8 @@ bindkey "^[[B" history-beginning-search-forward
 unset SSH_ASKPASS
 
 fpath=($DOTFILES/zsh $fpath)
-autoload dark light update_color
 autoload t
 autoload man
-
-: ${COLORFGBG:='1;15'}
 
 direnv version >/dev/null 2>&1 && eval "$(direnv hook zsh)"
 
@@ -114,8 +111,6 @@ fi
 . $DOTFILES/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 [[ -r ${DOTFILES_LOCAL}/zshrc ]] && source ${DOTFILES_LOCAL}/zshrc
-
-update_color
 
 type atuin >&/dev/null && {
     eval "$(atuin init zsh)"

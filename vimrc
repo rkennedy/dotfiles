@@ -151,7 +151,6 @@ set splitbelow splitright
 filetype plugin indent on
 
 if has('syntax')
-  colorscheme base16-bright
   " The default base16-bright scheme sets Search to an unreadable combination
   " and sets the background of DiffChange inconsistently with vim-signify.
   hi Search ctermfg=18 ctermbg=11

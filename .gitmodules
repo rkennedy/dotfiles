@@ -10,9 +10,6 @@
 [submodule "git-extras"]
 	path = git-extras
 	url = https://github.com/rkennedy/git-extras
-[submodule "base16-shell"]
-	path = base16-shell
-	url = https://github.com/chriskempson/base16-shell.git
 [submodule "zsh/zsh-syntax-highlighting"]
 	path = zsh/zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
@@ -22,9 +19,6 @@
 [submodule "vim-bundle/vim-abolish"]
 	path = vim-bundle/vim-abolish
 	url = https://github.com/tpope/vim-abolish
-[submodule "vim-bundle/base16-vim"]
-	path = vim-bundle/base16-vim
-	url = https://github.com/chriskempson/base16-vim
 [submodule "vim-bundle/vim-delphi"]
 	path = vim-bundle/vim-delphi
 	url = https://github.com/rkennedy/vim-delphi

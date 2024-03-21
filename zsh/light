@@ -1,4 +1,0 @@
-export COLORFGBG='1;15'
-update_color
-
-# vim: set ft=zsh:

@@ -67,11 +67,7 @@ umask 022
 
 source $DOTFILES/functions.sh
 
-: ${COLORFGBG:='15;1'}
-
 [[ -r ${DOTFILES_LOCAL}/bash_profile ]] && source ${DOTFILES_LOCAL}/bash_profile
-
-update_color
 
 # Source the file that's executed for interactive non-login shells.
 [[ -r $HOME/.bashrc ]] && source $HOME/.bashrc
