@@ -47,9 +47,9 @@ function! RKStatusLineMode(winnum)
   let l:right1 = l:right1 . '%{RKStatusLineCurLine()}/%L '
   let l:right1 = l:right1 . '%3c‖ '
 
-  let l:right2 = ' %{&fenc . "/" . &ff} '
+  let l:right2 = ' %{&fileencoding . "/" . &fileformat} '
 
-  let l:right3 = ' %{&ft} '
+  let l:right3 = ' %{&filetype} '
 
   let l:main = ' %f %m%='
 
