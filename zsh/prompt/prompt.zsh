@@ -69,11 +69,9 @@ function get_hostname_colors()
 function prompt_hostname()
 {
     reply=()
-    if (($+SSH_CLIENT)); then
-        get_hostname_colors
-        reply+=("%{%F{$fgc}%}%m")
-        reply+=($bgc)
-    fi
+    get_hostname_colors
+    reply+=("%{%F{$fgc}%}%m")
+    reply+=($bgc)
 }
 
 function prompt_user()
