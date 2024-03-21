@@ -1,14 +1,16 @@
 .PHONY: bootstrap submodules
 
+LN = ln
 ifeq (${OS},Windows_NT)
     vim_undo_file = ${APPDATA}/Vim/undo
     nvim_undo_file = ${APPDATA}/Nvim/undo
 else
     XDG_CONFIG_HOME ?= ${HOME}/.config
     XDG_DATA_HOME ?= ${HOME}/.local/share
-    XDG_STATE_HOME ?= ${HOME}/.var
+    XDG_STATE_HOME ?= ${HOME}/.local/state
 
     ifeq ($(shell uname -s),Darwin)
+	LN = gln  # We want the GNU version for --no-target-directory.
         vim_undo_file = ${HOME}/Library/Vim/undo
         nvim_undo_file = ${HOME}/Library/nvim/undo
     else
@@ -34,24 +36,36 @@ home_files_to_be_linked += zshrc
 
 home_link_files = $(addprefix ${HOME}/., ${home_files_to_be_linked})
 
-# This are files that should be linked in $XDG_CONFIG_HOME. Compare with home_link_files, above.
+# These are files that should be linked in $XDG_CONFIG_HOME. Compare with home_link_files, above.
 config_files_to_be_linked =
 config_files_to_be_linked += atuin
 config_files_to_be_linked += nvim
 
 config_link_files = $(addprefix ${XDG_CONFIG_HOME}/, ${config_files_to_be_linked})
 
-bootstrap: submodules ${home_link_files} ${config_link_files} ${vim_undo_file} ${nvim_undo_file}
+# These are files that should be linked to $XDG_DATA_HOME. They'll have a
+# "-data" suffix to avoid overlap with similarly named files in
+# XDG_CONFIG_HOME.
+data_files_to_be_linked =
+data_files_to_be_linked += nvim  # Named nvim-data in the repo.
+
+data_link_files = $(addprefix ${XDG_DATA_HOME}/, ${data_files_to_be_linked})
+
+bootstrap: submodules ${home_link_files} ${config_link_files} ${data_link_files} ${vim_undo_file} ${nvim_undo_file}
 
 submodules:
 	git submodule update --init --recursive
 
 ${HOME}/.%: %
-	ln -s $(realpath $<) $@
+	${LN} --symbolic --no-target-directory $(realpath $<) $@
 
 ${XDG_CONFIG_HOME}/%: %
 	mkdir -p $(dir $@)
-	ln -s $(realpath $<) $@
+	${LN} --symbolic --no-target-directory $(realpath $<) $@
+
+${XDG_DATA_HOME}/%: %-data
+	mkdir -p $(dir $@)
+	${LN} --symbolic --no-target-directory $(realpath $<) $@
 
 ${vim_undo_file}:
 	mkdir -p $@

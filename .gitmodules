@@ -94,3 +94,12 @@
 [submodule "zsh/zsh-autosuggestions"]
 	path = zsh/zsh-autosuggestions
 	url = https://github.com/zsh-users/zsh-autosuggestions
+[submodule "nvim-data/site/plugin/vim-fugitive"]
+	path = nvim-data/site/plugin/vim-fugitive
+	url = https://github.com/tpope/vim-fugitive
+[submodule "nvim-data/site/plugin/vim-localvimrc"]
+	path = nvim-data/site/plugin/vim-localvimrc
+	url = https://github.com/embear/vim-localvimrc
+[submodule "nvim-data/site/pack/foo/start/marks.nvim"]
+	path = nvim-data/site/pack/foo/start/marks.nvim
+	url = https://github.com/chentoast/marks.nvim
