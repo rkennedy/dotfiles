@@ -20,7 +20,8 @@ else
 
 endif
 
-# These are files that should be linked in the home directory. Compare with config_link_files, below.
+# These are files that should be linked in the home directory. Compare with
+# config_link_files, below.
 home_files_to_be_linked =
 home_files_to_be_linked += ackrc
 home_files_to_be_linked += bash_profile
@@ -36,7 +37,8 @@ home_files_to_be_linked += zshrc
 
 home_link_files = $(addprefix ${HOME}/., ${home_files_to_be_linked})
 
-# These are files that should be linked in $XDG_CONFIG_HOME. Compare with home_link_files, above.
+# These are files that should be linked in $XDG_CONFIG_HOME. Compare with
+# home_link_files, above.
 config_files_to_be_linked =
 config_files_to_be_linked += atuin
 config_files_to_be_linked += nvim
