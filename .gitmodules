@@ -97,3 +97,6 @@
 [submodule "nvim-data/site/pack/foo/start/marks.nvim"]
 	path = nvim-data/site/pack/foo/start/marks.nvim
 	url = https://github.com/chentoast/marks.nvim
+[submodule "ack3"]
+	path = ack3
+	url = https://github.com/beyondgrep/ack3.git
