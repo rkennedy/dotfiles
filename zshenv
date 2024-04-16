@@ -12,7 +12,7 @@ typeset -U -T LIBRARY_PATH library_path
 library_path=($HOME/.local/lib ${(@)library_path})
 
 export LC_COLLATE='C'
-if locale -a | grep -F en_US.UTF-8 >/dev/null; then
+if type locale >&/dev/null && locale -a | grep -F en_US.UTF-8 >/dev/null; then
     export LANG='en_US.UTF-8'
 fi
 
