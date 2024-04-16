@@ -2,14 +2,19 @@ enter_accept = true
 
 [stats]
 common_subcommands = [
+  'apt',
   'cargo',
+  'dnf',
   'docker',
   'git',
   'go',
+  'ip',
   'kubectl',
   'npm',
   'pnpm',
   'podman',
+  'systemctl',
+  'tmux',
   'yarn',
 ]
 
