@@ -59,15 +59,15 @@ submodules:
 	git submodule update --init --recursive
 
 ${HOME}/.%: %
-	${LN} --symbolic --no-target-directory $(realpath $<) $@
+	${LN} --symbolic --force --no-target-directory $(realpath $<) $@
 
 ${XDG_CONFIG_HOME}/%: %
 	mkdir -p $(dir $@)
-	${LN} --symbolic --no-target-directory $(realpath $<) $@
+	${LN} --symbolic --force --no-target-directory $(realpath $<) $@
 
 ${XDG_DATA_HOME}/%: %-data
 	mkdir -p $(dir $@)
-	${LN} --symbolic --no-target-directory $(realpath $<) $@
+	${LN} --symbolic --force --no-target-directory $(realpath $<) $@
 
 ${vim_undo_file}:
 	mkdir -p $@
