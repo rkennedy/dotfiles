@@ -100,3 +100,6 @@
 [submodule "ack3"]
 	path = ack3
 	url = https://github.com/beyondgrep/ack3.git
+[submodule "nvim-data/site/pack/foo/start/jsonc.vim"]
+	path = nvim-data/site/pack/foo/start/jsonc.vim
+	url = https://github.com/neoclide/jsonc.vim
