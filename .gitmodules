@@ -103,3 +103,6 @@
 [submodule "nvim-data/site/pack/foo/start/jsonc.vim"]
 	path = nvim-data/site/pack/foo/start/jsonc.vim
 	url = https://github.com/neoclide/jsonc.vim
+[submodule "nvim-data/site/pack/foo/start/nvim-lspconfig"]
+	path = nvim-data/site/pack/foo/start/nvim-lspconfig
+	url = https://github.com/neovim/nvim-lspconfig
