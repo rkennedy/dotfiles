@@ -106,3 +106,6 @@
 [submodule "nvim-data/site/pack/foo/start/nvim-lspconfig"]
 	path = nvim-data/site/pack/foo/start/nvim-lspconfig
 	url = https://github.com/neovim/nvim-lspconfig
+[submodule "nvim-data/site/pack/foo/start/copilot.vim"]
+	path = nvim-data/site/pack/foo/start/copilot.vim
+	url = https://github.com/github/copilot.vim

@@ -25,7 +25,7 @@ vim.o.timeout = false
 -- Options to better see where we are
 vim.o.number = true
 vim.o.relativenumber = true
-vim.o.colorcolumn = 80
+vim.o.colorcolumn = '80'
 vim.api.nvim_create_autocmd('FileType', {
   desc = "Don't show column highlight in the quickfix window",
   pattern = 'qf',
