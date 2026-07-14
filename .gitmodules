@@ -103,3 +103,12 @@
 [submodule "nvim-data/site/pack/foo/start/vim-plist"]
 	path = nvim-data/site/pack/foo/start/vim-plist
 	url = https://github.com/darfink/vim-plist.git
+[submodule "nvim-data/site/pack/foo/start/jsonc.vim"]
+	path = nvim-data/site/pack/foo/start/jsonc.vim
+	url = https://github.com/neoclide/jsonc.vim
+[submodule "nvim-data/site/pack/foo/start/nvim-lspconfig"]
+	path = nvim-data/site/pack/foo/start/nvim-lspconfig
+	url = https://github.com/neovim/nvim-lspconfig
+[submodule "nvim-data/site/pack/foo/start/copilot.vim"]
+	path = nvim-data/site/pack/foo/start/copilot.vim
+	url = https://github.com/github/copilot.vim
