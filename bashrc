@@ -20,6 +20,9 @@ alias grep='grep --color=auto'
 alias ack='ack --color-match="dark red" --color-filename=magenta --color-lineno=yellow'
 alias ag='ag --color --color-match=31 --color-path=35 --color-line-number=33'
 
+# Just-in-time update to the VS Code socket reference.
+alias code='eval $(tmux show-environment -s VSCODE_IPC_HOOK_CLI); code'
+
 type dircolors >/dev/null 2>&1 && {
     eval $(dircolors -b $DOTFILES/dir_colors)
 }
