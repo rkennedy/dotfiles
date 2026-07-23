@@ -12,4 +12,10 @@ After cloning the repository, do the following:
 1. Run `make`. This will bootstrap all the files. For the most part, symlinks
    are created pointing back into the main dotfiles directory.
 
-2. Create */.gitconfig.local* and set `user.email`.
+2. Create *~/.gitconfig.local* and set `user.email`.
+
+3. Enable the Obsidian sync service:
+
+    ```bash
+    systemctl --user enable --now obsidian-livesync.service
+    ```
