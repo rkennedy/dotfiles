@@ -1,0 +1,81 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+usage() {
+    printf 'Usage: %s [VERSION]
+Fetch the specified version of Neovim to %s/bin/nvim-<VERSION> and make it the
+default nvim.
+
+With no VERSION, determine the latest version and fetch that instead.
+
+Options:
+  -h, --help  Print this help.
+' "$0" "${PLAT_PATH}"
+}
+
+args=$(getopt --options h --longoptions help --name $(basename "$0") -- "$@")
+eval set -- "${args}"
+
+while :; do
+    case "$1" in
+        -h | --help)
+            usage
+            exit 0
+            ;;
+        --)
+            shift
+            break
+            ;;
+    esac
+    shift
+done
+
+case "$(uname -m)" in
+    x86_64 | amd64)
+        arch=x86_64
+        ;;
+    aarch64 | arm64)
+        arch=arm64
+        ;;
+    *)
+        >&2 printf 'Unsupported architecture: %s\n' "$(uname -m)"
+        exit 1
+        ;;
+esac
+
+tag="${1:-}"
+if [[ -z "${tag}" ]]; then
+    tag=$(curl --fail --no-progress-meter --show-error "https://api.github.com/repos/neovim/neovim/releases/latest" | jq --raw-output '.tag_name')
+    printf 'Fetching latest version %s\n' "${tag}"
+fi
+
+version=${tag#v}
+bin_dir="${PLAT_PATH}/bin"
+mkdir -p "${bin_dir}"
+
+case "$(uname -s)" in
+    Linux)
+        os=linux
+        ;;
+    *)
+        >&2 printf 'Unsupported OS: %s\n' "$(uname -s)"
+        exit 1
+        ;;
+esac
+
+download_url=$(curl --fail --no-progress-meter --show-error "https://api.github.com/repos/neovim/neovim/releases/tags/${tag}" \
+    | jq --raw-output --arg arch "${arch}" --arg os "${os}" '
+        .assets
+        | map(select(.name == "nvim-\($os)-\($arch).appimage"))
+        | first
+        | .browser_download_url
+    ')
+
+target="${bin_dir}/nvim-${version}"
+curl --fail --show-error --progress-bar --location --output "${target}" "${download_url}"
+chmod +x "${target}"
+
+ln --verbose --symbolic --force --no-dereference "nvim-${version}" "${bin_dir}/vim"
+
+# vim: set et sw=4:
