@@ -42,6 +42,7 @@ home_link_files = $(addprefix ${HOME}/., ${home_files_to_be_linked})
 config_files_to_be_linked =
 config_files_to_be_linked += atuin
 config_files_to_be_linked += nvim
+config_files_to_be_linked += systemd/user/obsidian-livesync.service
 
 config_link_files = $(addprefix ${XDG_CONFIG_HOME}/, ${config_files_to_be_linked})
 

@@ -1,0 +1,24 @@
+# https://github.com/vrtmrz/obsidian-livesync/blob/main/src/apps/cli
+
+[Unit]
+Description = Obsidian LiveSync daemon
+After = network-online.target
+Wants = network-online.target
+# These paths are reflected in our livesync-cli script.
+ConditionPathIsDirectory = %h/notes
+#ConditionPathIsDirectory = %S/obsidian-livesync Broken until systemd 254.
+ConditionPathIsDirectory = %h/.local/state/obsidian-livesync
+
+[Service]
+Type = simple
+ExecStart = %h/dotfiles/bin/livesync-cli daemon
+Restart = on-failure
+RestartSec = 10
+TimeoutStartSec = 300
+StandardOutput = journal
+# StandardError = inherit
+
+[Install]
+WantedBy = default.target
+
+# vim: set ft=systemd:

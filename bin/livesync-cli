@@ -1,0 +1,35 @@
+#!/bin/bash
+
+# https://github.com/vrtmrz/obsidian-livesync/blob/main/src/apps/cli
+
+readonly image=ghcr.io/vrtmrz/livesync-cli
+readonly version=0.25.83-cli
+
+readonly app=obsidian
+
+# These paths are reflected in obsidian.service.
+readonly host_db="${XDG_STATE_HOME-${HOME}/.local/state}/obsidian-livesync"
+readonly host_vault="${HOME}/notes"
+
+readonly target_db=/data
+readonly target_vault=/vault
+
+readonly podman_args=(
+  --interactive
+  --tty
+  --userns host
+  --label app="${app}"
+  --mount type=bind,src="${host_db}",target="${target_db}"
+  --mount type=bind,src="${host_vault}",target="${target_vault}"
+  --env LIVESYNC_DB_PATH="${target_db}"
+)
+
+readonly app_args=(
+  --vault "${target_vault}"
+  "$@"
+)
+
+set -x
+podman run "${podman_args[@]}" "${image}:${version}" "${app_args[@]}"
+
+# vim: set et sw=2:
