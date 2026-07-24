@@ -6,8 +6,6 @@ name = Rob Kennedy
 [core]
 editor = vim
 pager = less -RFX
-excludesfile = ~/dotfiles/gitexcludes
-attributesfile = ~/dotfiles/gitattributes
 preloadindex = true
 
 [init]
