@@ -26,7 +26,7 @@ fi
 alias view='vim -R'
 
 # Just-in-time update to the VS Code socket reference.
-alias code='eval $(tmux show-environment -s VSCODE_IPC_HOOK_CLI); code'
+alias code='eval $(tmux show-environment -gs VSCODE_IPC_HOOK_CLI); code'
 
 HISTSIZE=10050
 SAVEHIST=10000
