@@ -28,7 +28,6 @@ home_files_to_be_linked += bash_profile
 home_files_to_be_linked += bashrc
 home_files_to_be_linked += colordiffrc
 home_files_to_be_linked += hammerspoon
-home_files_to_be_linked += tmux.conf
 home_files_to_be_linked += vimrc
 home_files_to_be_linked += zshenv
 home_files_to_be_linked += zshrc
@@ -43,6 +42,7 @@ config_files_to_be_linked += git
 config_files_to_be_linked += nvim
 config_files_to_be_linked += readline
 config_files_to_be_linked += systemd/user/obsidian-livesync.service
+config_files_to_be_linked += tmux
 
 config_link_files = $(addprefix ${XDG_CONFIG_HOME}/, ${config_files_to_be_linked})
 
