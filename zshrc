@@ -28,9 +28,13 @@ alias view='vim -R'
 # Just-in-time update to the VS Code socket reference.
 alias code='eval $(tmux show-environment -gs VSCODE_IPC_HOOK_CLI); code'
 
+# Ordinarily, we might think to store command history in XDG_DATA_HOME, but
+# since we also have atuin, zsh's persistent history is less important.
 HISTSIZE=10050
 SAVEHIST=10000
-HISTFILE=~/.zsh_history
+HISTFILE=${XDG_STATE_HOME:-${HOME}/.local/state}/zsh/history
+mkdir -p "$(dirname "${HISTFILE}")"
+
 # Include start time and elapsed time in history
 setopt extended_history
 # Add "|" to redirection instructions in history to allow clobbering
