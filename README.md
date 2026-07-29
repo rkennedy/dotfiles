@@ -19,3 +19,10 @@ After cloning the repository, do the following:
     ```bash
     systemctl --user enable --now obsidian-livesync.service
     ```
+
+4. Install common tools as needed.
+
+    ```bash
+    update-neovim
+    update-atuin
+    ```
