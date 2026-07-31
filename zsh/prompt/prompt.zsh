@@ -252,6 +252,10 @@ function do_prompt()
     print -n $result
 }
 
+# Dummy assignment to work around Zsh 5.0.6 bug.
+# See https://github.com/atuinsh/atuin/issues/3758.
+RPROMPT=dummy
+
 PS1='$(do_prompt ps1)'
 RPS1='$(pipestat=($pipestatus) do_prompt rps1)'
 PS4="$(do_prompt ps4)"
