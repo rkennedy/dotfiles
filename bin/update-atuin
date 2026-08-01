@@ -1,0 +1,84 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+usage() {
+    printf 'Usage: %s [VERSION]
+Fetch the specified version of Atuin to %s/bin/atuin-<VERSION> and make it the
+default atuin.
+
+With no VERSION, determine the latest version and fetch that instead.
+
+Options:
+  -h, --help  Print this help.
+' "$0" "${PLAT_PATH}"
+}
+
+args=$(getopt --options h --longoptions help --name $(basename "$0") -- "$@")
+eval set -- "${args}"
+
+while :; do
+    case "$1" in
+        -h | --help)
+            usage
+            exit 0
+            ;;
+        --)
+            shift
+            break
+            ;;
+    esac
+    shift
+done
+
+case "$(uname -m)" in
+    x86_64 | amd64)
+        arch=x86_64
+        ;;
+    aarch64 | arm64)
+        arch=aarch64
+        ;;
+    *)
+        >&2 printf 'Unsupported architecture: %s\n' "$(uname -m)"
+        exit 1
+        ;;
+esac
+
+tag="${1:-}"
+if [[ -z "${tag}" ]]; then
+    tag=$(curl --fail --no-progress-meter --show-error "https://api.github.com/repos/atuinsh/atuin/releases/latest" | jq --raw-output '.tag_name')
+    printf 'Fetching latest version %s\n' "${tag}"
+fi
+
+version=${tag#v}
+bin_dir="${PLAT_PATH}/bin"
+mkdir -p "${bin_dir}"
+
+case "$(uname -s)" in
+    Linux)
+        os=unknown-linux-musl
+        ;;
+    *)
+        >&2 printf 'Unsupported OS: %s\n' "$(uname -s)"
+        exit 1
+        ;;
+esac
+
+basename="atuin-${arch}-${os}"
+
+download_url=$(curl --fail --no-progress-meter --show-error "https://api.github.com/repos/atuinsh/atuin/releases/tags/${tag}" \
+    | jq --raw-output --arg basename "${basename}" '
+        .assets
+        | map(select(.name == "\($basename).tar.gz"))
+        | first
+        | .browser_download_url
+    ')
+
+tar="${TMPDIR:-/tmp}/atuin-${version}.tar.gz"
+trap 'rm --force "${tar}"' EXIT
+curl --fail --show-error --progress-bar --location --output "${tar}" "${download_url}"
+
+tar --extract --file "${tar}" --directory "${bin_dir}" --strip-components 1 --transform "s|/atuin|/atuin-${version}|" "${basename}/atuin"
+ln --verbose --symbolic --force --no-dereference "atuin-${version}" "${bin_dir}/atuin"
+
+# vim: set et sw=4:
