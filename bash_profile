@@ -40,7 +40,8 @@ export CSCOPE_EDITOR='view'
 export CVSEDITOR='vim'
 export CVSREAD='Yes'
 
-export PYTHONSTARTUP=$DOTFILES/python-shell-enhancement/pythonstartup.py
+export PYTHONSTARTUP=${XDG_CONFIG_HOME:-${HOME}/.config}/python/startup.py
+export PYTHON_HISTORY=${XDG_STATE_HOME:-${HOME}/.local/state}/python/history
 
 export PLAT_PATH=$HOME/.local/$(uname -s)/$(uname -m)
 if [ -e ${PLAT_PATH}/go ]; then
