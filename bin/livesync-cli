@@ -14,15 +14,20 @@ readonly host_vault="${HOME}/notes"
 readonly target_db=/data
 readonly target_vault=/vault
 
-readonly podman_args=(
-  --interactive
-  --tty
+podman_args=(
+  --rm
   --userns host
   --label app="${app}"
   --mount type=bind,src="${host_db}",target="${target_db}"
   --mount type=bind,src="${host_vault}",target="${target_vault}"
   --env LIVESYNC_DB_PATH="${target_db}"
 )
+if [[ $1 != daemon ]]; then
+  podman_args+=(
+    --interactive
+    --tty
+  )
+fi
 
 readonly app_args=(
   --vault "${target_vault}"
