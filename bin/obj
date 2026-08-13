@@ -1,0 +1,13 @@
+#!/bin/bash
+set -euo pipefail
+
+date=${1:-now}
+if [[ ${date} =~ ^[-+]?[[:digit:]]+$ ]]; then
+    date+=' day'
+fi
+
+file=$(date --date "${date}" +%Y-%m-%d)
+
+exec ${EDITOR:-vim} "${HOME}/notes/Journal/${file}.md"
+
+# vim: set et sw=4:
