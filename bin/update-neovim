@@ -77,5 +77,6 @@ curl --fail --show-error --progress-bar --location --output "${target}" "${downl
 chmod +x "${target}"
 
 ln --verbose --symbolic --force --no-dereference "nvim-${version}" "${bin_dir}/vim"
+ln --verbose --symbolic --force --no-dereference "nvim-${version}" "${bin_dir}/nvim"
 
 # vim: set et sw=4:
