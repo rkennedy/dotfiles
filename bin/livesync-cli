@@ -3,7 +3,7 @@
 # https://github.com/vrtmrz/obsidian-livesync/blob/main/src/apps/cli
 
 readonly image=ghcr.io/vrtmrz/livesync-cli
-readonly version=0.25.83-cli
+readonly version=1.0.21-cli
 
 readonly app=obsidian
 
