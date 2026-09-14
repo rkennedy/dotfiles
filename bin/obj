@@ -6,8 +6,10 @@ if [[ ${date} =~ ^[-+]?[[:digit:]]+$ ]]; then
     date+=' day'
 fi
 
-file=$(date --date "${date}" +%Y-%m-%d)
+file=$(date --date "${date}" +%Y/%m/%Y-%m-%d)
+file="${HOME}/notes/Journal/${file}.md"
 
-exec ${EDITOR:-vim} "${HOME}/notes/Journal/${file}.md"
+mkdir -p "$(dirname "${file}")"
+exec ${EDITOR:-vim} "${file}"
 
 # vim: set et sw=4:
